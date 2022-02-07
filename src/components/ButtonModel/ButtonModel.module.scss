@@ -1,0 +1,81 @@
+.ButtonModel {
+  font-family: Poppins !important;
+  border: none;
+
+  &[data-border='round'] {
+    border-radius: 10px;
+  }
+
+  &[data-border='square'] {
+    border-radius: none;
+  }
+
+  &[data-border='circle'] {
+    border-radius: 50px;
+  }
+
+  &[data-width='default'] {
+    width: 200px;
+  }
+
+  &[data-width='small'] {
+    width: 100px;
+  }
+
+  &[data-width='large'] {
+    width: 300px;
+  }
+
+  &[data-width='full'] {
+    width: 100%;
+  }
+
+  &[data-height='default'] {
+    height: 35px;
+  }
+
+  &[data-height='small'] {
+    height: 25px;
+  }
+
+  &[data-height='large'] {
+    height: 50px;
+  }
+
+  &[data-color='default'] {
+    background-color: #ff7139;
+    color:#fff;
+  }
+
+  &[data-color='default']:hover {
+    background-color: #ff994b;
+    color:#fff;
+  }
+
+  &[data-color='primary'] {
+    background-color: #004aad ;
+    color:#fff;
+  }
+
+  &[data-color='primary']:hover {
+    background-color: #006eff ;
+    color:#fff;
+  }
+
+  &[data-color='secondary'] {
+    background-color: #213053;
+  }
+
+  &[data-color='tertiary'] {
+    background-color: #11115d;
+  }
+
+  &[data-color='quartenary'] {
+    background-color: #79ff8b;
+  }
+
+  &[data-align='center'] {
+    margin:auto;
+  }
+
+}

@@ -1,0 +1,86 @@
+.NavigationBar {
+  align-items: center;
+  backface-visibility: hidden;
+  background-color:#11115d;
+  display: flex;
+  height: 60px;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+
+
+
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+
+  &__Group {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__Logo {
+    height: 40px;
+    margin-right: auto;
+
+    & img {
+      height: 100%;
+    }
+  }
+
+  &__Menu {
+    align-items: center;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+
+    &__Item {
+      align-items: center;
+      background: transparent;
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      margin: auto 20px;
+
+      & a,
+      & span {
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__Submenu {
+    &__Item,
+    &__Item a {
+      color: #2c3345;
+      display: block;
+      font-weight: bold;
+    }
+
+    &__Item {
+      padding: 5px 0;
+    }
+  }
+
+  &__Login__Button {
+    margin-left: 20px;
+    border-color: #004aad;
+    background-color: #004aad;
+    color: #fff;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: lighten(#004aad, 5%);
+      background-color: lighten(#004aad, 5%);
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.Wave {
+  &[data-bgcolor='default'] {
+    background-color: white;
+  }
+
+  &[data-bgcolor='primary'] {
+    background-color: #11115d;
+  }
+
+  &[data-bgcolor='secondary'] {
+    background-color: #ff7139;
+  }
+
+  &[data-bgcolor='dark'] {
+    background-color: #1d263a;
+  }
+
+  &[data-bgcolor='blue'] {
+    background: linear-gradient(
+      180deg,
+      rgba(23, 135, 252, 0.26) 0%,
+      rgba(32, 191, 169, 0.16) 55.21%,
+      rgba(199, 210, 240, 0) 100%
+    );
+    position: relative;
+    z-index: 1;
+    margin-top: 0px;
+  }
+}

@@ -1,0 +1,38 @@
+.Container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+
+  &[data-color='default']{
+    background-color: #fff;
+  }
+
+  &[data-color='primary']{
+    background-color: #11115d;
+  }
+
+  &[data-color='secondary']{
+    background-color: rgb(255, 113, 57);
+  }
+
+  &[data-width='default']{
+    max-width: 1250px;
+  }
+
+  &[data-color='full']{
+    max-width: 1250px;
+  }
+
+  &[data-bgColor='default']{
+    background-color: #fff;
+  }
+
+  &[data-bgColor='primary']{
+    background-color: rgb(255, 113, 57);
+  }
+
+}
+
