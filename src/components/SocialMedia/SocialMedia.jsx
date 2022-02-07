@@ -36,19 +36,19 @@ const icons = [
 
 export default function SocialMedia() {
   return (
-    <Row gutter={100}>
-      <Col span={100}>
+    <Row>
+      <Col>
         <Space size="large">
-          <a href={icons.link} target="_blank">
+          <a href='https://www.instagram.com/isemearoficial/' target="_blank">
             <InstagramOutlined style={{ color: '#fff' }}/>
           </a>
-          <a href={icons.link}>
+          <a href='https://www.facebook.com/isemear'>
             <FacebookOutlined style={{ color: '#fff' }} />
           </a>
-          <a href={icons.link}>
+          <a href='https://www.linkedin.com/company/isemear' >
             <LinkedinOutlined style={{ color: '#fff' }} />
           </a>
-          <a href={icons.link}>
+          <a href='https://www.youtube.com/channel/UCVX26cPzN0MrCHTrrL4HYug'>
             <YoutubeOutlined style={{ color: '#fff' }} />
           </a>
         </Space>

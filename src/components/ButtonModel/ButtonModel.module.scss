@@ -1,6 +1,7 @@
 .ButtonModel {
   font-family: Poppins !important;
   border: none;
+  vertical-align: middle;
 
   &[data-border='round'] {
     border-radius: 10px;
