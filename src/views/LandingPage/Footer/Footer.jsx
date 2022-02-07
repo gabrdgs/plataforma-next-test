@@ -1,5 +1,6 @@
-import { Col, Row, Typography, Input, Form, Space } from 'antd';
+import { Col, Input, Form, Space } from 'antd';
 import Image from 'next/image';
+
 
 import { Section } from '../../../components/Section';
 import { Heading } from '../../../components/Heading';
@@ -34,6 +35,7 @@ export default function Footer ({ id }){
                 <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} justify="space-around">
                     <Heading alignment="center" level={3} color="secondary">Gostou da nossa proposta ?</Heading>
                     <Paragraph alignment="center" color="secondary">Estamos trabalhando para trazer para vocês a melhor e mais amada plataforma de mentoria do Brasil, se você tem interesse em ser jovem ou mentor, assine nossa newsletter e receba todas as novidades e atualizações sobre o funcionamento da nossa plataforma.</Paragraph>
+                    <br></br>
                     <Form.Item name={['user', 'name']}  rules={[{ required: true }]}>
                         <Input placeholder="Digite seu Nome"/>
                     </Form.Item>
@@ -45,7 +47,7 @@ export default function Footer ({ id }){
                     </Form.Item>
                 </Form>
             </Col>
-            <Col span={10} offset={10}>
+            <Col span={15} offset={11}>
                 <SocialMedia/>
             </Col>
         </Section>

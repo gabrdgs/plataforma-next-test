@@ -1,4 +1,4 @@
-// import styles from './Hero.module.scss';
+import styles from './SeedArea.module.scss';
 
 import { Col, Row, Typography, Card, Space, List, Avatar } from 'antd';
 import Image from 'next/image';
@@ -61,14 +61,17 @@ const data = [
   },
 ];
 
-function SeedArea({ id }) {
+function SeedArea({
+  id,
+  color="default"
+}) {
   return (
     <Fragment>
       <Wave direction="down" innerColor="#11115d" outsideColor="#fff" />
       <Section id={id} bgColor="primary">
           <Container color='primary'>
           <Row gutter={[48, 48]} align="middle">
-            <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+            <Col xs={{ span: 24 }} offset={1} lg={{ span: 12 }}>
               <Image src={journeyImage} width={500} height={500} />
             </Col>
             <Col xs={{ span: 24 }} lg={{ span: 10 }}>
@@ -99,8 +102,11 @@ function SeedArea({ id }) {
           </Row>
           </Container>
           <Container color='primary'>
+          <br></br>
+          <br></br>  
+          <Space direction='vertical' size="middle">
           <Row gutter={[48, 48]} align='middle'>
-            <Col xs={{ span: 24 }} lg={{ span: 12 }} >
+            <Col xs={{ span: 24 }} offset={1} lg={{ span: 12 }} >
               <Heading color="secondary">O que posso aprender nessa jornada?</Heading>
               <Heading color="senary" level={4}>
                 Jornada do Jovem
@@ -111,7 +117,7 @@ function SeedArea({ id }) {
                 renderItem={(item) => (
                   <List.Item>
                     <List.Item.Meta
-                      avatar={<Avatar size={40}>{item.number}</Avatar>}
+                      avatar={<Avatar style={{ backgroundColor: "#7fff70"}} size={40}>{item.number}</Avatar>}
                       title={<Paragraph color='secondary'>{item.title}</Paragraph>}
                     />
                   </List.Item>
@@ -124,12 +130,17 @@ function SeedArea({ id }) {
               </div>
             </Col>
           </Row>
+          </Space>
           </Container>
+          <br></br>
+          <br></br>
+          <br></br> 
           <Container color='primary'>
           <Space />
           <Heading level={2} color="secondary" alignment="center">
             Quem ja venceu essa jornada
           </Heading>
+          <br></br> 
           <Row gutter={[48, 48]}>
             {personas.map((persona, index) => (
               <Col span={8} key={`card-${index}`}>
@@ -137,13 +148,16 @@ function SeedArea({ id }) {
                   <Row>
                     <Image src={persona.imageProfile} alt="image" width={200} height={200} />
                   </Row>
+                  <br></br>
                   <Paragraph size='small'italic>{persona.text}</Paragraph>
-                  <Row justify="start">
+                  <br></br>
+                  <Row justify="start"> 
+                    <Space>
                     <a href={persona.linkedin} target="_blank" rel="noreferrer">
                       <Image src={linkedinImage} width={25} height={25} />
                     </a>
-                    <Space />
                     <Heading level={4}>{persona.name}</Heading>
+                    </Space>
                   </Row>
                   <Heading level={5} color='tertiary'>{persona.profession}</Heading>
                 </CardModel>

@@ -51,6 +51,8 @@ export default function Testimonial() {
         <Heading level={2} alignment="center" color="secondary">
           Mentores da Rede Semear
         </Heading>
+        <br></br>
+        <br></br>
         <Row gutter={[48, 48]}>
           {personas.map((persona, index) => (
             <Col span={8} key={`card-test-${index}`}>
@@ -58,13 +60,16 @@ export default function Testimonial() {
                 <Row>
                   <Image src={persona.imageProfile} alt="image" width={200} height={200} />
                 </Row>
+                <br></br>
                 <Paragraph size='small' italic>{persona.text}</Paragraph>
+                <br></br>
                 <Row justify="start">
+                  <Space>
                     <a href={persona.linkedin} target="_blank" rel="noreferrer">
                       <Image src={linkedinImage} width={25} height={25} />
                     </a>
-                  <Space />
-                  <Heading level={4}>{persona.name}</Heading>
+                    <Heading level={4}>{persona.name}</Heading>
+                  </Space>
                 </Row>
                 <Heading level={5} color='tertiary'>{persona.profession}</Heading>
               </CardModel>

@@ -2,21 +2,18 @@ import { Fragment } from 'react/cjs/react.production.min';
 import { Col, Row, Space, List, Avatar } from 'antd';
 import Image from 'next/image';
 
-
 import { Section } from '../../../components/Section';
 import { Container } from '../../../components/Container';
 import { Wave } from '../../../components/Wave';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
-import  Testimonial  from './Testimonial';
+import Testimonial from './Testimonial';
 
-
-import mentorImage from '../../../assets/images/characters/mentors.png'
+import mentorImage from '../../../assets/images/characters/mentors.png';
 import imageProfile1 from '../../../assets/images/mockPersonas/student-1.png';
 import imageProfile2 from '../../../assets/images/mockPersonas/student-2.png';
 import imageProfile3 from '../../../assets/images/mockPersonas/student-3.png';
-import linkedinImage from '../../../assets/images/brands/linkedin.png'; 
-
+import linkedinImage from '../../../assets/images/brands/linkedin.png';
 
 const personas = [
   {
@@ -43,59 +40,57 @@ const personas = [
     imageProfile: imageProfile3,
     linkedin: 'https://www.linkedin.com/in/lucas-vieira-carvalho-62a8aa18b/',
   },
-]
+];
 
-
-
-  const data = [
-    {
-      number: "1",
-      title: 'Seja o responsável por agir para a melhoria de oportunidades educacionais no Brasil',
-    },
-    {
-      number: "2",
-      title: 'Seja o responsável por agir para a melhoria de oportunidades educacionais no Brasil',
-    },
-    {
-      number: "3",
-      title: 'Conecte-se e faça parte da ampla rede de contatos do Instituto Semear',
-    },
-  ];
+const data = [
+  {
+    number: '1',
+    title: 'Seja o responsável por agir para a melhoria de oportunidades educacionais no Brasil',
+  },
+  {
+    number: '2',
+    title: 'Seja o responsável por agir para a melhoria de oportunidades educacionais no Brasil',
+  },
+  {
+    number: '3',
+    title: 'Conecte-se e faça parte da ampla rede de contatos do Instituto Semear',
+  },
+];
 
 function MentorArea({ id }) {
   return (
     <Fragment>
       <Section id={id} bgColor="default">
         <Container>
-          <Row gutter={[50, 50]}>
-            <Col xs={{ span: 24 }} lg={{ span: 10 }}>
+          <Row gutter={[50, 50]} align='middle'>
+            <Col xs={{ span: 24 }} offset={2} lg={{ span: 10 }}>
               <div>
                 <Image src={mentorImage} width={500} height={500} />
               </div>
             </Col>
-            <Col xs={{ span: 24 }} lg={{ span: 11 }}>
-              <Heading level={2}>O que posso descobrir nessa jornada?</Heading>
-              <Heading level={3} color="senary" level={4}>
-                Jornada do Mentor
-              </Heading>
-              <List
-                itemLayout="horizontal"
-                dataSource={data}
-                renderItem={(item) => (
-                  <List.Item>
-                    <List.Item.Meta
-                      avatar={<Avatar size={40}>{item.number}</Avatar>}
-                      title={<Paragraph>{item.title}</Paragraph>}
-                    />
-                  </List.Item>
-                )}
-              />
-          </Col>
-        </Row>
-      </Container>
-    </Section>
-    <Wave direction="down" innerColor="#ff7139" outsideColor="#fff" />
-    <Testimonial/>
+              <Col xs={{ span: 24 }} lg={{ span: 11 }}>
+                <Heading level={2}>O que posso descobrir nessa jornada?</Heading>
+                <Heading level={3} color="senary" level={4}>
+                  Jornada do Mentor
+                </Heading>
+                <List
+                  itemLayout="horizontal"
+                  dataSource={data}
+                  renderItem={(item) => (
+                    <List.Item>
+                      <List.Item.Meta
+                        avatar={<Avatar style={{ backgroundColor: "#ff7139" }}size={40}>{item.number}</Avatar>}
+                        title={<Paragraph>{item.title}</Paragraph>}
+                      />
+                    </List.Item>
+                  )}
+                />
+              </Col>
+          </Row>
+        </Container>
+      </Section>
+      <Wave direction="down" innerColor="#ff7139" outsideColor="#fff" />
+      <Testimonial />
     </Fragment>
   );
 }

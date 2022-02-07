@@ -15,7 +15,7 @@ const data = [
   },
 ];
 
-function PointsList(){
+function PointsList({}){
   return (
     <List
     itemLayout="horizontal"
