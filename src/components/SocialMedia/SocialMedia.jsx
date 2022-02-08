@@ -43,16 +43,16 @@ export default function SocialMedia() {
         <Row>
           <Col>
             <Space size="large">
-              <a href="https://www.instagram.com/isemearoficial/" target="_blank">
+              <a href="https://www.instagram.com/isemearoficial/" target="_blank" rel="noreferrer">
                 <InstagramOutlined style={{ fontSize: '40px', color: '#fff' }} />
               </a>
-              <a href="https://www.facebook.com/isemear">
+              <a href="https://www.facebook.com/isemear" target="_blank" rel="noreferrer">
                 <FacebookOutlined style={{ fontSize: '40px', color: '#fff' }} />
               </a>
-              <a href="https://www.linkedin.com/company/isemear">
+              <a href="https://www.linkedin.com/company/isemear" target="_blank" rel="noreferrer">
                 <LinkedinOutlined style={{ fontSize: '40px', color: '#fff' }} />
               </a>
-              <a href="https://www.youtube.com/channel/UCVX26cPzN0MrCHTrrL4HYug">
+              <a href="https://www.youtube.com/channel/UCVX26cPzN0MrCHTrrL4HYug" target="_blank" rel="noreferrer">
                 <YoutubeOutlined style={{ fontSize: '40px', color: '#fff' }} />
               </a>
             </Space>
