@@ -47,7 +47,7 @@ export default function Footer ({ id }){
                     </Form.Item>
                 </Form>
             </Col>
-            <Col span={15} offset={11}>
+            <Col span={15} offset={10}>
                 <SocialMedia/>
             </Col>
         </Section>
