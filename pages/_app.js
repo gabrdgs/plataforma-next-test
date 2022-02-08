@@ -1,6 +1,9 @@
 import Script from 'next/script';
 import 'antd/dist/antd.css';
 
+import '../styles/globals.css';
+
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
