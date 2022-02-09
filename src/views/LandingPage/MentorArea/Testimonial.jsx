@@ -56,7 +56,7 @@ export default function Testimonial() {
         <Row gutter={[48, 48]}>
           {personas.map((persona, index) => (
             <Col span={8} key={`card-test-${index}`}>
-              <CardModel width="half" height='middle' color="default">
+              <CardModel width="half" height='default' color="default">
                 <Row>
                   <Image src={persona.imageProfile} alt="image" width={200} height={200} />
                 </Row>
