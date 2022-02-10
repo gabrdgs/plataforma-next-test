@@ -18,7 +18,6 @@ const { confirm } = Modal;
 
 const daysLimit = 100;
 
-
 export default function Mentor({}) {
   const personaList = personas.map((item) => ({
     ...item,
@@ -134,20 +133,34 @@ export default function Mentor({}) {
 
 function CardContact(props) {
   const invitedDate = new Date(props.persona.acceptedDate);
+  const acceptedDate = new Date(props.persona.acceptedDate);
+  const finalDate = new Date(props.persona.acceptedDate);
   const invitedDateFormated = `${invitedDate.getDate()}-${
     invitedDate.getMonth() + 1
   }-${invitedDate.getFullYear()}`;
+  const acceptedDateFormated = `${acceptedDate.getDate()}-${acceptedDate.getMonth()}-${acceptedDate.getFullYear()}`;
+  const finalDateFormated = `${finalDate.getDate()}-${finalDate.getMonth()}-${finalDate.getFullYear()}`;
+
   const apiWpp = 'https://api.whatsapp.com/send?phone=';
   const subjectEmail = 'Programa de Mentoria Social | Instituto Semear';
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalPictureVisible, setModalPictureVisible] = useState(false);
 
   const showModal = () => {
-    setIsModalVisible(true);
+    setModalVisible(true);
   };
 
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setModalVisible(false);
+  };
+
+  const showModalPicture = () => {
+    setModalPictureVisible(true);
+  };
+
+  const handleCancelPicture = () => {
+    setModalPictureVisible(false);
   };
 
   return (
@@ -162,7 +175,7 @@ function CardContact(props) {
               <Image
                 src={props.persona.imageProfile}
                 alt="user"
-                onClick={showModal}
+                onClick={showModalPicture}
                 layout="intrinsic"
               />
               <Button onClick={showModal}>Ver perfil</Button>
@@ -221,30 +234,8 @@ function CardContact(props) {
                         <Paragraph strong size="small">
                           Informações da Mentoria
                         </Paragraph>
-                        <Paragraph size="small">
-                          <Space size={5}>
-                            <WhatsAppOutlined />
-                            <a
-                              href={`${apiWpp}${'5511982778267'}`}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              Enviar mensagem
-                            </a>
-                          </Space>
-                        </Paragraph>
-                        <Paragraph size="small">
-                          <Space size={5}>
-                            <MailOutlined />
-                            <a
-                              href={`mailto:${props.persona.email}?Subject=${subjectEmail}`}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              Enviar e-mail
-                            </a>
-                          </Space>
-                        </Paragraph>
+                        <Paragraph size="small">{`Projeto: ${props.persona.project}`}</Paragraph>
+                        <Paragraph size="small">{`Período para Realização da Mentoria: ${acceptedDateFormated} a ${finalDateFormated}`}</Paragraph>
                       </Card.Grid>
                     </Card>
                   </Col>
@@ -259,22 +250,36 @@ function CardContact(props) {
         isModalVisible={isModalVisible}
         handleCancel={handleCancel}
       />
+      <ModalPicture
+        persona={props.persona}
+        isModalVisible={isModalPictureVisible}
+        handleCancel={handleCancelPicture}
+      />
     </Row>
   );
 }
 
 function CardProfile(props) {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalPictureVisible, setModalPictureVisible] = useState(false);
 
   const showModal = () => {
-    setIsModalVisible(true);
+    setModalVisible(true);
   };
 
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setModalVisible(false);
   };
 
-  const showPromiseConfirm = () => {
+  const showModalPicture = () => {
+    setModalPictureVisible(true);
+  };
+
+  const handleCancelPicture = () => {
+    setModalPictureVisible(false);
+  };
+
+  const showConfirm = () => {
     confirm({
       title: `Deseja confirmar a sua escolha com ${props.persona.name}?`,
       content:
@@ -292,10 +297,10 @@ function CardProfile(props) {
     });
   };
 
-  const showPromiseNegative = () => {
+  const showNegative = () => {
     confirm({
-      title: `Deseja confirmar exclusão da solicitação enviada por ${props.persona.name}?`,
-      content: 'Lembre-se: A recusa do convite é irreversível',
+      title: `Deseja excluir a solicitação enviada por ${props.persona.name}?`,
+      content: 'Lembre-se: esta ação é irreversível',
       onOk() {
         props.onClickReject(props.persona.id);
         message.success('Exclusão realizada com sucesso!');
@@ -304,7 +309,8 @@ function CardProfile(props) {
         });
       },
       onCancel() {},
-      okText: 'Confirmar',
+      okText: 'Excluir',
+      okType: 'danger',
       cancelText: 'Voltar',
     });
   };
@@ -333,7 +339,7 @@ function CardProfile(props) {
               <Image
                 src={props.persona.imageProfile}
                 alt="user"
-                onClick={showModal}
+                onClick={showModalPicture}
                 layout="intrinsic"
               />
               <Button onClick={showModal}>Ver perfil</Button>
@@ -355,10 +361,10 @@ function CardProfile(props) {
                 <Paragraph size="small">{`${props.persona.description}`}</Paragraph>
                 <Col align="middle">
                   <Space size={5}>
-                    <Button key="reject" onClick={showPromiseNegative}>
+                    <Button key="reject" onClick={showNegative}>
                       Excluir Solicitação
                     </Button>
-                    <Button type="primary" key="confirm" onClick={showPromiseConfirm}>
+                    <Button type="primary" key="confirm" onClick={showConfirm}>
                       Aceitar Solicitação
                     </Button>
                   </Space>
@@ -372,6 +378,11 @@ function CardProfile(props) {
         persona={props.persona}
         isModalVisible={isModalVisible}
         handleCancel={handleCancel}
+      />
+      <ModalPicture
+        persona={props.persona}
+        isModalVisible={isModalPictureVisible}
+        handleCancel={handleCancelPicture}
       />
     </Row>
   );
@@ -410,6 +421,18 @@ function ModalProfile(props) {
           <Paragraph size="small">{`Curso: ${props.persona.course}`}</Paragraph>
         </Card.Grid>
       </Card>
+    </Modal>
+  );
+}
+
+function ModalPicture(props) {
+  return (
+    <Modal visible={props.isModalVisible} centered={true} onCancel={props.handleCancel} footer={[]}>
+      <Row align="middle" justify="center">
+        <Col span={24}>
+          <Image src={props.persona.imageProfile} alt="mentor" />
+        </Col>
+      </Row>
     </Modal>
   );
 }
