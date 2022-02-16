@@ -1,18 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  Button,
-  message,
-  Col,
-  Row,
-  Card,
-  Modal,
-  Timeline,
-  Space,
-  Avatar,
-  Divider,
-} from 'antd';
+import { Button, message, Col, Row, Card, Modal, Timeline, Space, Avatar, Divider } from 'antd';
 import {
   UnorderedListOutlined,
   HeartOutlined,
@@ -39,7 +28,6 @@ import linkedinIcon from '../../../assets/images/brands/linkedin.png';
 const { confirm } = Modal;
 
 const daysLimit = 100;
-
 
 export default function Mentor({}) {
   const personaList = personas.map((item) => ({
@@ -92,7 +80,7 @@ export default function Mentor({}) {
     console.log(event.key);
   };
 
-    const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const showModal = () => {
     setModalVisible(true);
@@ -123,7 +111,12 @@ export default function Mentor({}) {
   return (
     <Fragment>
       <Space direction="vertical" size={30}>
-        <MenuModel onClick={onClickMenu} selectedKeys={keyMenu} menuItems={menuItems} userType="mentor"/>
+        <MenuModel
+          onClick={onClickMenu}
+          selectedKeys={keyMenu}
+          menuItems={menuItems}
+          userType="mentor"
+        />
         <Modal
           visible={isModalVisible}
           centered={true}
@@ -195,7 +188,9 @@ function CardContact(props) {
     invitedDate.getMonth() + 1
   }-${invitedDate.getFullYear()}`;
   const acceptedDateFormated = `${acceptedDate.getDate()}-${acceptedDate.getMonth()}-${acceptedDate.getFullYear()}`;
-  const finalDateFormated = `${finalDate.getDate()}-${finalDate.getMonth()}-${finalDate.getFullYear()}`;
+  const finalDateFormated = `${finalDate.getDate()}-${
+    finalDate.getMonth() + 1
+  }-${finalDate.getFullYear()}`;
 
   const apiWpp = 'https://api.whatsapp.com/send?phone=';
   const subjectEmail = 'Programa de Mentoria Social | Instituto Semear';
@@ -222,7 +217,11 @@ function CardContact(props) {
   return (
     <Row>
       <Col span={4}>
-        <Paragraph>{`Convite foi aceito em ${invitedDateFormated}`}</Paragraph>
+        <Paragraph>Convite foi aceito em</Paragraph>
+        <Paragraph>{invitedDateFormated}</Paragraph>
+        <Paragraph size="small">{`Projeto: ${props.persona.project}`}</Paragraph>
+        <Paragraph size="small">Realização da mentoria:</Paragraph>
+        <Paragraph size="small">{`${acceptedDateFormated} a ${finalDateFormated}`}</Paragraph>
       </Col>
       <Col span={15} justify="center">
         <Card type="inner" bordered={true}>
@@ -237,66 +236,37 @@ function CardContact(props) {
               <Button onClick={showModal}>Ver perfil</Button>
             </Col>
             <Col span={18} push={1}>
-              <Space direction="vertical" size={10}>
-                <Heading level={5} size="large">
-                  <a href={props.persona.linkedin} target="_blank" rel="noreferrer">
-                    <Image
-                      src={linkedinIcon}
-                      alt="logo"
-                      objectFit="contain"
-                      width="24"
-                      height="24"
-                    />
-                  </a>
-                  {`${props.persona.name} (${props.persona.pronoun})`}
-                </Heading>
-                <Row gutter={24}>
-                  <Col align="middle" span={11}>
-                    <Card bordered={false}>
-                      <Card.Grid style={{ width: '100%' }} hoverable={false}>
-                        <Paragraph strong size="small">
-                          Informações de Contato
-                        </Paragraph>
-                        <Paragraph size="small">
-                          <Space size={5}>
-                            <WhatsAppOutlined />
-                            <a
-                              href={`${apiWpp}${'5511982778267'}`}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              Enviar mensagem
-                            </a>
-                          </Space>
-                        </Paragraph>
-                        <Paragraph size="small">
-                          <Space size={5}>
-                            <MailOutlined />
-                            <a
-                              href={`mailto:${props.persona.email}?Subject=${subjectEmail}`}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              Enviar e-mail
-                            </a>
-                          </Space>
-                        </Paragraph>
-                      </Card.Grid>
-                    </Card>
-                  </Col>
-                  <Col align="middle" span={11}>
-                    <Card bordered={false}>
-                      <Card.Grid style={{ width: '100%' }} hoverable={false}>
-                        <Paragraph strong size="small">
-                          Informações da Mentoria
-                        </Paragraph>
-                        <Paragraph size="small">{`Projeto: ${props.persona.project}`}</Paragraph>
-                        <Paragraph size="small">{`Período para Realização da Mentoria: ${acceptedDateFormated} a ${finalDateFormated}`}</Paragraph>
-                      </Card.Grid>
-                    </Card>
-                  </Col>
-                </Row>
-              </Space>
+              <Heading level={5} size="large">
+                <a href={props.persona.linkedin} target="_blank" rel="noreferrer">
+                  <Image src={linkedinIcon} alt="logo" objectFit="contain" width="24" height="24" />
+                </a>
+                {`${props.persona.name} (${props.persona.pronoun})`}
+              </Heading>
+              <Col span={20}>
+                <Divider plain>
+                  <Paragraph size="small">Informações de Contato</Paragraph>
+                </Divider>
+                <Paragraph size="small">
+                  <Space size={5}>
+                    <WhatsAppOutlined />
+                    <a href={`${apiWpp}${'5511982778267'}`} target="_blank" rel="noreferrer">
+                      Enviar mensagem
+                    </a>
+                  </Space>
+                </Paragraph>
+                <Paragraph size="small">
+                  <Space size={5}>
+                    <MailOutlined />
+                    <a
+                      href={`mailto:${props.persona.email}?Subject=${subjectEmail}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Enviar e-mail
+                    </a>
+                  </Space>
+                </Paragraph>
+              </Col>
             </Col>
           </Row>
         </Card>
