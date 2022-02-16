@@ -1,10 +1,7 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
-
-import { Popover, Button } from 'antd';
-
-import { CaretDownOutlined, LoginOutlined } from '@ant-design/icons';
-
+import { Popover } from 'antd';
+import { CaretDownOutlined } from '@ant-design/icons';
 import { Logo } from '../Logo';
 import { Container } from '../Container';
 import {Login} from '../../views/LandingPage/Login'

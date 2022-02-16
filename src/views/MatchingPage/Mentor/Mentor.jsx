@@ -1,15 +1,37 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Button, message, Col, Row, Card, Modal, Timeline, Menu, Space, Collapse } from 'antd';
+import Link from 'next/link';
+import {
+  Button,
+  message,
+  Col,
+  Row,
+  Card,
+  Modal,
+  Timeline,
+  Space,
+  Avatar,
+  Divider,
+} from 'antd';
 import {
   UnorderedListOutlined,
   HeartOutlined,
   WhatsAppOutlined,
   MailOutlined,
+  ProfileOutlined,
+  MessageFilled,
+  MailFilled,
+  QuestionCircleFilled,
+  LogoutOutlined,
+  UserOutlined,
+  DownOutlined,
+  DownCircleFilled,
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
+import { SocialMedia } from '../../../components/SocialMedia';
+import { MenuModel } from '../../../components/MenuModel';
 import personas from '../../shared/MockSeed';
 
 import linkedinIcon from '../../../assets/images/brands/linkedin.png';
@@ -17,6 +39,7 @@ import linkedinIcon from '../../../assets/images/brands/linkedin.png';
 const { confirm } = Modal;
 
 const daysLimit = 100;
+
 
 export default function Mentor({}) {
   const personaList = personas.map((item) => ({
@@ -66,23 +89,51 @@ export default function Mentor({}) {
 
   const onClickMenu = (event) => {
     setKeyMenu(event.key);
+    console.log(event.key);
+  };
+
+    const [isModalVisible, setModalVisible] = useState(false);
+
+  const showModal = () => {
+    setModalVisible(true);
+  };
+
+  const handleCancel = () => {
+    setModalVisible(false);
   };
 
   useEffect(() => {
     setAcceptedMenu(isDisabledMenu());
   });
 
+  const menuItems = [
+    {
+      key: 'all',
+      title: 'Todos os convites',
+      icon: <UnorderedListOutlined />,
+    },
+    {
+      key: 'accepted',
+      title: 'Convites aceitos',
+      icon: <HeartOutlined />,
+      disabled: disableAcceptedMenu,
+    },
+  ];
+
   return (
     <Fragment>
       <Space direction="vertical" size={30}>
-        <Menu onClick={onClickMenu} selectedKeys={keyMenu} mode="horizontal">
-          <Menu.Item key="all" icon={<UnorderedListOutlined />}>
-            Todas os Convites
-          </Menu.Item>
-          <Menu.Item key="accepted" disabled={disableAcceptedMenu} icon={<HeartOutlined />}>
-            Convites Aceitos
-          </Menu.Item>
-        </Menu>
+        <MenuModel onClick={onClickMenu} selectedKeys={keyMenu} menuItems={menuItems} userType="mentor"/>
+        <Modal
+          visible={isModalVisible}
+          centered={true}
+          onCancel={handleCancel}
+          footer={[
+            <Button key="cancel" onClick={handleCancel} type="primary">
+              OK
+            </Button>,
+          ]}
+        ></Modal>
         <Row>
           <Col push={1}>
             {keyMenu == 'all' ? (
@@ -104,7 +155,7 @@ export default function Mentor({}) {
                     ))}
                 </Timeline>
               </div>
-            ) : (
+            ) : keyMenu == 'accepted' ? (
               <div>
                 <Heading>Meus mentorados:</Heading>
                 <Timeline>
@@ -123,8 +174,13 @@ export default function Mentor({}) {
                     ))}
                 </Timeline>
               </div>
+            ) : (
+              <div />
             )}
           </Col>
+        </Row>
+        <Row>
+          <SocialMedia />
         </Row>
       </Space>
     </Fragment>
