@@ -20,9 +20,9 @@ export default function MenuModel(props) {
 
   return (
     <Fragment>
-      <Menu onClick={props.onClick} selectedKeys={props.keyMenu} mode="horizontal">
+      <Menu onClick={props.onClick} selectedKeys={props.keyMenu} mode="horizontal" >
         {props.menuItems.map((item) => (
-          <Menu.Item key={item.key} icon={item.icon} disabled={item.disabled}>
+          <Menu.Item key={item.key} icon={item.icon} disabled={item.disabled} >
             {item.title}
           </Menu.Item>
         ))}

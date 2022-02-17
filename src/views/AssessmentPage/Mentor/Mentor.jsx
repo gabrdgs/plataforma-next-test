@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
-import { Steps, Button, message, Col, Row } from 'antd';
+import { Steps, Button, message, Col, Row, Space } from 'antd';
 import 'antd/dist/antd.css';
-
+import { MenuModel } from '../../../components/MenuModel';
 import StepWelcome from './StepWelcome';
 import StepChannel from './StepChannel';
 import StepProfile from './StepProfile';
@@ -48,8 +48,21 @@ export default function Mentor() {
     },
   ];
 
+    const menuItems = [
+      {
+        key: 'all',
+        title: 'Todos os convites',
+
+      },
+      {
+        key: 'accepted',
+        title: 'Meus matches',
+      },
+    ];
+
   return (
     <Fragment>
+      <MenuModel menuItems={menuItems} userType="mentor" />
       <Row align="middle" justify="center">
         <Steps current={current} size="small" direction="horizontal" style={{ width: '60%' }}>
           {steps.map((item) => (
@@ -60,23 +73,21 @@ export default function Mentor() {
           <div className="steps-content">{steps[current].content}</div>
         </Col>
       </Row>
-      <div className="steps-action" align="right" style={{ marginRight: '105px' }}>
-        {current > 0 && (
-          <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
-            Anterior
-          </Button>
-        )}
-        {current < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()}>
-            Próximo
-          </Button>
-        )}
-        {current === steps.length - 1 && (
-          <Button type="primary" onClick={() => message.success('Processo Completo')}>
-            Enviar
-          </Button>
-        )}
-      </div>
+      <Row align="middle" justify="end">
+        <Space size={5}>
+          {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
+          {current < steps.length - 1 && (
+            <Button type="primary" onClick={() => next()}>
+              Próximo
+            </Button>
+          )}
+          {current === steps.length - 1 && (
+            <Button type="primary" onClick={() => message.success('Processo Completo')}>
+              Enviar
+            </Button>
+          )}
+        </Space>
+      </Row>
     </Fragment>
   );
 }
