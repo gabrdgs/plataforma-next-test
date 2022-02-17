@@ -12,7 +12,7 @@ export default function Paragraph({
   underline = false,
   strong = false,
   weight = 'default',
-  size = 'default'
+  size = 'default',
 }) {
   return (
     <div className={styles.Paragraph} data-alignment={alignment}>

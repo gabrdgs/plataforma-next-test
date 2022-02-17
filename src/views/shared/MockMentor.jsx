@@ -26,6 +26,7 @@ const mockMentor = [
     isAnswered: false,
     acceptedDate: new Date(),
     rejectedDate: new Date(),
+    statusMentoring: 'waiting',
   },
   {
     id: '2',
@@ -50,6 +51,7 @@ const mockMentor = [
     isAnswered: false,
     acceptedDate: new Date(),
     rejectedDate: new Date(),
+    statusMentoring: 'cancelled',
   },
   {
     id: '3',
@@ -75,6 +77,7 @@ const mockMentor = [
     isAnswered: false,
     acceptedDate: new Date(),
     rejectedDate: new Date(),
+    statusMentoring: 'done',
   },
 ];
 export default mockMentor;
