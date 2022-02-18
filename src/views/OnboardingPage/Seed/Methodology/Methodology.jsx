@@ -11,7 +11,7 @@ import learningTheoryImage from '../../../../assets/images/onboardingPage/seed/l
 import methodologySemearImage from '../../../../assets/images/onboardingPage/seed/methodology-semear.svg';
 import skateBoyImage from '../../../../assets/images/characters/skate-boy.svg';
 import hatGirlImage from '../../../../assets/images/characters/hat-girl.svg';
-import maslowPyramidImage from '../../../../assets/images/onboardingPage/seed/methodology-semear.svg';
+import maslowPyramidImage from '../../../../assets/images/onboardingPage/shared/maslow-pyramid.svg';
 import waveImage from '../../../../assets/images/onboardingPage/shared/wave-color.svg';
 
 export default function Methodology() {

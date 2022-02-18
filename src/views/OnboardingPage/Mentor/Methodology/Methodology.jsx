@@ -7,7 +7,7 @@ import { Video } from '../../../../components/Video';
 import { CardModel } from '../../../../components/CardModel';
 import { Paragraph } from '../../../../components/Paragraph';
 
-import maslowPyramidImage from '../../../../assets/images/onboardingPage/seed/methodology-semear.svg';
+import maslowPyramidImage from '../../../../assets/images/onboardingPage/shared/maslow-pyramid.svg';
 import bigHandImage from '../../../../assets/images/onboardingPage/mentor/big-hand.svg';
 import ellipseImage from '../../../../assets/images/onboardingPage/mentor/ellipse.svg';
 
@@ -17,6 +17,8 @@ export default function Methodology() {
     'propondo soluções;',
     'estabelecendo metas e o ajudando a estruturar planos de ação;',
   ];
+
+
 
   return (
     <Fragment>
