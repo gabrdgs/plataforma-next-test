@@ -35,7 +35,7 @@ function Hero({ id }) {
               As conexões que mudarão o seu futuro!
             </Heading>
 
-            <ButtonModel type="primary" size="large" height='large' shape="round">
+            <ButtonModel type="primary" size="large" height='large' shape="round" align="start">
               Inscreva-se
             </ButtonModel>
           </Col>

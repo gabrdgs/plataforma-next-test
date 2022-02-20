@@ -13,8 +13,8 @@ export default function Heading({
   underline = false,
 }) {
   return (
-    <div className={styles.Heading} data-alignment={alignment}>
-      <Title level={level} data-color={color} italic={italic} underline={underline}>
+    <div className={styles.Heading}>
+      <Title level={level} data-color={color} italic={italic} underline={underline} data-alignment={alignment}>
         {children}
       </Title>
     </div>

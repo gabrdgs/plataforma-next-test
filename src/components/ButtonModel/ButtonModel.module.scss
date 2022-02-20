@@ -1,7 +1,18 @@
 .ButtonModel {
   font-family: Poppins !important;
   border: none;
-  vertical-align: middle;
+  text-align: center;
+  
+  &[data-align='center']{
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &[data-align='start']{
+    margin:auto;
+  }
 
   &[data-border='round'] {
     border-radius: 10px;
@@ -73,10 +84,6 @@
 
   &[data-color='quartenary'] {
     background-color: #79ff8b;
-  }
-
-  &[data-align='center'] {
-    margin:auto;
   }
 
 }

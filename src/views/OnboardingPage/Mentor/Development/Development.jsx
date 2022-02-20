@@ -8,6 +8,7 @@ import styles from './Development.module.scss';
 
 import handsImage from '../../../../assets/images/onboardingPage/shared/hands.svg';
 import seedsImage from '../../../../assets/images/characters/seeds.png';
+import { Wave } from '../../../../components/Wave';
 
 const steps = [
   {
@@ -90,6 +91,7 @@ export default function Development() {
           </Row>
         </div>
       </Section>
+      <Wave innerColor = '#c3e0fe' outsideColor = '#11115d'/>
     </Fragment>
   );
 }

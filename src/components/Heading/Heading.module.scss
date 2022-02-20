@@ -4,15 +4,15 @@
 .Heading {
   font-family: Poppins !important;
 
-  &[data-alignment='start'] {
+  & [data-alignment='start'] {
     text-align: left;
   }
 
-  &[data-alignment='end'] {
+  & [data-alignment='end'] {
     text-align: right;
   }
 
-  &[data-alignment='center'] {
+  & [data-alignment='center'] {
     text-align: center;
   }
 
