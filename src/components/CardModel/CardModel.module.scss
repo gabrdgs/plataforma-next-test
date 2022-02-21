@@ -1,5 +1,18 @@
 .CardModel {
   font-family: Poppins !important;
+  text-align: center;
+  
+  
+  &[data-alignment="center"]{
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &[data-alignment="default"]{
+    margin:auto;
+  }
 
   &[data-border='round'] {
     border-radius: 20px;
@@ -10,19 +23,23 @@
   }
 
   &[data-width='default'] {
-    width: 600px;
+    width: 32rem;
   }
 
   &[data-width='small'] {
-    width: 250px;
+    width: 16rem;
   }
 
   &[data-width='half'] {
-    width: 370px;
+    width: 24rem;
   }
 
   &[data-width='large'] {
-    width: 800px;
+    width: 40rem;
+  }
+
+  &[data-width='super'] {
+    width: 48rem;
   }
 
   &[data-height='default'] {

@@ -13,6 +13,7 @@ export default function Section({
   waveDirection = 'down',
   innerColor,
   outsideColor,
+  marginBottom="default",
 }) {
   return (
     <Fragment>
@@ -20,6 +21,7 @@ export default function Section({
         <Wave
           direction="up"
           data-bgcolor={bgColor}
+          data-margin={marginBottom}
           innerColor={innerColor}
           outsideColor={outsideColor}
         />

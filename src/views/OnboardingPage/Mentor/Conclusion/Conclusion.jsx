@@ -16,7 +16,7 @@ export default function Conclusion() {
         <div className="section-10">
             <Row justify="center">
               <CardModel
-                width="large"
+                width="super"
                 height="half"
                 color="quartenary"
                 hoverable={true}

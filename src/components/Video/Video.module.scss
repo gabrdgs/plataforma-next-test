@@ -1,12 +1,28 @@
 .Video {
-    background-image: url('../../assets/images/landingPage/instituto-semear2.png');
     background-repeat: no-repeat;
     background-size:cover;
     height: 430px;
     border-radius: none;
     display: flex;
-    width: 100%;
     justify-content:space-around;
     align-items: center;
+    
+    &[data-width="default"]{
+        width: 100%;
+    }
+
+    &[data-width="middle"]{
+        width: 60%;
+        border-radius: 5%;
+    }
+    
+    &[data-image='default']{
+        background-image: url('../../assets/images/landingPage/instituto-semear2.png');
+    }
+
+    &[data-image='primary']{
+        background-image: url('../../assets/images/landingPage/instituto-semear.png');
+    }
 }
+
 

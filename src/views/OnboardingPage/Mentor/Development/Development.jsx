@@ -72,7 +72,7 @@ export default function Development() {
           </Row>
         </div>
       </Section>
-      <Section bgColor="primary" innerColor="#fff" outsideColor="#11115d" wave waveDirection="up">
+      <Section bgColor="primary" innerColor="#fff" outsideColor="#11115d">
         <div className="section-9">
           <Row justify="center" align="top">
             <Col xs={22} sm={19}>

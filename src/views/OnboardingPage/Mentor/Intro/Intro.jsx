@@ -23,11 +23,12 @@ export default function Intro() {
           <div className="section-1">
             <Row justify="center">
               <CardModel
-                width="large"
+                width="super"
                 height="half"
                 color="tertiary"
                 hoverable={true}
                 bordered={false}
+                alignment="center"
               >
                 <Row align="middle" gutter={48}>
                   <Col span={6}>
@@ -55,7 +56,6 @@ export default function Intro() {
                   <Heading level={2}>POR QUE PRECISAMOS DE VOCÊ?</Heading>
                 </Col>
               </Row>
-
               <Row justify="center" align="middle">
                 <Col span={15}>
                   <Paragraph size="large">
@@ -80,8 +80,8 @@ export default function Intro() {
               <Col span={5}>
                 <Image src={skateBoyImage} />
               </Col>
-              <Col span={10}>
-                <CardModel height="small" color="primary" hoverable>
+              <Col span={9}>
+                <CardModel height="small" width = "" color="primary" hoverable>
                   <Row justify="center">
                     <Col span={20}>
                       <Heading level={4} alignment="center">

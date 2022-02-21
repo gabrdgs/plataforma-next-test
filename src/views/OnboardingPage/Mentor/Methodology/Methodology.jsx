@@ -18,11 +18,9 @@ export default function Methodology() {
     'estabelecendo metas e o ajudando a estruturar planos de ação;',
   ];
 
-
-
   return (
     <Fragment>
-      <Section bgColor="primary">
+      <Section bgColor="primary" marginBottom='default'>
         <Space direction="vertical" size={100}>
           <div className="section-4">
             <Space direction="vertical" size={50}>
@@ -35,7 +33,7 @@ export default function Methodology() {
               </Row>
               <Row justify="center">
                 <Col xs={21} sm={19}>
-                  <Paragraph size="large" color="secondary">
+                  <Paragraph size="large" color="secondary" alignment='center'>
                     Trabalhamos apoiando e desenvolvendo jovens de baixa-renda que acabam de
                     ingressar nas maiores universidades do país para garantir que esse jovem não
                     evada e comece uma jornada de sucesso, livrando sua família do ciclo de pobreza.
@@ -57,6 +55,8 @@ export default function Methodology() {
                 youtubeID="uJUhDhMRNqw"
                 title="Direitos e Deveres do Mentor"
                 bgColor="primary"
+                bgImage="primary"
+                width="middle"
               />
             </Row>
           </div>
@@ -68,11 +68,12 @@ export default function Methodology() {
                 </Heading>
               </Col>
             </Row>
-            <Row justify="center">
+            <Row justify="center" > 
               <Video
                 youtubeID="Or5Im4742A0"
                 title="Direitos e Deveres do Mentor"
                 bgColor="primary"
+                width="middle"
               />
             </Row>
           </div>
@@ -81,6 +82,7 @@ export default function Methodology() {
       <Section bgColor="blue">
         <Space direction="vertical" size={100}>
           <div className="section-7">
+            <Space direction="vertical" size={50}>
             <Row justify="center">
               <Col xs={21}>
                 <Heading level={3} alignment="center">
@@ -105,7 +107,7 @@ export default function Methodology() {
               </Col>
             </Row>
             <Row justify="center">
-              <CardModel color="tertiary" height="small" width="large">
+              <CardModel color="tertiary" height="small" width="super" alignment="center">
                 <Heading level={4} alignment="center" color="secondary">
                   Isto é feito para podermos entender quais áreas da vida deste jovem estão sendo um
                   freio ou uma alavanca em sua jornada de desenvolvimento. Estabelecemos que a nota
@@ -114,10 +116,11 @@ export default function Methodology() {
                 </Heading>
               </CardModel>
             </Row>
+            </Space>
           </div>
           <div className="section-8">
             <Row>
-              <Col xs={21} sm={17} md={13} lg={10} xxl={16} offset={1}>
+              <Col xs={21} sm={17} md={13} lg={10} xxl={16} offset={2}>
                 <Heading>SEU PAPEL COMO MENTOR:</Heading>
               </Col>
             </Row>

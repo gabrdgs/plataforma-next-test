@@ -2,11 +2,16 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Button, Row, Modal } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
-import styles from './Video.module.scss'
+import styles from './Video.module.scss';
 
 import { Section } from '../Section';
 
-export default function Video(props) {
+export default function Video({ 
+  youtubeID,
+  title,
+  width = 'default', 
+  bgImage = 'default', 
+}) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -22,8 +27,8 @@ export default function Video(props) {
   };
 
   return (
-    <div className={styles.Video}>
-      <Row align="middle" justify='center'>
+    <div className={styles.Video} data-width={width} data-image={bgImage}>
+      <Row align="middle" justify="center">
         <Button
           type="primary"
           onClick={showModal}
@@ -43,8 +48,8 @@ export default function Video(props) {
             <iframe
               width="90%"
               height={360}
-              src={`https://www.youtube.com/embed/${props.youtubeID}?autoplay=1`}
-              title={props.title}
+              src={`https://www.youtube.com/embed/${youtubeID}?autoplay=1`}
+              title={title}
               frameBorder={0}
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

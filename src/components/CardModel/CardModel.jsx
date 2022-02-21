@@ -10,6 +10,7 @@ export default function CardModel({
   color = 'default',
   hoverable = false,
   bordered = true,
+  alignment="default"
 }) {
   return (
     <Card
@@ -18,6 +19,7 @@ export default function CardModel({
       data-width={width}
       data-height={height}
       data-color={color}
+      data-alignment={alignment}
       hoverable={hoverable}
       bordered={bordered}
     >
