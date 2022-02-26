@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 
+import { IndexPage } from '../../components/IndexPage';
 import { NavigationBar } from '../../components/NavigationBar';
 import { Hero } from './Hero';
 import { About } from './About';
@@ -12,6 +13,7 @@ import { Footer } from './Footer';
 export default function LandingPage() {
   return (
     <Fragment>
+      <IndexPage/>
       <NavigationBar/>
       <Hero id="quem-somos" />
       <About id="sobre" />

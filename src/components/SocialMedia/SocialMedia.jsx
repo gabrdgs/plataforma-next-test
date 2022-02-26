@@ -10,31 +10,8 @@ import {
   YoutubeOutlined,
 } from '@ant-design/icons';
 
-import linkedinImage from '../../assets/images/socialMedia/linkedin.png';
-import instagramImage from '../../assets/images/socialMedia/instagram.png';
-import facebookImage from '../../assets/images/socialMedia/facebook.png';
-import youtubeImage from '../../assets/images/socialMedia/youtube.png';
 import semearLogo from '../Logo/images/logo-horizontal.png';
 import { Fragment } from 'react/cjs/react.production.min';
-
-const icons = [
-  {
-    image: linkedinImage,
-    link: 'https://www.linkedin.com/company/isemear',
-  },
-  {
-    image: instagramImage,
-    link: 'https://www.instagram.com/isemearoficial/',
-  },
-  {
-    image: facebookImage,
-    link: 'https://www.facebook.com/isemear',
-  },
-  {
-    image: youtubeImage,
-    link: 'https://www.youtube.com/channel/UCVX26cPzN0MrCHTrrL4HYug',
-  },
-];
 
 export default function SocialMedia() {
   return (
