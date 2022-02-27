@@ -144,9 +144,9 @@ function SeedArea({
           <Row gutter={[48, 48]}>
             {personas.map((persona, index) => (
               <Col span={8} key={`card-${index}`}>
-                <CardModel width="half" height='default' color="default">
+                <CardModel width="half" height='middle' color="default">
                   <Row>
-                    <Image src={persona.imageProfile} alt="image" width={200} height={200} />
+                    <Image src={persona.imageProfile} alt="image" width={180} height={180} />
                   </Row>
                   <br></br>
                   <Paragraph size='small'italic>{persona.text}</Paragraph>

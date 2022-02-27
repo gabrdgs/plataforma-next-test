@@ -23,11 +23,11 @@
   }
 
   &[data-width='default'] {
-    width: 32rem;
+    width: 30vw;
   }
 
   &[data-width='small'] {
-    width: 16rem;
+    width: 20vw;
   }
 
   &[data-width='half'] {
@@ -39,15 +39,15 @@
   }
 
   &[data-width='super'] {
-    width: 48rem;
+    width: 60vw;
   }
 
   &[data-height='default'] {
-    height: 560px;
+    height: 40vh;
   }
 
   &[data-height='small'] {
-    height: 200px;
+    height: 30vh;
   }
 
   &[data-height='large'] {

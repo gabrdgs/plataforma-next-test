@@ -37,7 +37,7 @@ export default function SocialMedia() {
         </Row>
         <Row align="middle">
           <Col span={15} offset={5}>
-            <Image src={semearLogo} width={190} height={50} />
+            <Image src={semearLogo} width={190} height={45} />
           </Col>
         </Row>
       </Space>

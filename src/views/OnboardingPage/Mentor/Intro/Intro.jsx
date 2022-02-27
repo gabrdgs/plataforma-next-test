@@ -21,7 +21,7 @@ export default function Intro() {
       <Section bgColor="blue">
         <Space direction="vertical" size={100}>
           <div className="section-1">
-            <Row justify="center">
+            <Row justify="center" xs={21} sm={19}>
               <CardModel
                 width="super"
                 height="half"
@@ -81,8 +81,8 @@ export default function Intro() {
                 <Image src={skateBoyImage} />
               </Col>
               <Col span={9}>
-                <CardModel height="small" width = "" color="primary" hoverable>
-                  <Row justify="center">
+                <CardModel height="default" width = "default" color="primary" hoverable>
+                  <Row justify="center" xs={21} sm={19}>
                     <Col span={20}>
                       <Heading level={4} alignment="center">
                         Portanto, para nós, você é uma pessoa mais experiente que acompanha de
