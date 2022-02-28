@@ -1,20 +1,20 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Col, Row, Timeline, Space } from 'antd';
-import {
-  UnorderedListOutlined,
-  HeartOutlined,
-  ClockCircleOutlined,
-} from '@ant-design/icons';
+import { UnorderedListOutlined, HeartOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
+import { Paragraph } from '../../../components/Paragraph';
 import { SocialMedia } from '../../../components/SocialMedia';
 import { MenuModel } from '../../../components/MenuModel';
 import CardContact from '../shared/CardContact';
 import CardProfile from './CardProfile';
 
 import { getDifferenceBetweenDates } from '../../shared/utils';
-
 import personas from '../../shared/MockSeed';
+
+import sittingMan from '../../../assets/images/characters/sitting-man.jpeg';
+import notebook from '../../../assets/images/objects/notebook.jpeg';
 
 const daysLimit = 100;
 
@@ -50,6 +50,14 @@ export default function Mentor({}) {
     );
   };
 
+  const allList = getDecisionList.filter(function (item) {
+    return !item.isConfirmed & !item.isRejected;
+  });
+
+  const acceptedList = getDecisionList.filter(function (item) {
+    return item.isConfirmed;
+  });
+
   const studentRejected = (id) => {
     setDecisionList(
       getDecisionList.map((item) => {
@@ -62,22 +70,23 @@ export default function Mentor({}) {
     );
   };
 
-  const isDisabledMenu = () => {
-    const confirmedListSize = getDecisionList.filter(function (item) {
-      return item.isConfirmed;
-    }).length;
-    return confirmedListSize === 0 ? true : false;
+  const setAllList = () => {
+    return allList;
+  };
+
+  const setAcceptedList = () => {
+    return acceptedList;
   };
 
   const [keyMenu, setKeyMenu] = useState('all');
-  const [disableAcceptedMenu, setAcceptedMenu] = useState(isDisabledMenu());
 
   const onClickMenu = (event) => {
     setKeyMenu(event.key);
   };
 
   useEffect(() => {
-    setAcceptedMenu(isDisabledMenu());
+    setAllList();
+    setAcceptedList();
   });
 
   const menuItems = [
@@ -90,7 +99,6 @@ export default function Mentor({}) {
       key: 'accepted',
       title: 'Meus matches',
       icon: <HeartOutlined />,
-      disabled: disableAcceptedMenu,
     },
   ];
 
@@ -107,60 +115,98 @@ export default function Mentor({}) {
           <Col push={1}>
             {keyMenu == 'all' ? (
               <div>
-                <Heading>Meus convites para mentorar:</Heading>
-                <Timeline>
-                  {getDecisionList
-                    .filter(function (item) {
-                      return !item.isConfirmed & !item.isRejected;
-                    })
-                    .map((item, index) => (
-                      <Timeline.Item
-                        key={`card-${index}`}
-                        dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}
-                      >
-                        <CardProfile
-                          persona={item}
-                          daysLimit={daysLimit}
-                          onClickConfirm={studentConfirmed}
-                          onClickReject={studentRejected}
-                        />
-                      </Timeline.Item>
-                    ))}
-                </Timeline>
+                {allList.length == 0 ? (
+                  <Fragment>
+                    <Row align="middle" justify="center">
+                      <Col span={8}>
+                        <Heading level={1}>Oops!</Heading>
+                        <Heading level={3} color="tertiary">
+                          Parece que você não tem novos convites. :(
+                        </Heading>
+                        <Paragraph size="large">Mas fique tranquilo!</Paragraph>
+                        <Paragraph size="large">
+                          Assim que tivermos atualizações, você será notificado via e-mail e
+                          plataforma 🚀
+                        </Paragraph>
+                      </Col>
+                      <Col span={8}>
+                        <Image src={sittingMan} />
+                      </Col>
+                    </Row>
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <Heading>Meus convites para mentorar:</Heading>
+                    <Timeline>
+                      {allList.map((item, index) => (
+                        <Timeline.Item
+                          key={`card-${index}`}
+                          dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}
+                        >
+                          <CardProfile
+                            persona={item}
+                            daysLimit={daysLimit}
+                            onClickConfirm={studentConfirmed}
+                            onClickReject={studentRejected}
+                          />
+                        </Timeline.Item>
+                      ))}
+                    </Timeline>
+                  </Fragment>
+                )}
               </div>
             ) : (
               <div>
-                <Heading>Meus mentorados:</Heading>
-                <Timeline>
-                  {getDecisionList
-                    .filter(function (item) {
-                      return item.isConfirmed;
-                    })
-                    .map((item, index) => (
-                      <Timeline.Item
-                        color={
-                          setStatusMentoring(
-                            item.isFeedbackAnswered,
-                            item.mentoringHappened,
-                            item.finalDate,
-                          ).color
-                        }
-                        key={`card-${index}`}
-                      >
-                        <CardContact
-                          persona={item}
-                          user="mentor"
-                          statusMentoring={setStatusMentoring(
-                            item.isFeedbackAnswered,
-                            item.mentoringHappened,
-                            item.finalDate,
-                          )}
-                          onClickConfirm={studentConfirmed}
-                          onClickReject={studentRejected}
-                        />
-                      </Timeline.Item>
-                    ))}
-                </Timeline>
+                {acceptedList.length == 0 ? (
+                  <Fragment>
+                    <Row align="middle" justify="center">
+                      <Col span={10}>
+                        <Heading level={1}>Oops!</Heading>
+                        <Heading level={3} color="tertiary">
+                          Parece que você ainda não realizou nenhum match. :(
+                        </Heading>
+                        <Paragraph size="large">Mas fique tranquilo!</Paragraph>
+                        <Paragraph size="large">
+                          Assim que tivermos atualizações, você será notificado via e-mail e
+                          plataforma 🚀
+                        </Paragraph>
+                      </Col>
+                      <Col span={3}>
+                        <Image src={notebook} />
+                      </Col>
+                    </Row>
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <Heading>Meus mentorados:</Heading>
+                    <Timeline>
+                      {acceptedList.map((item, index) => (
+                        <Timeline.Item
+                          color={
+                            setStatusMentoring(
+                              item.isFeedbackAnswered,
+                              item.mentoringHappened,
+                              item.finalDate,
+                            ).color
+                          }
+                          key={`card-${index}`}
+                        >
+                          <CardContact
+                            persona={item}
+                            user="mentor"
+                            statusMentoring={setStatusMentoring(
+                              item.isFeedbackAnswered,
+                              item.mentoringHappened,
+                              item.finalDate,
+                            )}
+                            onClickConfirm={studentConfirmed}
+                            onClickReject={studentRejected}
+                          />
+                        </Timeline.Item>
+                      ))}
+                    </Timeline>
+                  </Fragment>
+                )}
               </div>
             )}
           </Col>
