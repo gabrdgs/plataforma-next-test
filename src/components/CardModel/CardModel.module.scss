@@ -46,6 +46,10 @@
     height: 40vh;
   }
 
+  &[data-height='middle'] {
+    height: 90vh;
+  }
+
   &[data-height='small'] {
     height: 30vh;
   }
