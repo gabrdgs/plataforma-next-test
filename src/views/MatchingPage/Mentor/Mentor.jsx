@@ -16,12 +16,12 @@ import personas from '../../shared/MockSeed';
 import sittingMan from '../../../assets/images/characters/sitting-man.jpeg';
 import notebook from '../../../assets/images/objects/notebook.jpeg';
 
-const daysLimit = 100;
+const daysLimit = 150;
 
 const statusObject = {
-  done: { color: 'green', status: 'Concluído' },
+  done: { color: 'green', status: 'Finalizado' },
   waiting: { color: 'orange', status: 'A realizar' },
-  incomplete: { color: 'red', status: 'Não concluído' },
+  incomplete: { color: 'red', status: 'Não finalizado' },
   cancelled: { color: 'gray', status: 'Não realizado' },
 };
 
@@ -121,9 +121,9 @@ export default function Mentor({}) {
                       <Col span={8}>
                         <Heading level={1}>Oops!</Heading>
                         <Heading level={3} color="tertiary">
-                          Parece que você não tem novos convites. :(
+                          Parece que você não tem novos convites 😢
                         </Heading>
-                        <Paragraph size="large">Mas fique tranquilo!</Paragraph>
+                        <Paragraph size="large">Mas fique tranquilo(a)!</Paragraph>
                         <Paragraph size="large">
                           Assim que tivermos atualizações, você será notificado via e-mail e
                           plataforma 🚀
@@ -163,9 +163,9 @@ export default function Mentor({}) {
                       <Col span={10}>
                         <Heading level={1}>Oops!</Heading>
                         <Heading level={3} color="tertiary">
-                          Parece que você ainda não realizou nenhum match. :(
+                          Parece que você ainda não realizou nenhum match.
                         </Heading>
-                        <Paragraph size="large">Mas fique tranquilo!</Paragraph>
+                        <Paragraph size="large">Mas fique tranquilo(a)!</Paragraph>
                         <Paragraph size="large">
                           Assim que tivermos atualizações, você será notificado via e-mail e
                           plataforma 🚀
