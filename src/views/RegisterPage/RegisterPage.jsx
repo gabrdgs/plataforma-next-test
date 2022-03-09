@@ -41,37 +41,34 @@ export default function RegisterPage({}) {
 
   return (
     <Fragment>
-      <Steps current={current} size="small" direction="horizontal">
-        {steps.map((item, index) => {
-          <Step key={`content-${index}`} title={item.title} />;
-        })}
-      </Steps>
       <Row justify="center" align="middle">
-        <Steps>
-          {steps.map((item, index) => {
-            <Step key={`content-${index}`} title={item.title} />;
-          })}
-        </Steps>
         <Col span={10}>
-          <div className="steps-content">
-            <Card>{steps[current].content}</Card>
-          </div>
+          <Space size={20} direction="vertical">
+            <Steps current={current}>
+              {steps.map((item, index) => (
+                <Step key={`content-${index}`} />
+              ))}
+            </Steps>
+            <div className="steps-content">
+              <Card>{steps[current].content}</Card>
+            </div>
+            <Row justify="end" align="middle">
+              <Space size={5}>
+                {current < steps.length - 1 && (
+                  <Button type="primary" onClick={() => next()}>
+                    Próximo
+                  </Button>
+                )}
+                {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
+                {current === steps.length - 1 && (
+                  <Button type="primary" onClick={() => message.success('Cadastrado com sucesso!')}>
+                    Enviar
+                  </Button>
+                )}
+              </Space>
+            </Row>
+          </Space>
         </Col>
-      </Row>
-      <Row justify="end" align="middle">
-        <Space size={5}>
-          {current < steps.length - 1 && (
-            <Button type="primary" onClick={() => next()}>
-              Próximo
-            </Button>
-          )}
-          {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
-          {current === steps.length - 1 && (
-            <Button type="primary" onClick={() => message.success('Cadastrado com sucesso!')}>
-              Enviar
-            </Button>
-          )}
-        </Space>
       </Row>
     </Fragment>
   );
