@@ -73,10 +73,10 @@ export default function Methodology() {
                   <Space direction="vertical" size={20}>
                     <Row justify="center">
                       <Col span={20}>
-                        <Heading level={4} alignment="center">
+                        <Paragraph alignment="center">
                           Com o Programa de Mentoria social do Semear você se desenvolve junto a um
-                          profissional experiente
-                        </Heading>
+                          profissional experiente! 
+                        </Paragraph>
                       </Col>
                     </Row>
                     <Row justify="center">
@@ -115,7 +115,7 @@ export default function Methodology() {
             </Col>
           </Row>
           <Row justify="center">
-            <Video youtubeID="zqxlDS0IlyE" title="Direitos e Deveres do Jovem" bgColor="primary" />
+            <Video youtubeID="zqxlDS0IlyE" title="Direitos e Deveres do Jovem" bgColor="primary" width='middle' bgImage="primary" />
           </Row>
         </div>
       </Section>

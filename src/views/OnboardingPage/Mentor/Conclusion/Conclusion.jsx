@@ -23,17 +23,17 @@ export default function Conclusion() {
                 bordered={false}
               >
                 <Space direction="vertical" size={30}>
-                  <Heading alignment="center">Pronto!</Heading>
                   <Row>
                     <Col offset={1} span={6}>
                       <Image src={rocketImage} />
                     </Col>
-                    <Col span={15} align="middle">
-                      <Space direction="vertical" size={20}>
-                        <Heading level={4} alignment="center">
+                    <Col span={16} align="middle">
+                      <Space direction="vertical" size={15}>
+                        <Heading alignment="center">Pronto!</Heading>
+                        <Paragraph size="large" alignment="center" strong>
                           Agora você já pode dar inicio ao processo da mentoria: preencha seu
                           diagnóstico clicando no botão a seguir:
-                        </Heading>
+                        </Paragraph>
                         <ButtonModel width="large" height="large" href="/">
                           QUERO COMEÇAR!
                         </ButtonModel>

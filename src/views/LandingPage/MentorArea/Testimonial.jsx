@@ -58,7 +58,7 @@ export default function Testimonial() {
             <Col span={8} key={`card-test-${index}`}>
               <CardModel width="half" height='middle' color="default">
                 <Row>
-                  <Image src={persona.imageProfile} alt="image" width={180} height={180} />
+                  <Image src={persona.imageProfile} alt="image" width={150} height={150} />
                 </Row>
                 <br></br>
                 <Paragraph size='small' italic>{persona.text}</Paragraph>

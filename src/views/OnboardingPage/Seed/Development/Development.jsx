@@ -4,6 +4,7 @@ import { Col, Row, Space } from 'antd';
 import { Heading } from '../../../../components/Heading';
 import { Section } from '../../../../components/Section';
 import { Paragraph } from '../../../../components/Paragraph';
+import { Wave } from '../../../../components/Wave';
 import styles from './Development.module.scss';
 
 import gunBoyImage from '../../../../assets/images/characters/gun-boy.svg';
@@ -80,16 +81,19 @@ export default function Development() {
               <Image src={gunBoyImage} />
             </Col>
             <Col xs={{ span: 21, order: 0 }} sm={19} md={{ span: 12, order: 1 }} xxl={8}>
-              <Heading level={2} alignment="center" color="secondary">
+              <br></br>
+              <br></br>
+              <Heading level={1} alignment="center" color="secondary">
                 Com seus principais desafios resolvidos na mentoria,
               </Heading>
-              <Heading level={2} alignment="center" color="secondary">
+              <Heading level={1} alignment="center" color="secondary">
                 um futuro brilhante estará logo à sua frente!
               </Heading>
             </Col>
           </Row>
         </div>
       </Section>
+      <Wave innerColor = '#c3e0fe' outsideColor = '#11115d'/>
     </Fragment>
   );
 }
