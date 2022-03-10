@@ -1,4 +1,4 @@
-const courseList = [
+const coursesList = [
   {value: 'Administração'},
   {value: 'Administração Pública'},
   {value: 'Aeronautica'},
@@ -280,4 +280,4 @@ const courseList = [
   {value: 'Zootecnia'},
 ]
   
-  export default courseList;
+  export default coursesList;

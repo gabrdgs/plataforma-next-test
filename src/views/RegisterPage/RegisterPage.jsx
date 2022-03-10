@@ -16,17 +16,24 @@ import 'antd/dist/antd.css';
 import { LinkedinFilled } from '@ant-design/icons';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import moment from 'moment';
 import 'moment/locale/zh-cn';
+
+import areasList from './AreasList';
+import subareasList from './SubareasList';
+import coursesList from './CoursesList';
+import universitiesList from './UniversitiesList';
 
 const { Step } = Steps;
 const steps = [
   {
-    title: 'uh',
     content: <FirstStep />,
   },
-  { title: 'uhss', content: <FirstStep /> },
+  {
+    content: <SecondStepMentor />,
+  },
 ];
+
+console.log(universitiesList.sort((a, b) => a.university - b.university));
 
 export default function RegisterPage({}) {
   const [current, setCurrent] = useState(0);
@@ -86,7 +93,7 @@ function FirstStep() {
         </Col>
         <Col span={12}>
           <Form.Item>
-            <Input placeholder="Sobrenome" />
+            <Input placeholder="Último Nome" />
           </Form.Item>
         </Col>
       </Row>
@@ -127,6 +134,54 @@ function FirstStep() {
       </Form.Item>
       <Form.Item>
         <Input addonBefore={<LinkedinFilled />} placeholder="Linkedin" />
+      </Form.Item>
+    </Form>
+  );
+}
+
+function SecondStepMentor() {
+  return (
+    <Form layout="horizontal">
+      <Form.Item>
+        <Select placeholder="Instituição de Ensino">
+          {universitiesList
+            .map((item, index) => (
+              <Select.Option value={index} key={`item-${index}`}>
+                {item.value}
+              </Select.Option>
+            ))}
+        </Select>
+      </Form.Item>
+      <Form.Item>
+        <Select placeholder="Instituição de Ensino">
+          {universitiesList
+            .map((item, index) => (
+              <Select.Option value={index} key={`item-${index}`}>
+                {item.value}
+              </Select.Option>
+            ))}
+        </Select>
+      </Form.Item>
+      <Form.Item>
+        <Input placeholder="Curso" />
+      </Form.Item>
+      <Form.Item>
+        <Input placeholder="Área de Atuação" />
+      </Form.Item>
+      <Form.Item>
+        <Input placeholder="Subarea de Atuação" />
+      </Form.Item>
+      <Form.Item>
+        <Input placeholder="Empresa" />
+      </Form.Item>
+      <Form.Item>
+        <Input placeholder="Cargo" />
+      </Form.Item>
+      <Form.Item>
+        <Select placeholder="Quero ser">
+          <Select.Option value={1}>Jovem</Select.Option>
+          <Select.Option value={2}>Mentor</Select.Option>
+        </Select>
       </Form.Item>
     </Form>
   );

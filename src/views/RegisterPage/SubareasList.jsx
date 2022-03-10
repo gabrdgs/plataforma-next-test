@@ -1,4 +1,4 @@
-const subareasList = [
+const SubareasList = [
   {value:'Análise de Dados e Experiência do Cliente',label:'Análise de Dados e Experiência do Cliente'},
   {value:'Analise de risco',label:'Analise de risco'},
   {value:'Análise Financeira',label:'Análise Financeira'},
@@ -63,6 +63,7 @@ const subareasList = [
   {value:'Diretora de Intercâmbios Voluntários na Aiesec Brasil',label:'Diretora de Intercâmbios Voluntários na Aiesec Brasil'},
   {value:'e-commerce',label:'e-commerce'},
   {value:'Educaçao',label:'Educaçao'},
+  {value:'Educação',label:'Educação'},
   {value:'Educação ambiental',label:'Educação ambiental'},
   {value:'Educação e Arte',label:'Educação e Arte'},
   {value:'Educação e desenvolvimento pessoal',label:'Educação e desenvolvimento pessoal'},
@@ -248,4 +249,4 @@ const subareasList = [
   {value:'Veterinária',label:'Veterinária'},
   ]
 
-  export default subareasList;
+  export default SubareasList;

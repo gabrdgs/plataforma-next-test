@@ -1,4 +1,4 @@
-const areasList = [
+const valuesList = [
   { value: 'Ciências Agrárias' },
   { value: 'Ciências Biológicas' },
   { value: 'Ciências Exatas e da Terra' },
@@ -19,4 +19,4 @@ const areasList = [
   { value: 'Não encontrei minha área' },
 ];
 
-export default areasList;
+export default valuesList;
