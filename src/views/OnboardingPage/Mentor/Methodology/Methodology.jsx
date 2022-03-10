@@ -108,12 +108,12 @@ export default function Methodology() {
             </Row>
             <Row justify="center">
               <CardModel color="tertiary" height="small" width="super" alignment="center">
-                <Heading level={4} alignment="center" color="secondary">
+                <Paragraph size="large" alignment="center" color="secondary" strong>
                   Isto é feito para podermos entender quais áreas da vida deste jovem estão sendo um
                   freio ou uma alavanca em sua jornada de desenvolvimento. Estabelecemos que a nota
                   7 é um nível neutro, ou seja, esta área não é um freio e nem uma alavanca na vida
                   do jovem.
-                </Heading>
+                </Paragraph>
               </CardModel>
             </Row>
             </Space>

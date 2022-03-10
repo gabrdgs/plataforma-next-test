@@ -14,25 +14,31 @@ export default function Conclusion() {
     <Fragment>
       <Section bgColor="blue">
         <div className="section-10">
-          <Space direction="vertical" size={100}>
             <Row justify="center">
               <CardModel
-                width="large"
+                width="super"
                 height="half"
                 color="quartenary"
                 hoverable={true}
                 bordered={false}
               >
                 <Space direction="vertical" size={30}>
-                  <Heading>Pronto!</Heading>
-                  <Heading level={4} alignment="center">
-                    Agora você já pode começar a procurar seu mentor! Preencha seu diagnóstico
-                    clicando no botão a seguir:
-                  </Heading>
-                  <Row justify="center" align="middle">
-                    <ButtonModel width="large" height="large" href="/">
-                      QUERO UM MENTOR!
-                    </ButtonModel>
+                  <Row>
+                    <Col offset={1} span={6}>
+                      <Image src={rocketImage} />
+                    </Col>
+                    <Col span={15} align="middle">
+                      <Space direction="vertical" size={20}>
+                      <Heading alignment="center">Pronto!</Heading>
+                        <Paragraph size="large" alignment="center" strong>
+                          Agora você já pode começar a procurar seu mentor! Preencha seu diagnóstico
+                          clicando no botão a seguir:
+                        </Paragraph>
+                        <ButtonModel width="large" height="large" href="/">
+                          QUERO UM MENTOR!
+                        </ButtonModel>
+                      </Space>
+                    </Col>
                   </Row>
                   <Paragraph alignment="center">
                     Não se esqueça de completar suas informações lá no seu perfil! Ao final do
@@ -42,12 +48,6 @@ export default function Conclusion() {
                 </Space>
               </CardModel>
             </Row>
-            <Row justify="center">
-              <Col span={6}>
-                <Image src={rocketImage} />
-              </Col>
-            </Row>
-          </Space>
         </div>
       </Section>
     </Fragment>

@@ -48,12 +48,16 @@ export default function Intro() {
       </Section>
       <Section bgColor="primary">
         <div className="section-2">
-          <Row>
-            <Col offset={1}>
-              <Heading color="secondary">Entenda o que fazemos:</Heading>
-            </Col>
-            <Video youtubeID="uJUhDhMRNqw" title="Apresentação Institucional" bgColor="primary" />
-          </Row>
+        <Row justify="center">
+              <Col xs={21} sm={19}>
+                <Heading level={2} color="secondary">
+                  Entenda o que fazemos:
+                </Heading>
+              </Col>
+            </Row>
+            <Row justify="center" > 
+              <Video youtubeID="uJUhDhMRNqw" title="Apresentação Institucional" bgColor="primary" width="middle" />
+            </Row>
         </div>
       </Section>
       <Wave direction="up" outsideColor="rgba(23, 135, 252, 0.26)" />

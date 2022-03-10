@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row } from 'antd';
+import { Card, Row, Col } from 'antd';
 import styles from './CardModel.module.scss';
 
 export default function CardModel({
@@ -23,7 +23,9 @@ export default function CardModel({
       hoverable={hoverable}
       bordered={bordered}
     >
-      {children}
+      <Col>
+        {children}
+      </Col>
     </Card>
   );
 }
