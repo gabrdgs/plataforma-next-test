@@ -18,6 +18,8 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import 'moment/locale/zh-cn';
 
+import { SelectOption } from '../../components/SelectOption'
+
 import areasList from './AreasList';
 import subareasList from './SubareasList';
 import coursesList from './CoursesList';
@@ -33,8 +35,6 @@ const steps = [
   },
 ];
 
-console.log(universitiesList.sort((a, b) => a.university - b.university));
-
 export default function RegisterPage({}) {
   const [current, setCurrent] = useState(0);
 
@@ -48,9 +48,9 @@ export default function RegisterPage({}) {
 
   return (
     <Fragment>
-      <Row justify="center" align="middle">
+      <Row align="middle" justify="center">
         <Col span={10}>
-          <Space size={20} direction="vertical">
+          <Space direction="vertical" size={20} style={{ width: '100%' }}>
             <Steps current={current}>
               {steps.map((item, index) => (
                 <Step key={`content-${index}`} />
@@ -59,21 +59,26 @@ export default function RegisterPage({}) {
             <div className="steps-content">
               <Card>{steps[current].content}</Card>
             </div>
-            <Row justify="end" align="middle">
-              <Space size={5}>
-                {current < steps.length - 1 && (
-                  <Button type="primary" onClick={() => next()}>
-                    Próximo
-                  </Button>
-                )}
-                {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
-                {current === steps.length - 1 && (
-                  <Button type="primary" onClick={() => message.success('Cadastrado com sucesso!')}>
-                    Enviar
-                  </Button>
-                )}
-              </Space>
-            </Row>
+            <div className="steps-buttons">
+              <Row justify="end" align="middle">
+                <Space size={5}>
+                  {current < steps.length - 1 && (
+                    <Button type="primary" onClick={() => next()}>
+                      Próximo
+                    </Button>
+                  )}
+                  {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
+                  {current === steps.length - 1 && (
+                    <Button
+                      type="primary"
+                      onClick={() => message.success('Cadastrado com sucesso!')}
+                    >
+                      Enviar
+                    </Button>
+                  )}
+                </Space>
+              </Row>
+            </div>
           </Space>
         </Col>
       </Row>
@@ -83,8 +88,20 @@ export default function RegisterPage({}) {
 
 function FirstStep() {
   const [phoneNumber, setPhone] = useState('');
+  const academicList = [
+    { value: 'Fundamental Incompleto' },
+    { value: 'Fundamental Completo' },
+    { value: 'Médio Incompleto' },
+    { value: 'Superior (Graduação) Incompleto' },
+    { value: 'Superior (Graduação) Completo' },
+    { value: 'Pós-Graduação' },
+    { value: 'Mestrado' },
+    { value: 'Doutorado' },
+    { value: 'Pós-Doutorado' },
+  ];
+
   return (
-    <Form layout="horizontal">
+    <Form layout="vertical" scrollToFirstError>
       <Row gutter={12}>
         <Col span={12}>
           <Form.Item>
@@ -93,47 +110,48 @@ function FirstStep() {
         </Col>
         <Col span={12}>
           <Form.Item>
-            <Input placeholder="Último Nome" />
+            <Input placeholder="Último nome" />
           </Form.Item>
         </Col>
       </Row>
-      <Form.Item>
-        <Select placeholder="Quero ser">
-          <Select.Option value={1}>Jovem</Select.Option>
-          <Select.Option value={2}>Mentor</Select.Option>
-        </Select>
+      <Form.Item label="CPF" tooltip="O CPF será utilizado como ID de usuário">
+        <Input maxLength="11" minLength="11" name="documentId" showCount />
       </Form.Item>
-      <Form.Item>
-        <Input maxLength="11" minLength="11" name="documentId" showCount placeholder="CPF" />
+      <Row gutter={12}>
+        <Col span={12}>
+          <Form.Item label="Quero ser" tooltip="Como você se define? Mentor(a) ou Mentorado(a)">
+            <Select>
+              <Select.Option value={1}>Mentor(a)</Select.Option>
+              <Select.Option value={2}>Mentorado(a)</Select.Option>
+            </Select>
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item label="Data de Nascimento">
+            <DatePicker
+              placeholder="Selecione uma data"
+              style={{
+                width: '100%',
+              }}
+              format={['DD-MM-YYYY', 'DD-MM-YY']}
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Form.Item label="Escolaridade" tooltip="Qual seu grau de instrução?">
+        <SelectOption list={academicList} />
       </Form.Item>
-      <Form.Item>
-        <Select placeholder="Escolaridade">
-          <Select.Option value={1}>Fundamental Incompleto</Select.Option>
-          <Select.Option value={2}>Fundamental Completo</Select.Option>
-          <Select.Option value={3}>Médio Incompleto</Select.Option>
-          <Select.Option value={4}>Médio Completo</Select.Option>
-          <Select.Option value={5}>Superior (Graduação) Incompleto</Select.Option>
-          <Select.Option value={6}>Superior (Graduação) Completo</Select.Option>
-          <Select.Option value={7}>Pós-Graduação</Select.Option>
-          <Select.Option value={8}>Mestrado</Select.Option>
-          <Select.Option value={9}>Doutorado</Select.Option>
-          <Select.Option value={10}>Pós-Doutorado</Select.Option>
-        </Select>
-      </Form.Item>
-      <Form.Item>
-        <DatePicker
-          placeholder="Data de Nascimento"
-          style={{
-            width: '100%',
-          }}
-          format={['DD-MM-YYYY', 'DD-MM-YY']}
-        />
-      </Form.Item>
-      <Form.Item>
+      <Form.Item
+        label="Número de Celular"
+        tooltip="Utilize o número do Whatsapp para facilitar a comunicação"
+      >
         <PhoneInput country={'br'} value={phoneNumber} onChange={(phone) => setPhone(phone)} />
       </Form.Item>
-      <Form.Item>
-        <Input addonBefore={<LinkedinFilled />} placeholder="Linkedin" />
+      <Form.Item
+        label="Linkedin"
+        tooltip="O seu LinkedIn facilita que outros usuários conheçam mais sobre seu perfil"
+      >
+        <Input prefix={<LinkedinFilled />} />
       </Form.Item>
     </Form>
   );
@@ -141,47 +159,48 @@ function FirstStep() {
 
 function SecondStepMentor() {
   return (
-    <Form layout="horizontal">
-      <Form.Item>
-        <Select placeholder="Instituição de Ensino">
-          {universitiesList
-            .map((item, index) => (
-              <Select.Option value={index} key={`item-${index}`}>
-                {item.value}
-              </Select.Option>
-            ))}
-        </Select>
+    <Form layout="vertical" scrollToFirstError>
+      <Form.Item label="Instituição de Ensino">
+        <SelectOption list={universitiesList} orderedList />
+      </Form.Item>
+      <Form.Item label="Curso" tooltip="Curso de formação">
+        <SelectOption list={coursesList} orderedList />
+      </Form.Item>
+      <Form.Item label="Área de Atuação">
+        <SelectOption list={areasList} orderedList />
+      </Form.Item>
+      <Form.Item label="Subárea de Atuação">
+        <SelectOption list={subareasList} orderedList mode="multiple" />
+      </Form.Item>
+      <Form.Item label="Empresa">
+        <Input />
+      </Form.Item>
+      <Form.Item label="Cargo">
+        <Input />
+      </Form.Item>
+    </Form>
+  );
+}
+
+function SecondStepSeed() {
+  return (
+    <Form layout="horizontal" scrollToFirstError>
+      <Form.Item label="Instituição de Ensino">
+        <SelectOption placeholder="Instituição de Ensino" list={universitiesList} orderedList/>
       </Form.Item>
       <Form.Item>
-        <Select placeholder="Instituição de Ensino">
-          {universitiesList
-            .map((item, index) => (
-              <Select.Option value={index} key={`item-${index}`}>
-                {item.value}
-              </Select.Option>
-            ))}
-        </Select>
+        <SelectOption placeholder="Curso" list={coursesList} orderedList />
       </Form.Item>
       <Form.Item>
-        <Input placeholder="Curso" />
+        <SelectOption placeholder="Área de Interesse" list={areasList} orderedList />
       </Form.Item>
       <Form.Item>
-        <Input placeholder="Área de Atuação" />
-      </Form.Item>
-      <Form.Item>
-        <Input placeholder="Subarea de Atuação" />
-      </Form.Item>
-      <Form.Item>
-        <Input placeholder="Empresa" />
-      </Form.Item>
-      <Form.Item>
-        <Input placeholder="Cargo" />
-      </Form.Item>
-      <Form.Item>
-        <Select placeholder="Quero ser">
-          <Select.Option value={1}>Jovem</Select.Option>
-          <Select.Option value={2}>Mentor</Select.Option>
-        </Select>
+        <SelectOption
+          placeholder="Subárea de Interesse"
+          list={subareasList}
+          mode="multiple"
+          orderedList
+        />
       </Form.Item>
     </Form>
   );

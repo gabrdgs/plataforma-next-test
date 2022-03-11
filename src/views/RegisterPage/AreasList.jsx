@@ -16,7 +16,6 @@ const valuesList = [
   { value: 'Marketing' },
   { value: 'Saúde' },
   { value: 'Vendas' },
-  { value: 'Não encontrei minha área' },
 ];
 
 export default valuesList;
