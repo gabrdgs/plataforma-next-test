@@ -5,7 +5,6 @@ import { MenuModel } from '../../../components/MenuModel';
 import StepWelcome from './StepWelcome';
 import StepChannel from './StepChannel';
 import StepProfile from './StepProfile';
-import StepInfos from './StepInfos';
 
 const { Step } = Steps;
 
@@ -33,10 +32,6 @@ export default function Mentor() {
     {
       title: 'Bem vindo',
       content: <StepWelcome />,
-    },
-    {
-      title: 'Infos Complementares',
-      content: <StepInfos onChange={onChangeStepInfo} />,
     },
     {
       title: 'Teste de Canal',

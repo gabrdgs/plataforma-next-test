@@ -4,7 +4,6 @@ import 'antd/dist/antd.css';
 
 import StepWelcome from './StepWelcome';
 import StepAssessment from './StepAssessment';
-import StepInfos from './StepInfos';
 
 const { Step } = Steps;
 
@@ -78,10 +77,6 @@ export default function Seed() {
     {
       title: 'Bem vindo',
       content: <StepWelcome />,
-    },
-    {
-      title: 'Infos Complementares',
-      content: <StepInfos onChange={onChangeStepInfo} />,
     },
     {
       title: 'Desafio 1',
