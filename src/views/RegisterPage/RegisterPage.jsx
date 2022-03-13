@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import {
   Row,
   Col,
@@ -18,7 +18,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import 'moment/locale/zh-cn';
 
-import { SelectOption } from '../../components/SelectOption'
+import { SelectOption } from '../../components/SelectOption';
 
 import areasList from './AreasList';
 import subareasList from './SubareasList';
@@ -26,49 +26,56 @@ import coursesList from './CoursesList';
 import universitiesList from './UniversitiesList';
 
 const { Step } = Steps;
-const steps = [
-  {
-    content: <FirstStep />,
-  },
-  {
-    content: <SecondStepMentor />,
-  },
-];
 
 export default function RegisterPage({}) {
   const [current, setCurrent] = useState(0);
+  const [user, setUser] = useState(0);
+
+  const stepsDefault = [
+    {
+      content: <FirstStep setUser={setUser} />,
+    },
+    {
+      content: <SecondStepMentor />,
+    },
+  ];
+  const stepsSeed = stepsDefault.map((item) => ({ ...item }));
+  stepsSeed[1].content = <SecondStepSeed />;
+
+  const [contentSteps, setContentSteps] = useState(stepsDefault);
 
   const next = () => {
     setCurrent(current + 1);
+    if (user === 1) setContentSteps(stepsSeed);
+    else setContentSteps(stepsDefault);
   };
 
   const prev = () => {
     setCurrent(current - 1);
   };
-
   return (
     <Fragment>
       <Row align="middle" justify="center">
-        <Col span={10}>
+        <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
           <Space direction="vertical" size={20} style={{ width: '100%' }}>
-            <Steps current={current}>
-              {steps.map((item, index) => (
+            <Steps current={current} responsive={false}>
+              {contentSteps.map((item, index) => (
                 <Step key={`content-${index}`} />
               ))}
             </Steps>
             <div className="steps-content">
-              <Card>{steps[current].content}</Card>
+              <Card>{contentSteps[current].content}</Card>
             </div>
             <div className="steps-buttons">
               <Row justify="end" align="middle">
                 <Space size={5}>
-                  {current < steps.length - 1 && (
+                  {current < contentSteps.length - 1 && (
                     <Button type="primary" onClick={() => next()}>
                       Próximo
                     </Button>
                   )}
                   {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
-                  {current === steps.length - 1 && (
+                  {current === contentSteps.length - 1 && (
                     <Button
                       type="primary"
                       onClick={() => message.success('Cadastrado com sucesso!')}
@@ -86,7 +93,7 @@ export default function RegisterPage({}) {
   );
 }
 
-function FirstStep() {
+function FirstStep(props) {
   const [phoneNumber, setPhone] = useState('');
   const academicList = [
     { value: 'Fundamental Incompleto' },
@@ -100,15 +107,20 @@ function FirstStep() {
     { value: 'Pós-Doutorado' },
   ];
 
+  const layoutCols = {
+    xs: { span: 24}, 
+    sm : { span: 12 }
+  };
+
   return (
     <Form layout="vertical" scrollToFirstError>
       <Row gutter={12}>
-        <Col span={12}>
+        <Col {...layoutCols}>
           <Form.Item>
             <Input placeholder="Nome" />
           </Form.Item>
         </Col>
-        <Col span={12}>
+        <Col {...layoutCols}>
           <Form.Item>
             <Input placeholder="Último nome" />
           </Form.Item>
@@ -118,15 +130,15 @@ function FirstStep() {
         <Input maxLength="11" minLength="11" name="documentId" showCount />
       </Form.Item>
       <Row gutter={12}>
-        <Col span={12}>
+        <Col {...layoutCols}>
           <Form.Item label="Quero ser" tooltip="Como você se define? Mentor(a) ou Mentorado(a)">
-            <Select>
-              <Select.Option value={1}>Mentor(a)</Select.Option>
-              <Select.Option value={2}>Mentorado(a)</Select.Option>
+            <Select onChange={(user) => props.setUser(user)}>
+              <Select.Option value={0}>Mentor(a)</Select.Option>
+              <Select.Option value={1}>Mentorado(a)</Select.Option>
             </Select>
           </Form.Item>
         </Col>
-        <Col span={12}>
+        <Col {...layoutCols}>
           <Form.Item label="Data de Nascimento">
             <DatePicker
               placeholder="Selecione uma data"
@@ -163,7 +175,7 @@ function SecondStepMentor() {
       <Form.Item label="Instituição de Ensino">
         <SelectOption list={universitiesList} orderedList />
       </Form.Item>
-      <Form.Item label="Curso" tooltip="Curso de formação">
+      <Form.Item label="Curso de Formação">
         <SelectOption list={coursesList} orderedList />
       </Form.Item>
       <Form.Item label="Área de Atuação">
@@ -184,23 +196,18 @@ function SecondStepMentor() {
 
 function SecondStepSeed() {
   return (
-    <Form layout="horizontal" scrollToFirstError>
+    <Form layout="vertical" scrollToFirstError>
       <Form.Item label="Instituição de Ensino">
-        <SelectOption placeholder="Instituição de Ensino" list={universitiesList} orderedList/>
+        <SelectOption list={universitiesList} orderedList />
       </Form.Item>
-      <Form.Item>
-        <SelectOption placeholder="Curso" list={coursesList} orderedList />
+      <Form.Item label="Curso">
+        <SelectOption list={coursesList} orderedList />
       </Form.Item>
-      <Form.Item>
-        <SelectOption placeholder="Área de Interesse" list={areasList} orderedList />
+      <Form.Item label="Área de Interesse">
+        <SelectOption list={areasList} orderedList />
       </Form.Item>
-      <Form.Item>
-        <SelectOption
-          placeholder="Subárea de Interesse"
-          list={subareasList}
-          mode="multiple"
-          orderedList
-        />
+      <Form.Item label="Subárea de Interesse">
+        <SelectOption list={subareasList} mode="multiple" orderedList />
       </Form.Item>
     </Form>
   );
