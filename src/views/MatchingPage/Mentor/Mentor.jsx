@@ -2,7 +2,6 @@ import React, { Fragment, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Col, Row, Timeline, Space } from 'antd';
 import { UnorderedListOutlined, HeartOutlined, ClockCircleOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 import { SocialMedia } from '../../../components/SocialMedia';

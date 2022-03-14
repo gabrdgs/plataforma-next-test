@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
-import { Col, Row, Space } from 'antd';
+import { Col, Row, Space, Button } from 'antd';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 
 import welcomeImage from '../../../assets/images/characters/rocket-girl.png';
 
-const StepWelcome = () => {
+const StepWelcome = (props) => {
+  const buttonSteps = props.contentSteps;
 
   return (
-    <Row gutter={[32, 16]} align="middle" justify="space-around">
-      <Col span={12} offset={2} xs={20} sm={20} md={12} lg={12} xl={12}>
+    <Row gutter={[32, 16]} align="middle" justify="center">
+      <Col span={12} xs={20} sm={20} md={22} lg={12} xl={12}>
         <Heading>Você chegou!!!</Heading>
-        <Space direction="vertical" size={20}>
+        <Space direction="vertical" size={10}>
           <Row>
             <Paragraph>Falta pouco para encontrarmos um mentor que combina com você...</Paragraph>
           </Row>
           <Row>
             <Paragraph>
               Agora você passará pela fase que chamamos de
-              <strong> Roda da Trilha</strong>, em que aqui te ajudaremos a mapear os seus
-              principais desafios!
+              <strong> Roda da Trilha</strong>, através de 3 etapas, em que aqui te ajudaremos a
+              mapear os seus principais desafios!
             </Paragraph>
           </Row>
           <Row>
@@ -29,9 +30,20 @@ const StepWelcome = () => {
               qualificado para trabalhar em soluções junto com você.
             </Paragraph>
           </Row>
+          {buttonSteps.map((item, index) => (
+            <Button
+              icon={item.icon}
+              disabled={item.disabled}
+              block
+              key={`btn-${index}`}
+              onClick={() => props.onClick(index + 1)}
+            >
+              {item.title}
+            </Button>
+          ))}
         </Space>
       </Col>
-      <Col span={8} xs={18} sm={14} md={8} lg={8} xl={7}>
+      <Col span={8} xs={18} sm={14} md={16} lg={8} xl={7}>
         <Image src={welcomeImage} alt="gif" layout="responsive" />
       </Col>
     </Row>
