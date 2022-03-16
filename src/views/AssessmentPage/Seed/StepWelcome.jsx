@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Col, Row, Space, Button } from 'antd';
+import { DoubleRightOutlined } from '@ant-design/icons';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 
@@ -10,7 +11,7 @@ const StepWelcome = (props) => {
   const buttonSteps = props.contentSteps;
 
   return (
-    <Row gutter={[32, 16]} align="middle" justify="center">
+    <Row gutter={[32, 16]} justify="center">
       <Col span={12} xs={20} sm={20} md={22} lg={12} xl={12}>
         <Heading>Você chegou!!!</Heading>
         <Space direction="vertical" size={10}>
@@ -41,6 +42,13 @@ const StepWelcome = (props) => {
               {item.title}
             </Button>
           ))}
+          {props.step === 0 ? (
+            <Button href="/profile-seed" type="text" >
+              Ir para o perfil <DoubleRightOutlined />
+            </Button>
+          ) : (
+            <div></div>
+          )}
         </Space>
       </Col>
       <Col span={8} xs={18} sm={14} md={16} lg={8} xl={7}>

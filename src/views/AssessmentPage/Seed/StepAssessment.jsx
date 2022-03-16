@@ -19,64 +19,39 @@ const StepAssessment = (props) => {
 
   return (
     <Fragment>
-      <Row gutter={[32, 16]} justify="center" align="middle">
-        <Col
-          span={8}
-          offset={1}
-          xs={{ span: 24, offset: 0 }}
-          sm={{ span: 22, offset: 0 }}
-          md={{ span: 20, offset: 1 }}
-          lg={{ span: 20, offset: 1 }}
-          xl={{ span: 12, offset: 1 }}
-        >
-          <Space direction="vertical" size={20}>
-            <Row align="middle">
-              <Heading>
-                <Space>
-                  {props.content.title}
-                  <Button onClick={showModal} align="middle" danger>
-                    Nível Neutro <InfoCircleOutlined />
-                  </Button>
-                  <Modal
-                    title={<Paragraph>Nível Neutro</Paragraph>}
-                    centered={true}
-                    visible={isModalVisible}
-                    onOk={handleOk}
-                    onCancel={handleOk}
-                    footer={[
-                      <Button type="primary" key="confirm" onClick={handleOk}>
-                        <Paragraph color="secondary">OK</Paragraph>
-                      </Button>,
-                    ]}
-                  >
-                    <Paragraph>{props.content.neutral}</Paragraph>
-                  </Modal>
-                </Space>
-              </Heading>
-            </Row>
-            <Paragraph size="large">{props.content.subtitle}</Paragraph>
-            <div>
-              <Row>
-                <Paragraph size="small">Marque uma opção: </Paragraph>
-              </Row>
-              <Row>
-                <NumberRate />
-              </Row>
-            </div>
-          </Space>
-        </Col>
-        <Col
-          span={6}
-          offset={1}
-          xs={{ span: 18, offset: 1 }}
-          sm={{ span: 16, offset: 1 }}
-          md={{ span: 12, offset: 1 }}
-          lg={{ span: 6, offset: 1 }}
-          xl={{ span: 8, offset: 1 }}
-        >
-          <Image src={props.content.gif} alt="gif" width={400} height={300} layout="responsive" />
-        </Col>
-      </Row>
+      <Heading>{props.content.title}</Heading>
+      <Space direction="vertical" size={20}>
+        <Paragraph size="large">
+          <Col span={20}>{props.content.subtitle}</Col>
+        </Paragraph>
+        <Row>
+          <Button onClick={showModal} align="middle" danger>
+            Nível Neutro <InfoCircleOutlined />
+          </Button>
+          <Modal
+            title={<Paragraph>Nível Neutro</Paragraph>}
+            centered={true}
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleOk}
+            footer={[
+              <Button type="primary" key="confirm" onClick={handleOk}>
+                <Paragraph color="secondary">OK</Paragraph>
+              </Button>,
+            ]}
+          >
+            <Paragraph>{props.content.neutral}</Paragraph>
+          </Modal>
+        </Row>
+        <div>
+          <Row>
+            <Paragraph size="small">Marque uma opção: </Paragraph>
+          </Row>
+          <Row>
+            <NumberRate />
+          </Row>
+        </div>
+      </Space>
     </Fragment>
   );
 };
@@ -126,29 +101,6 @@ const assessmentStatus = {
   },
 };
 
-function ButtonRate(props) {
-  return props.index <= props.inputAssessment ? (
-    <Button
-      key={`btn-${props.index + 1}`}
-      shape="circle"
-      onClick={props.handleChange}
-      value={props.index}
-      type="primary"
-    >
-      {props.index}
-    </Button>
-  ) : (
-    <Button
-      key={`btn-${props.index + 1}`}
-      shape="circle"
-      onClick={props.handleChange}
-      value={props.index}
-    >
-      {props.index}
-    </Button>
-  );
-}
-
 function NumberRate() {
   const [inputAssessment, setInputAssessment] = useState(7);
   const [inputClicked, setInputClicked] = useState(false);
@@ -159,16 +111,24 @@ function NumberRate() {
     setInputClicked(true);
   };
 
+  const type = (index) => {
+    return index <= inputAssessment ? 'primary' : '';
+  };
+
   return (
     <Rate
       defaultValue={7}
       count={10}
       character={({ index }) => (
-        <ButtonRate
-          index={index + 1}
-          inputAssessment={inputAssessment}
-          handleChange={handleChange}
-        />
+        <Button
+          key={`btn-${index + 1}`}
+          shape="circle"
+          onClick={handleChange}
+          value={index}
+          type={type(index)}
+        >
+          {index}
+        </Button>
       )}
     />
   );

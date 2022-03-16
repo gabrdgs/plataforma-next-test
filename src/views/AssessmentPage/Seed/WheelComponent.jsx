@@ -16,46 +16,50 @@ const WheelComponent = (props) => {
   };
   const steps = props.contentAssessment.map((item) => ({
     title: item.title,
-    content: <StepAssessment content={item} />
+    content: <StepAssessment content={item} />,
   }));
 
   return (
     <Fragment>
-      <Row align="middle" justify="center">
-        <Col xs={{ span: 1 }} sm={{ span: 6 }} md={{ span: 6 }} xl={{ span: 4 }}>
-          <Steps current={current} size="small" direction="vertical">
-            {steps.map((item) => (
-              <Step key={item.title} title={item.title} />
-            ))}
-          </Steps>
-        </Col>
-        <Col offset={1} xs={{ span: 20 }} sm={{ span: 16 }}>
-          <div className="steps-content">{steps[current].content}</div>
-        </Col>
-      </Row>
-      <div className="steps-buttons">
-        <Row justify="end" align="middle">
-          <Space size={5}>
-            {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
-            {current < props.contentAssessment.length - 1 && (
-              <Button type="primary" onClick={() => next()}>
-                Próximo
-              </Button>
-            )}
-            {current === props.contentAssessment.length - 1 && (
-              <Button
-                type="primary"
-                onClick={() => {
-                  message.success('Etapa 1 concluída com sucesso!');
-                  props.onClick(0);
-                }}
-              >
-                Enviar
-              </Button>
-            )}
+      <Space direction="vertical" size={30} style={{ width: '100%' }}>
+        <Row align="middle" justify="center">
+          <Space size={20} style={{ width: '100%' }}>
+            <Col xs={1} lg={24}>
+              <Steps current={current} size="small" direction="vertical">
+                {steps.map((item) => (
+                  <Step key={item.title} title={item.title} />
+                ))}
+              </Steps>
+            </Col>
+            <Col sm={22} md={24}>
+              {steps[current].content}
+            </Col>
           </Space>
         </Row>
-      </div>
+        <Row justify="end" align="middle">
+          <div className="steps-buttons">
+            <Space size={5}>
+              {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
+              {current < props.contentAssessment.length - 1 && (
+                <Button type="primary" onClick={() => next()}>
+                  Próximo
+                </Button>
+              )}
+              {current === props.contentAssessment.length - 1 && (
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    message.success(`Etapa ${props.step} concluída com sucesso!`);
+                    props.onClick(0, props.step);
+                  }}
+                >
+                  Enviar
+                </Button>
+              )}
+            </Space>
+          </div>
+        </Row>
+      </Space>
     </Fragment>
   );
 };

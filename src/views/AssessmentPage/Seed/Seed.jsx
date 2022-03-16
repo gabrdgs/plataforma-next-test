@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Button, Col, Row, Space } from 'antd';
 import { RocketOutlined } from '@ant-design/icons';
 import { MenuModel } from '../../../components/MenuModel';
@@ -16,42 +16,64 @@ export default function Seed() {
     },
   ];
   const [contentIndex, setContentIndex] = useState(0);
-  const onClickButton = (index) => {
-    setContentIndex(index);
-  };
+  const [stepFinished, setStepFinished] = useState(0);
+
   const wheelContent = [
     {
       title: 'Etapa 1',
       disabled: false,
       icon: <UnlockFilled />,
-      content: <WheelComponent />,
     },
     {
       title: 'Etapa 2',
-      disabled: false,
+      disabled: true,
       icon: <LockFilled />,
-      content: <WheelComponent />,
     },
     {
       title: 'Etapa 3',
       disabled: true,
       icon: <LockFilled />,
-      content: <WheelComponent />,
     },
   ];
 
+  const [contentUpdated, setContentUpdated] = useState(wheelContent);
+
+  const onClickButton = (index, step) => {
+    setContentIndex(index);
+    setStepFinished(step);
+    setContentUpdated(wheelContent);
+  };
+
+  useEffect(() => {
+    if (stepFinished) {
+      wheelContent[stepFinished - 1].disabled = true;
+      wheelContent[stepFinished - 1].icon = <CheckSquareFilled />;
+      if (stepFinished < wheelContent.length) {
+        wheelContent[stepFinished].disabled = false;
+        wheelContent[stepFinished].icon = <UnlockFilled />;
+      }
+    }
+  });
+
   const content = [
-    <StepWelcome contentSteps={wheelContent} onClick={onClickButton} />,
-    <WheelComponent onClick={onClickButton} contentAssessment={firstWheel}/>,
-    <WheelComponent onClick={onClickButton} contentAssessment={secondWheel}/>,
-    <WheelComponent onClick={onClickButton} contentAssessment={thirdWheel}/>,
+    <StepWelcome
+      contentSteps={contentUpdated}
+      onClick={onClickButton}
+      step={stepFinished}
+      key="begin"
+    />,
+    <WheelComponent onClick={onClickButton} contentAssessment={firstWheel} step={1} />,
+    <WheelComponent onClick={onClickButton} contentAssessment={secondWheel} step={2} />,
+    <WheelComponent onClick={onClickButton} contentAssessment={thirdWheel} step={3} />,
   ];
 
   return (
     <Fragment>
       <MenuModel menuItems={menuItems} userType="seed" />
       <Row gutter={[32, 16]} align="middle" justify="center">
-        <Col>{content[contentIndex]}</Col>
+        <Col xs={23} sm={23} md={20} lg={22} xl={22}>
+          {content[contentIndex]}
+        </Col>
       </Row>
     </Fragment>
   );
@@ -81,8 +103,7 @@ const firstWheel = [
   },
   {
     title: 'Pertencimento',
-    subtitle:
-      'Com base no nível neutro, como você avalia a sua sensação de pertencimento no núcleo familiar?',
+    subtitle: 'Com base no nível neutro, como você avalia a sua sensação de pertencimento?',
     neutral:
       'Sei a importância de uma boa alimentação como fonte de  energia para o melhor funcionamento do meu corpo e mente. Com os recursos  que tenho, faço refeições de qualidade nutricional suficiente.',
     gif: 'https://media.giphy.com/media/xT5LMXR7iA0mSSxOBG/giphy.gif',
