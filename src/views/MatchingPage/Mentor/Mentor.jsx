@@ -1,7 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Col, Row, Timeline, Space } from 'antd';
-import { UnorderedListOutlined, HeartOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import {
+  UnorderedListOutlined,
+  HeartOutlined,
+  ClockCircleOutlined,
+} from '@ant-design/icons';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 import { SocialMedia } from '../../../components/SocialMedia';
@@ -15,13 +19,29 @@ import personas from '../../shared/MockSeed';
 import sittingMan from '../../../assets/images/characters/sitting-man.jpeg';
 import notebook from '../../../assets/images/objects/notebook.jpeg';
 
-const daysLimit = 150;
+const daysLimit = 30;
 
 const statusObject = {
-  done: { color: 'green', status: 'Finalizado' },
-  waiting: { color: 'orange', status: 'A realizar' },
-  incomplete: { color: 'red', status: 'Não finalizado' },
-  cancelled: { color: 'gray', status: 'Não realizado' },
+  done: {
+    color: 'green',
+    status: 'Finalizado',
+    tooltip: 'A lista de presença já foi preenchida',
+  },
+  waiting: {
+    color: 'orange',
+    status: `A realizar`,
+    tooltip: 'Para a mentoria ser contabilizada, a lista de presença deverá ser preenchida',
+  },
+  incomplete: {
+    color: 'red',
+    status: 'Não finalizado',
+    tooltip: 'A lista de presença ainda não foi preenchida!',
+  },
+  cancelled: {
+    color: 'gray',
+    status: 'Não realizado',
+    tooltip: 'A mentoria não ocorreu',
+  },
 };
 
 export default function Mentor({}) {
@@ -228,7 +248,6 @@ function setStatusMentoring(isFeedbackAnswered, mentoringHappened, finalDate) {
   const todayDate = new Date();
   const diffTime = finalDate - todayDate;
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  console.log(diffDays);
   return statusObject[
     mentoringHappened
       ? 'done'

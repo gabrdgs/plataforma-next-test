@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Button, Col, Row, Space } from 'antd';
-import { RocketOutlined } from '@ant-design/icons';
+import { RocketOutlined, LockFilled, UnlockFilled, CheckSquareFilled } from '@ant-design/icons';
 import { MenuModel } from '../../../components/MenuModel';
-import { LockFilled, UnlockFilled, CheckSquareFilled } from '@ant-design/icons';
+
 
 import WheelComponent from './WheelComponent';
 import StepWelcome from './StepWelcome';

@@ -1,8 +1,8 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button, Col, Row, Card, Space, Divider } from 'antd';
-import { WhatsAppOutlined, MailOutlined } from '@ant-design/icons';
+import { Button, Col, Row, Card, Space, Divider, Tooltip } from 'antd';
+import { WhatsAppOutlined, MailOutlined, QuestionCircleFilled } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
@@ -19,10 +19,14 @@ export default function CardContact(props) {
     acceptedDate,
     'month',
   )}-${acceptedDate.getFullYear()}`;
-  const finalDateFormated = `${setTimeFormat(finalDate)}-${setTimeFormat(finalDate, "month")}-${finalDate.getFullYear()}`;
+  const finalDateFormated = `${setTimeFormat(finalDate)}-${setTimeFormat(
+    finalDate,
+    'month',
+  )}-${finalDate.getFullYear()}`;
 
   const statusName = props.statusMentoring.status;
   const statusColor = props.statusMentoring.color;
+  const statusTooltip = props.statusMentoring.tooltip;
 
   const apiWpp = 'https://api.whatsapp.com/send?phone=';
   const subjectEmail = 'Programa de Mentoria Social | Instituto Semear';
@@ -50,7 +54,14 @@ export default function CardContact(props) {
     <Row>
       <Col span={4}>
         <Space direction="vertical" size={5}>
-          <Paragraph color={statusColor}>{statusName}</Paragraph>
+          <Paragraph color={statusColor}>
+            <Space size={5}>
+              {statusName}
+              <Tooltip title={statusTooltip}>
+                <QuestionCircleFilled />
+              </Tooltip>
+            </Space>
+          </Paragraph>
           <Paragraph size="small">Período para mentoria:</Paragraph>
         </Space>
         <Space direction="vertical" size={30}>
@@ -80,33 +91,48 @@ export default function CardContact(props) {
             </Col>
             <Col span={18} push={1}>
               <Heading level={5} size="large">
-                <a href={props.persona.linkedin} target="_blank" rel="noreferrer">
-                  <Image src={linkedinIcon} alt="logo" objectFit="contain" width="24" height="24" />
-                </a>
-                {`${props.persona.name} (${props.persona.pronoun})`}
+                <Space size={5}>
+                  <a href={props.persona.linkedin} target="_blank" rel="noreferrer">
+                    <Image
+                      src={linkedinIcon}
+                      alt="logo"
+                      objectFit="contain"
+                      width="24"
+                      height="24"
+                    />
+                  </a>
+                  {`${props.persona.name} (${props.persona.pronoun})`}
+                </Space>
               </Heading>
               <Col span={20}>
-                <Divider plain></Divider>
+                <Divider plain />
                 <Paragraph size="small">
                   <Space size={5}>
                     <WhatsAppOutlined />
-                    <a href={`${apiWpp}${'5511982778267'}`} target="_blank" rel="noreferrer">
+                    <a href={`${apiWpp}${props.persona.whatsapp}`} target="_blank" rel="noreferrer">
                       Enviar mensagem
                     </a>
                   </Space>
                 </Paragraph>
-                <Paragraph size="small">
-                  <Space size={5}>
-                    <MailOutlined />
-                    <a
-                      href={`mailto:${props.persona.email}?Subject=${subjectEmail}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Enviar e-mail
-                    </a>
-                  </Space>
-                </Paragraph>
+                <Space direction="vertical" size={30} style={{ width: "100%"}}>
+                  <Paragraph size="small">
+                    <Space size={5}>
+                      <MailOutlined />
+                      <a
+                        href={`mailto:${props.persona.email}?Subject=${subjectEmail}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Enviar e-mail
+                      </a>
+                    </Space>
+                  </Paragraph>
+                  <Row justify="center">
+                    <Button type="primary" href="/feedback-mentor">
+                      Preencher lista de presença
+                    </Button>
+                  </Row>
+                </Space>
               </Col>
             </Col>
           </Row>
@@ -125,5 +151,3 @@ export default function CardContact(props) {
     </Row>
   );
 }
-
-

@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button, Col, Row, Card, Space, Modal, message } from 'antd';
-import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 import ModalProfile from '../shared/ModalProfile';
 import ModalPicture from '../shared/ModalPicture';
 
-import { getDifferenceBetweenDates } from '../../shared/utils';
+import { getDifferenceBetweenDates, setTimeFormat } from '../../shared/utils';
 
 import linkedinIcon from '../../../assets/images/brands/linkedin.png';
 
-const {confirm} = Modal;
+const { confirm } = Modal;
 
 export default function CardProfile(props) {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -69,8 +68,10 @@ export default function CardProfile(props) {
   };
 
   const invitedDate = new Date(props.persona.invitedDate);
-  const invitedDateFormated = `${invitedDate.getDate()}-${invitedDate.getMonth()}-${invitedDate.getFullYear()}`;
-
+  const invitedDateFormated = `${setTimeFormat(invitedDate)}-${setTimeFormat(
+    invitedDate,
+    'month',
+  )}-${invitedDate.getFullYear()}`;
   const [diffHours, diffDays] = getDifferenceBetweenDates(props.persona.invitedDate);
   const hoursMissing = 24 - diffHours;
   const daysMissing = props.daysLimit - diffDays;
@@ -103,16 +104,18 @@ export default function CardProfile(props) {
             <Col span={18} push={1}>
               <Space direction="vertical" size={10}>
                 <Heading level={5} size="large">
-                  <a href={props.persona.linkedin} target="_blank" rel="noreferrer">
-                    <Image
-                      src={linkedinIcon}
-                      alt="logo"
-                      objectFit="contain"
-                      width="24"
-                      height="24"
-                    />
-                  </a>
-                  {`${props.persona.name} (${props.persona.pronoun})`}
+                  <Space size={5}>
+                    <a href={props.persona.linkedin} target="_blank" rel="noreferrer">
+                      <Image
+                        src={linkedinIcon}
+                        alt="logo"
+                        objectFit="contain"
+                        width="24"
+                        height="24"
+                      />
+                    </a>
+                    {`${props.persona.name} (${props.persona.pronoun})`}
+                  </Space>
                 </Heading>
                 <Paragraph size="small">{`${props.persona.description}`}</Paragraph>
                 <Col align="middle">
@@ -134,7 +137,15 @@ export default function CardProfile(props) {
         persona={props.persona}
         isModalVisible={isModalVisible}
         handleCancel={handleCancel}
-      />
+      >
+        <Card>
+          <Card.Grid style={{ width: '100%' }} hoverable={false}>
+            <Paragraph strong> Informações Acadêmicas</Paragraph>
+            <Paragraph size="small">{`Faculdade: ${props.persona.college}`}</Paragraph>
+            <Paragraph size="small">{`Curso: ${props.persona.course}`}</Paragraph>
+          </Card.Grid>
+        </Card>
+      </ModalProfile>
       <ModalPicture
         persona={props.persona}
         isModalVisible={isModalPictureVisible}

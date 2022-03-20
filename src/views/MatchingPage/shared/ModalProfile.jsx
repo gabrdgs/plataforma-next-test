@@ -1,11 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button, Row, Col, Card, Modal, Space } from 'antd';
+import { Button, Row, Col, Card, Modal, Space, Tooltip } from 'antd';
+import { QuestionCircleFilled } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 
 import linkedinIcon from '../../../assets/images/brands/linkedin.png';
+import { Children } from 'react/cjs/react.production.min';
 
 export default function ModalProfile(props) {
   return (
@@ -27,22 +29,17 @@ export default function ModalProfile(props) {
         </Row>
         <Row align="middle">
           <Heading level={4}>
-            <a href={props.persona.linkedin} target="_blank" rel="noreferrer">
-              <Image src={linkedinIcon} alt="logo" objectFit="contain" width="24" height="24" />
-            </a>
-            {`${props.persona.name} (${props.persona.pronoun})`}
+            <Space size={5}>
+              <a href={props.persona.linkedin} target="_blank" rel="noreferrer">
+                <Image src={linkedinIcon} alt="logo" objectFit="contain" width="24" height="24" />
+              </a>
+              {`${props.persona.name} (${props.persona.pronoun})`}
+            </Space>
           </Heading>
         </Row>
         <Paragraph size="small">{props.persona.description}</Paragraph>
-        <Card>
-          <Card.Grid style={{ width: '100%' }}>
-            <Paragraph strong> Informações Acadêmicas</Paragraph>
-            <Paragraph size="small">{`Faculdade: ${props.persona.college}`}</Paragraph>
-            <Paragraph size="small">{`Curso: ${props.persona.course}`}</Paragraph>
-          </Card.Grid>
-        </Card>
+        {props.children}
       </Space>
     </Modal>
   );
 }
-
