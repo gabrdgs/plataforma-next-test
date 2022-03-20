@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Col, Row, Timeline, Space } from 'antd';
 import { HourglassOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
 import { MenuModel } from '../../../components/MenuModel';
 import CardProfile from './CardProfile';

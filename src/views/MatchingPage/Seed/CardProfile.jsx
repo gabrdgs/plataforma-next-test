@@ -97,20 +97,8 @@ export default function CardProfile(props) {
         persona={props.persona}
         isModalVisible={isModalVisible}
         handleCancel={handleCancel}
-      >
-        <Card>
-          <Card.Grid style={{ width: '100%' }} hoverable={false}>
-            <Paragraph strong> Informações Profissionais</Paragraph>
-            <Paragraph size="small">{`Empresa: ${props.persona.company}`}</Paragraph>
-            <Paragraph size="small">{`Cargo: ${props.persona.profession}`}</Paragraph>
-          </Card.Grid>
-          <Card.Grid style={{ width: '100%' }} hoverable={false}>
-            <Paragraph strong> Informações Acadêmicas</Paragraph>
-            <Paragraph size="small">{`Faculdade: ${props.persona.college}`}</Paragraph>
-            <Paragraph size="small">{`Curso: ${props.persona.course}`}</Paragraph>
-          </Card.Grid>
-        </Card>
-      </ModalProfile>
+        userType="seed"
+      />
       <ModalPicture
         persona={props.persona}
         isModalVisible={isModalPictureVisible}

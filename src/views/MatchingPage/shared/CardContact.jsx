@@ -6,8 +6,8 @@ import { WhatsAppOutlined, MailOutlined, QuestionCircleFilled } from '@ant-desig
 import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
-import ModalProfile from './ModalProfile';
-import ModalPicture from './ModalPicture';
+import ModalProfile from '../../shared/ModalProfile';
+import ModalPicture from '../../shared/ModalPicture';
 import { setTimeFormat } from '../../shared/utils';
 
 import linkedinIcon from '../../../assets/images/brands/linkedin.png';
@@ -142,6 +142,7 @@ export default function CardContact(props) {
         persona={props.persona}
         isModalVisible={isModalVisible}
         handleCancel={handleCancel}
+        userType="mentor"
       />
       <ModalPicture
         persona={props.persona}

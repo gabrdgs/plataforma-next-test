@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { Button, Col, Row, Card, Space, Modal, message } from 'antd';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
-import ModalProfile from '../shared/ModalProfile';
-import ModalPicture from '../shared/ModalPicture';
+import ModalProfile from '../../shared/ModalProfile';
+import ModalPicture from '../../shared/ModalPicture';
 
 import { getDifferenceBetweenDates, setTimeFormat } from '../../shared/utils';
 
@@ -137,15 +137,7 @@ export default function CardProfile(props) {
         persona={props.persona}
         isModalVisible={isModalVisible}
         handleCancel={handleCancel}
-      >
-        <Card>
-          <Card.Grid style={{ width: '100%' }} hoverable={false}>
-            <Paragraph strong> Informações Acadêmicas</Paragraph>
-            <Paragraph size="small">{`Faculdade: ${props.persona.college}`}</Paragraph>
-            <Paragraph size="small">{`Curso: ${props.persona.course}`}</Paragraph>
-          </Card.Grid>
-        </Card>
-      </ModalProfile>
+        userType="mentor"/>
       <ModalPicture
         persona={props.persona}
         isModalVisible={isModalPictureVisible}
