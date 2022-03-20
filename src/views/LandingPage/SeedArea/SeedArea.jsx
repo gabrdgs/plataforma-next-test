@@ -114,13 +114,15 @@ function SeedArea({
           <br></br>
           <br></br>
           <br></br> 
-          <Container  color='primary'>
+          <Container color='primary'>
           <Space/>
-          <Heading level={2} color="secondary" alignment="center">
-            Quem ja venceu essa jornada
-          </Heading>
+          <Row id="testemunho-jovem">
+            <Heading level={2} color="secondary" alignment="center">
+              Quem ja venceu essa jornada
+            </Heading>
+          </Row>
           <br></br> 
-          <Row id="testemunho-jovem" gutter={[48, 48]}>
+          <Row gutter={[48, 48]}>
             {personas.map((persona, index) => (
               <Col span={8} key={`card-${index}`}>
                 <CardModel width="half" height='middle' color="default">
