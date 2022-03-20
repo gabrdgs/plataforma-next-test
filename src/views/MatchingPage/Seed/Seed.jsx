@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Col, Row, Timeline, Space } from 'antd';
 import { HourglassOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
@@ -10,9 +10,28 @@ import personas from '../../shared/MockMentor';
 
 export default function Seed({}) {
   const personaList = personas.map((item) => ({ ...item, isSelected: false }));
+  const progressStepsList = [
+    {
+      pending: 'Enviando convite',
+    },
+    {
+      pending: 'Aguardando resposta do mentor',
+      accepted: 'Convite enviado',
+    },
+    {
+      pending: 'Agendando a mentoria',
+      accepted: 'Convite aceito',
+    },
+    {
+      pending: 'Preencha a lista de presença',
+      accepted: 'Mentoria agendada',
+    },
+  ];
 
   const [mentorsList, setMentorsList] = useState(personaList);
   const [isMentorChose, setIsMentorChose] = useState(false);
+  const [stepsList, setStepsList] = useState([progressStepsList[0]]);
+  const [count, setCount] = useState(0);
 
   const mentorSelected = (id) => {
     setMentorsList(
@@ -29,6 +48,16 @@ export default function Seed({}) {
     );
     setIsMentorChose(true);
   };
+
+  useEffect(() => {
+    if (isMentorChose && count <= progressStepsList.length - 2) {
+      const timer = setTimeout(() => {
+        setCount(count + 1);
+        setStepsList([...stepsList, progressStepsList[count + 1]]);
+      }, (count + 1) * 1000 * 1.5);
+      return () => clearTimeout(timer);
+    }
+  });
 
   const menuItems = [
     {
@@ -53,8 +82,13 @@ export default function Seed({}) {
         </Row>
         {isMentorChose ? (
           <Row gutter={32} justify="center">
-            <Timeline pending="Aguardando mentor">
-              <Timeline.Item>Convite enviado</Timeline.Item>
+            <Timeline pending={stepsList[stepsList.length - 1].pending} mode="right">
+              {stepsList.map(
+                (item, index) =>
+                  item.accepted && (
+                    <Timeline.Item key={`timeline-item-${index}`}>{item.accepted}</Timeline.Item>
+                  ),
+              )}
             </Timeline>
             {mentorsList.map((item, index) => (
               <CardProfile
@@ -63,6 +97,7 @@ export default function Seed({}) {
                 onClick={mentorSelected}
                 isMatchClicked={mentorsList}
                 isMentorChose={isMentorChose}
+                isFeedbackReady={count === 3}
               />
             ))}
           </Row>
@@ -83,14 +118,3 @@ export default function Seed({}) {
     </Fragment>
   );
 }
-
-function progressSteps (done) {
- if (done) {
-   console.log('0');
-  setTimeout(2000);
-  console.log('2');
-}
-return 1;
-}
-
-

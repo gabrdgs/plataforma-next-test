@@ -84,6 +84,11 @@ export default function CardProfile(props) {
                   Deu match!
                 </Button>
               )}
+              {props.isFeedbackReady && (
+                <Button type="primary" href="/feedback-seed" align="middle">
+                  Lista de Presença
+                </Button>
+              )}
             </Space>
           </Row>
         </Space>
