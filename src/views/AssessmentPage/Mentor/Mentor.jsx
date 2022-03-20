@@ -77,7 +77,7 @@ export default function Mentor() {
             </Button>
           )}
           {current === steps.length - 1 && (
-            <Button type="primary" onClick={() => message.success('Processo Completo')}>
+            <Button type="primary" onClick={() => message.success('Processo Completo')} href=''>
               Enviar
             </Button>
           )}

@@ -79,6 +79,7 @@ export default function RegisterPage({}) {
                     <Button
                       type="primary"
                       onClick={() => message.success('Cadastrado com sucesso!')}
+                      href = {user === 1 ? "/onboarding-seed" : "/onboarding-mentor"}
                     >
                       Enviar
                     </Button>

@@ -10,9 +10,9 @@ import { Paragraph } from '../../../components/Paragraph';
 import Testimonial from './Testimonial';
 
 import mentorImage from '../../../assets/images/characters/mentors.png';
-import imageProfile1 from '../../../assets/images/mockPersonas/student-1.png';
-import imageProfile2 from '../../../assets/images/mockPersonas/student-2.png';
-import imageProfile3 from '../../../assets/images/mockPersonas/student-3.png';
+import imageProfile1 from '../../../assets/images/mockPersonas/mentor-1.png';
+import imageProfile2 from '../../../assets/images/mockPersonas/mentor-2.png';
+import imageProfile3 from '../../../assets/images/mockPersonas/mentor-3.png';
 import linkedinImage from '../../../assets/images/brands/linkedin.png';
 
 const personas = [
