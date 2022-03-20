@@ -22,7 +22,7 @@ export default function Seed({}) {
       accepted: 'Convite aceito',
     },
     {
-      pending: 'Preencha a lista de presença',
+      pending: 'Preencha o feedback',
       accepted: 'Mentoria agendada',
     },
   ];

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button, Col, Row, Card, Space, Modal, message } from 'antd';
+import { EditFilled } from '@ant-design/icons';
 import { Paragraph } from '../../../components/Paragraph';
 import ModalProfile from '../../shared/ModalProfile';
 import ModalPicture from '../../shared/ModalPicture';
@@ -8,7 +9,6 @@ import ModalPicture from '../../shared/ModalPicture';
 import linkedinIcon from '../../../assets/images/brands/linkedin.png';
 
 const { confirm } = Modal;
-
 const widthProfile = 200;
 
 export default function CardProfile(props) {
@@ -85,8 +85,8 @@ export default function CardProfile(props) {
                 </Button>
               )}
               {props.isFeedbackReady && (
-                <Button type="primary" href="/feedback-seed" align="middle">
-                  Lista de Presença
+                <Button type="primary" href="/feedback-seed" align="middle" icon={<EditFilled/>}>
+                  Preencher
                 </Button>
               )}
             </Space>

@@ -55,7 +55,6 @@ export default function Feedback({ personas, userType }) {
         <Row>
           <Col push={1}>
             <Fragment>
-              <Heading>Meus feedbacks a preencher:</Heading>
               <Timeline>
                 {getDecisionList.map((item, index) => (
                   <Timeline.Item

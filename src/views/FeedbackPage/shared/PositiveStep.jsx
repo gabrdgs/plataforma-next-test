@@ -1,7 +1,8 @@
-import React, {Fragment, useState} from 'react'
-import {Col, Row, Input, Rate, Steps} from 'antd'
+import React, { Fragment } from 'react'
+import {Col, Row, Input, Rate, Steps, Form} from 'antd'
 import {FrownOutlined, MehOutlined, SmileOutlined} from '@ant-design/icons'
-import 'antd/dist/antd.css'
+import { Heading } from '../../../components/Heading';
+import { Paragraph } from '../../../components/Paragraph';
 
 const {TextArea} = Input
 const {Step} = Steps
@@ -43,31 +44,33 @@ function StepOne() {
   return (
     <Fragment>
       <Col span={20} offset={2}>
-        <h1> Feedback </h1>
-        <h5 style={{margin: '20px 0'}}> Como foi a mentoria para você? </h5>
-        <Row justify="center">
-          <Rate
-            align="center"
-            style={{transform: 'scale(2)', marginBottom: '60px'}}
-            defaultValue={3}
-            character={({index}) => customIcons[index + 1]}
-          />
-        </Row>
-        <h5>
-          Este espaço é para você nos contar um pouco mais da sua experiência
-        </h5>
-        <TextArea rows={4} />
+        <Form layout="vertical">
+          <Heading level={3}>Feedback</Heading>
+          <Form.Item label="Como foi a mentoria para você?">
+            <Row justify="center">
+              <Rate
+                align="center"
+                style={{ transform: 'scale(2)', marginBottom: '60px' }}
+                defaultValue={3}
+                character={({ index }) => customIcons[index + 1]}
+              />
+            </Row>
+          </Form.Item>
+          <Form.Item label="Este espaço é para você nos contar um pouco mais da sua experiência">
+            <TextArea rows={4} />
+          </Form.Item>
+        </Form>
       </Col>
     </Fragment>
-  )
+  );
 }
 
 function StepTwo() {
   return (
     <Fragment>
       <Col span={20} offset={2}>
-        <h1 style={{margin: '20px 0'}}> Obrigada! </h1>
+        <Heading level={3}> Obrigada! </Heading>
       </Col>
     </Fragment>
-  )
+  );
 }

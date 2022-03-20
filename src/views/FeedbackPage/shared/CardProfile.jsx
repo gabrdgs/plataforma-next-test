@@ -1,12 +1,12 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Button, message, Col, Row, Card, Space, Divider } from 'antd';
-import { DoubleRightOutlined, InfoCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { Button, message, Col, Row, Card, Space, Divider, Modal } from 'antd';
+import { EditFilled } from '@ant-design/icons';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
+
 import ModalProfile from '../../shared/ModalProfile';
 import ModalPicture from '../../shared/ModalPicture';
-
 import IntroductionStep from './IntroductionStep';
 import PositiveStep from './PositiveStep';
 import NegativeStep from './NegativeStep';
@@ -14,6 +14,8 @@ import NegativeStep from './NegativeStep';
 import linkedinIcon from '../../../assets/images/brands/linkedin.png';
 
 const mentoringPeriod = 30;
+const widthModal = 800;
+const options = ['Sim', 'Não'];
 
 export default function CardProfile(props) {
   const invitedDate = new Date(props.persona.invitedDate);
@@ -25,32 +27,38 @@ export default function CardProfile(props) {
   const acceptedDateFormated = `${acceptedDate.getDate()}-${acceptedDate.getMonth()}-${acceptedDate.getFullYear()}`;
   const finalDateFormated = `${finalDate.getDate()}-${finalDate.getMonth()}-${finalDate.getFullYear()}`;
 
-  const options = ['Sim', 'Não'];
-
-  const [isModalPositiveVisible, setIsModalPositiveVisible] = useState(false);
+  const [isModalFormVisible, setIsModalFormVisible] = useState(false);
+  const [isModalProfileVisible, setIsModalProfileVisible] = useState(false);
+  const [isModalPictureVisible, setIsModalPictureVisible] = useState(false);
   const [current, setCurrent] = useState(0);
   const [nextHidden, setNextHidden] = useState(false);
   const [previousHidden, setPreviousHidden] = useState(true);
   const [submitHidden, setSubmitHidden] = useState(true);
   const [isChecked, setBoxChecked] = useState([]);
   const [steps, setSteps] = useState(2);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [isModalPictureVisible, setModalPictureVisible] = useState(false);
 
-  const showModalPositive = () => {
-    setIsModalPositiveVisible(true);
+  const showModalForm = () => {
+    setIsModalFormVisible(true);
   };
 
-  const handleCancelPositive = () => {
-    setIsModalPositiveVisible(false);
+  const handleCancelForm = () => {
+    setIsModalFormVisible(false);
+  };
+
+  const showModalProfile = () => {
+    setIsModalProfileVisible(true);
+  };
+
+  const handleCancelProfile = () => {
+    setIsModalProfileVisible(false);
   };
 
   const showModalPicture = () => {
-    setModalPictureVisible(true);
+    setIsModalPictureVisible(true);
   };
 
   const handleCancelPicture = () => {
-    setModalPictureVisible(false);
+    setIsModalPictureVisible(false);
   };
 
   const next = () => {
@@ -70,7 +78,7 @@ export default function CardProfile(props) {
   };
 
   const onClickSubmit = () => {
-    setIsModalVisible(false);
+    setIsModalFormVisible(false);
     setBoxChecked([]);
     setCurrent(0);
     props.onClickSubmit(props.persona.id);
@@ -85,14 +93,6 @@ export default function CardProfile(props) {
     if (current > 0) setPreviousHidden(false);
     else setPreviousHidden(true);
   });
-
-  const showModal = () => {
-    setModalVisible(true);
-  };
-
-  const handleCancel = () => {
-    setModalVisible(false);
-  };
 
   const stepsModal = [
     {
@@ -113,7 +113,7 @@ export default function CardProfile(props) {
     },
     {
       title: '3',
-      content: <NegativeStep current={current} />,
+      content: <NegativeStep current={current} userType={props.userType} />,
       numberOfSteps: 2,
     },
   ];
@@ -123,7 +123,7 @@ export default function CardProfile(props) {
       <Row>
         <Col span={4}>
           <Space direction="vertical" size={5}>
-            <Paragraph>Presença Pendente</Paragraph>
+            <Paragraph>Feedback Pendente</Paragraph>
             <Paragraph size="small">Convite aceito em</Paragraph>
             <Paragraph size="small">{acceptedDateFormated}</Paragraph>
           </Space>
@@ -138,7 +138,7 @@ export default function CardProfile(props) {
                   onClick={showModalPicture}
                   layout="intrinsic"
                 />
-                <Button onClick={showModal}>Ver perfil</Button>
+                <Button onClick={showModalProfile}>Ver perfil</Button>
               </Col>
               <Col span={18} push={1}>
                 <Heading level={5} size="large">
@@ -162,7 +162,9 @@ export default function CardProfile(props) {
                   <Space direction="vertical" size={10} style={{ width: '100%' }}>
                     <Paragraph size="small">{`Período para mentoria: ${acceptedDateFormated} a ${finalDateFormated}`}</Paragraph>
                     <Row justify="center">
-                      <Button type="primary">Preencher lista de presença</Button>
+                      <Button type="primary" onClick={showModalForm} icon={<EditFilled />}>
+                        Preencher
+                      </Button>
                     </Row>
                   </Space>
                 </Col>
@@ -170,10 +172,23 @@ export default function CardProfile(props) {
             </Row>
           </Card>
         </Col>
+        <ModalFeedback
+          isModalVisible={isModalFormVisible}
+          handleCancel={handleCancelForm}
+          stepsModal={stepsModal}
+          current={current}
+          nextHidden={nextHidden}
+          previousHidden={previousHidden}
+          submitHidden={submitHidden}
+          isChecked={isChecked}
+          onClickSubmit={onClickSubmit}
+          next={next}
+          prev={prev}
+        />
         <ModalProfile
           persona={props.persona}
-          isModalVisible={isModalVisible}
-          handleCancel={handleCancel}
+          isModalVisible={isModalProfileVisible}
+          handleCancel={handleCancelProfile}
           userType={props.userType}
         />
         <ModalPicture
@@ -183,5 +198,48 @@ export default function CardProfile(props) {
         />
       </Row>
     </Fragment>
+  );
+}
+
+function ModalFeedback(props) {
+  return (
+    <Modal
+      visible={props.isModalVisible}
+      centered={true}
+      onCancel={props.handleCancel}
+      width={widthModal}
+      footer={[
+        <Button
+          key="previous"
+          onClick={() => props.prev()}
+          style={{ display: props.previousHidden ? 'none' : '' }}
+        >
+          Anterior
+        </Button>,
+        <Button
+          type="primary"
+          key="confirm"
+          onClick={() => props.next()}
+          style={{ display: props.nextHidden ? 'none' : '' }}
+          disabled={props.isChecked.length > 0 ? false : true}
+        >
+          Próximo
+        </Button>,
+        <Button
+          type="primary"
+          key="submit"
+          onClick={props.onClickSubmit}
+          style={{ display: props.submitHidden ? 'none' : '' }}
+        >
+          Enviar
+        </Button>,
+      ]}
+    >
+      {props.current === 0
+        ? props.stepsModal[props.current].content
+        : props.isChecked.toString() === options[0]
+        ? props.stepsModal[1].content
+        : props.stepsModal[2].content}
+    </Modal>
   );
 }

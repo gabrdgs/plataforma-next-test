@@ -1,7 +1,8 @@
 import React, {Fragment, useState} from 'react'
 import {Button, Col, Row, Checkbox} from 'antd'
 import {EditOutlined} from '@ant-design/icons'
-import 'antd/dist/antd.css'
+import { Heading } from '../../../components/Heading';
+import { Paragraph } from '../../../components/Paragraph';
 
 const CheckboxGroup = Checkbox.Group
 
