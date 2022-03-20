@@ -17,7 +17,7 @@ const mockSeed = [
     email: 'tech@isemear.org.br',
     whatsapp: '11982778267',
     invitedDate: Date.parse('2022-03-17T14:48:00'),
-    isConfirmed: true,
+    isConfirmed: false,
     isRejected: false,
     isExperired: false,
     acceptedDate: Date.parse('2001-01-01T00:00:00'),
@@ -29,7 +29,7 @@ const mockSeed = [
   },
   {
     id: '2',
-    name: ' Jéssica Gonsalves',
+    name: 'Jéssica Gonsalves',
     age: '22',
     pronoun: 'Ela/Dela',
     description:
@@ -53,7 +53,7 @@ const mockSeed = [
   },
   {
     id: '3',
-    name: ' Gabriela Rodrigues',
+    name: 'Gabriela Rodrigues',
     age: '21',
     pronoun: 'Ela/Dela',
     description:
