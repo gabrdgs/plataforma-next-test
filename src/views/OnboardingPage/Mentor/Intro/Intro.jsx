@@ -12,7 +12,7 @@ import robotImage from '../../../../assets/images/onboardingPage/mentor/robot.sv
 import skateBoyImage from '../../../../assets/images/characters/skate-boy.svg';
 import hatGirlImage from '../../../../assets/images/characters/hat-girl.svg';
 
-const name = 'YODANA DA SILVA';
+const name = 'Camila Cintra';
 const mentorName = name.toUpperCase();
 
 export default function Intro() {
@@ -21,6 +21,11 @@ export default function Intro() {
       <Section bgColor="blue">
         <Space direction="vertical" size={100}>
           <div className="section-1">
+            <Row>
+              <Col offset={1}>
+                <Heading level={3}>TUTORIAL DA MENTORIA</Heading>
+              </Col>
+            </Row>
             <Row justify="center" xs={21} sm={19}>
               <CardModel
                 width="super"
@@ -80,12 +85,15 @@ export default function Intro() {
               <Col span={5}>
                 <Image src={skateBoyImage} />
               </Col>
-              <Col span={10} justify="center" align="middle" >
-                <CardModel height="small" width = "default" color="primary" hoverable>
+              <Col span={10} justify="center" align="middle">
+                <CardModel height="small" width="default" color="primary" hoverable>
                   <Paragraph alignment="center">
-                    Portanto, para nós, você é uma pessoa mais experiente que <strong>acompanha</strong> de
-                    perto, <strong>orienta e estimula um jovem iniciante em sua jornada de
-                    desenvolvimento</strong> pessoal e profissional.
+                    Portanto, para nós, você é uma pessoa mais experiente que{' '}
+                    <strong>acompanha</strong> de perto,{' '}
+                    <strong>
+                      orienta e estimula um jovem iniciante em sua jornada de desenvolvimento
+                    </strong>{' '}
+                    pessoal e profissional.
                   </Paragraph>
                 </CardModel>
               </Col>
@@ -94,9 +102,9 @@ export default function Intro() {
               </Col>
             </Row>
             <Row justify="center">
-                <Paragraph alignment="center">
-                  esta página foi criada para informar como funciona ser mentor no Semear.
-                </Paragraph>
+              <Paragraph alignment="center">
+                esta página foi criada para informar como funciona ser mentor no Semear.
+              </Paragraph>
             </Row>
           </div>
           <Row justify="center" style={{ marginBottom: '-250px' }}>

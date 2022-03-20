@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { Steps, Button, message, Col, Row, Space } from 'antd';
-import 'antd/dist/antd.css';
+import { RocketOutlined } from '@ant-design/icons';
 import { MenuModel } from '../../../components/MenuModel';
+
 import StepWelcome from './StepWelcome';
 import StepChannel from './StepChannel';
 import StepProfile from './StepProfile';
@@ -45,13 +46,9 @@ export default function Mentor() {
 
     const menuItems = [
       {
-        key: 'all',
-        title: 'Todos os convites',
-
-      },
-      {
-        key: 'accepted',
-        title: 'Meus matches',
+        key: 'begin',
+        title: 'Bem vindo!',
+        icon: <RocketOutlined />,
       },
     ];
 

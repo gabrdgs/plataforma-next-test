@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button, Col, Row, Card, Space, Divider, Tooltip } from 'antd';
-import { WhatsAppOutlined, MailOutlined, QuestionCircleFilled } from '@ant-design/icons';
+import { WhatsAppOutlined, MailOutlined, QuestionCircleFilled, EditFilled } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
@@ -128,8 +128,8 @@ export default function CardContact(props) {
                     </Space>
                   </Paragraph>
                   <Row justify="center">
-                    <Button type="primary" href="/feedback-mentor">
-                      Preencher lista de presença
+                    <Button type="primary" href="/feedback-mentor" icon={<EditFilled />}>
+                      Preencher feedback
                     </Button>
                   </Row>
                 </Space>

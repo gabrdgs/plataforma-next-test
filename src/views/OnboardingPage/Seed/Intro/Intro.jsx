@@ -17,7 +17,7 @@ export default function Intro() {
         <div className="section-1">
           <Row>
             <Col offset={1}>
-              <Heading level={3}>OS DESAFIOS</Heading>
+              <Heading level={3}>TUTORIAL DA MENTORIA</Heading>
             </Col>
           </Row>
           <Row justify="center">

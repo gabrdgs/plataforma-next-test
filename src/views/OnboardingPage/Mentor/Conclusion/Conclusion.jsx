@@ -35,7 +35,7 @@ export default function Conclusion() {
                           diagnóstico clicando no botão a seguir:
                         </Paragraph>
                         <ButtonModel width="large" height="large" href="/assessment-mentor">
-                          QUERO COMEÇAR!
+                          QUERO MENTORADO!
                         </ButtonModel>
                       </Space>
                     </Col>
