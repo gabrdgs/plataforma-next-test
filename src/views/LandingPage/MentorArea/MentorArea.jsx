@@ -68,7 +68,7 @@ function MentorArea({ id }) {
                 <Image src={mentorImage} width={500} height={500} />
               </div>
             </Col>
-              <Col xs={{ span: 24 }} lg={{ span: 11 }}>
+              <Col id="jornada-mentor" xs={{ span: 24 }} lg={{ span: 11 }}>
                 <Heading level={2}>O que posso descobrir nessa jornada?</Heading>
                 <Heading level={3} color="senary" level={4}>
                   Jornada do Mentor

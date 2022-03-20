@@ -80,11 +80,11 @@ function SeedArea({
             </Col>
           </Row>
           </Container>
-          <Container color='primary'>
+          <Container  color='primary'>
           <br></br>
           <br></br>  
           <Space direction='vertical' size="middle">
-          <Row gutter={[48, 48]} align='middle'>
+          <Row id = "jornada-jovem" gutter={[48, 48]} align='middle'>
             <Col xs={{ span: 24 }} offset={1} lg={{ span: 12 }} >
               <Heading color="secondary">O que posso aprender nessa jornada?</Heading>
               <Heading color="senary" level={4}>
@@ -114,13 +114,13 @@ function SeedArea({
           <br></br>
           <br></br>
           <br></br> 
-          <Container color='primary'>
-          <Space />
+          <Container  color='primary'>
+          <Space/>
           <Heading level={2} color="secondary" alignment="center">
             Quem ja venceu essa jornada
           </Heading>
           <br></br> 
-          <Row gutter={[48, 48]}>
+          <Row id="testemunho-jovem" gutter={[48, 48]}>
             {personas.map((persona, index) => (
               <Col span={8} key={`card-${index}`}>
                 <CardModel width="half" height='middle' color="default">

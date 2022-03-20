@@ -19,8 +19,8 @@ export default function LandingPage() {
       <About id="quem-somos" />
       <VideoAbout id="video-semear"/>
       <Partners id="parceiros" />
-      <SeedArea id="area-jovem" />
-      <MentorArea id="mentor" />
+      <SeedArea id="protagonismo-jovem" />
+      <MentorArea id="jornada-mentor" />
       <Footer id="rodape"/>
     </Fragment>
   );
