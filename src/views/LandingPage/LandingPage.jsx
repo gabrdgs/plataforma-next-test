@@ -15,8 +15,8 @@ export default function LandingPage() {
     <Fragment>
       <IndexPage/>
       <NavigationBar/>
-      <Hero id="quem-somos" />
-      <About id="sobre" />
+      <Hero id="missao" />
+      <About id="quem-somos" />
       <VideoAbout id="video-semear"/>
       <Partners id="parceiros" />
       <SeedArea id="area-jovem" />
