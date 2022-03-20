@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Col, Row, Modal,Space } from 'antd';
+import { Col, Row, Timeline, Space } from 'antd';
 import { HourglassOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Heading } from '../../../components/Heading';
@@ -12,7 +12,7 @@ export default function Seed({}) {
   const personaList = personas.map((item) => ({ ...item, isSelected: false }));
 
   const [mentorsList, setMentorsList] = useState(personaList);
-  const [disabledMatch, setDisabledMatch] = useState(false);
+  const [isMentorChose, setIsMentorChose] = useState(false);
 
   const mentorSelected = (id) => {
     setMentorsList(
@@ -27,7 +27,7 @@ export default function Seed({}) {
           return item.isSelected;
         }),
     );
-    setDisabledMatch(true);
+    setIsMentorChose(true);
   };
 
   const menuItems = [
@@ -44,28 +44,53 @@ export default function Seed({}) {
         <MenuModel menuItems={menuItems} />
         <Row>
           <Col push={1}>
-            {mentorsList.length === 1 ? (
-              <Heading>Em breve notificaremos você!</Heading>
+            {isMentorChose ? (
+              <Heading level={3}>Acompanhe abaixo o progresso da mentoria:</Heading>
             ) : (
-              <Heading>Esses são os seus três melhores matches!</Heading>
+              <Heading level={3}>Esses são os seus três melhores matches!</Heading>
             )}
           </Col>
         </Row>
-        <Row justify="space-around" align="middle" gutter={32}>
-          {mentorsList.map((item, index) => (
-            <CardProfile
-              persona={item}
-              key={`card-${index}`}
-              onClick={mentorSelected}
-              isMatchClicked={mentorsList}
-              disabledMatch={disabledMatch}
-              isMentorChoose={mentorsList.length === 1 ? true : false}
-            />
-          ))}
-        </Row>
+        {isMentorChose ? (
+          <Row gutter={32} justify="center">
+            <Timeline pending="Aguardando mentor">
+              <Timeline.Item>Convite enviado</Timeline.Item>
+            </Timeline>
+            {mentorsList.map((item, index) => (
+              <CardProfile
+                persona={item}
+                key={`card-${index}`}
+                onClick={mentorSelected}
+                isMatchClicked={mentorsList}
+                isMentorChose={isMentorChose}
+              />
+            ))}
+          </Row>
+        ) : (
+          <Row align="middle" gutter={32} justify="space-around">
+            {mentorsList.map((item, index) => (
+              <CardProfile
+                persona={item}
+                key={`card-${index}`}
+                onClick={mentorSelected}
+                isMatchClicked={mentorsList}
+                isMentorChose={isMentorChose}
+              />
+            ))}
+          </Row>
+        )}
       </Space>
     </Fragment>
   );
+}
+
+function progressSteps (done) {
+ if (done) {
+   console.log('0');
+  setTimeout(2000);
+  console.log('2');
+}
+return 1;
 }
 
 

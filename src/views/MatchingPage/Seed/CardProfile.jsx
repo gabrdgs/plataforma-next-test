@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button, Col, Row, Card, Space, Modal, message } from 'antd';
-import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 import ModalProfile from '../shared/ModalProfile';
 import ModalPicture from '../shared/ModalPicture';
@@ -80,7 +79,7 @@ export default function CardProfile(props) {
               <Button onClick={showModal} align="middle">
                 Ver perfil
               </Button>
-              {!props.isMentorChoose && (
+              {!props.isMentorChose && (
                 <Button type="primary" onClick={showPromiseConfirm} align="middle">
                   Deu match!
                 </Button>
