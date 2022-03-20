@@ -3,11 +3,7 @@
                 <Breadcrumb.Item onClick={onClickAll}>
                   <a>Login</a>
                 </Breadcrumb.Item>
-                <Breadcrumb.Item onClick={onClickAccepted}>
-                  <a>Cadastro</a>
-                </Breadcrumb.Item>
                 </Breadcrumb>
-                    {screen == 1 ? (
                         <div>
                             <Form
                                 name="basic"
@@ -17,9 +13,9 @@
                                 autoComplete="off"
                             >
                               <Form.Item
-                                label="Username"
-                                name="username"
-                                rules={[{ required: true, message: 'Please input your username!' }]}
+                                label="Email"
+                                name="email"
+                                rules={[{ required: true, message: 'Por favor, indique seu email!' }]}
                               >
                                 <Input />
                               </Form.Item>
@@ -27,18 +23,18 @@
                               <Form.Item
                                 label="Password"
                                 name="password"
-                                rules={[{ required: true, message: 'Please input your password!' }]}
+                                rules={[{ required: true, message: 'Por favor, indique sua senha!' }]}
                               >
                                 <Input.Password />
                               </Form.Item>
                                                 
                               <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-                                <Checkbox>Remember me</Checkbox>
+                                <Checkbox>Lembrar se de mim</Checkbox>
                               </Form.Item>
                                                 
                               <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                                <Button type="primary" htmlType="submit">
-                                  Submit
+                                <Button type="primary" htmlType="submit" href='/register'>
+                                  Enviar
                                 </Button>
                               </Form.Item>
                             </Form>

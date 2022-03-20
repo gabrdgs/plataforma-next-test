@@ -21,30 +21,9 @@ import imageProfile1 from '../../../assets/images/mockPersonas/student-1.jpg';
 import imageProfile2 from '../../../assets/images/mockPersonas/student-2.jpg';
 import imageProfile3 from '../../../assets/images/mockPersonas/student-3.jpg';
 import linkedinImage from '../../../assets/images/brands/linkedin.png';
+import mookSeed from '../../shared/MockSeed'
 
-const personas = [
-  {
-    name: ' Pedro Masetti',
-    text: '"A oportunidade de poder me conectar através das mentorias com pessoas já ambientadas no mercado de trabalho vêm trazendo diversos benefícios, e principalmente, auxiliando no meu autoconhecimento"',
-    profession: 'Engenharia Ambiental',
-    imageProfile: imageProfile1,
-    linkedin: 'https://www.linkedin.com/in/pedro-masetti-3535321a9/',
-  },
-  {
-    name: ' Mariana Ferraz',
-    text: '"Na primeira mentoria eu não sabia quem eu era, definir meus sonhos ou para onde eu estava indo. Ter a oportunidade de ser mentorada no primeiro semestre da minha (tão sonhada) faculdade fez total diferença. Hoje, sinto que me conheço mais, sei como e o que estou fazendo para alcançar meus sonhos."',
-    profession: 'Engenharia de Produção',
-    imageProfile: imageProfile2,
-    linkedin: 'https://www.linkedin.com/in/mariana-ferraz-991181215/',
-  },
-  {
-    name: ' Jéssica Gonsalves',
-    text: '"Ser mentoranda me permitiu tomar consciência do meu próprio protagonismo e em como consigo pontencializá-lo na minha jornada. Mais do que isso, me permitiu construir em conjunto com a minha mentora, um processo sistêmico de reflexão, concepção e tomada de decisões."',
-    profession: 'Engenharia Elétrica',
-    imageProfile: imageProfile3,
-    linkedin: 'https://www.linkedin.com/in/gonsalvesjessica/',
-  },
-];
+const personas = mookSeed;
 
 const data = [
   {
@@ -101,11 +80,11 @@ function SeedArea({
             </Col>
           </Row>
           </Container>
-          <Container color='primary'>
+          <Container  color='primary'>
           <br></br>
           <br></br>  
           <Space direction='vertical' size="middle">
-          <Row gutter={[48, 48]} align='middle'>
+          <Row id = "jornada-jovem" gutter={[48, 48]} align='middle'>
             <Col xs={{ span: 24 }} offset={1} lg={{ span: 12 }} >
               <Heading color="secondary">O que posso aprender nessa jornada?</Heading>
               <Heading color="senary" level={4}>
@@ -136,10 +115,12 @@ function SeedArea({
           <br></br>
           <br></br> 
           <Container color='primary'>
-          <Space />
-          <Heading level={2} color="secondary" alignment="center">
-            Quem ja venceu essa jornada
-          </Heading>
+          <Space/>
+          <Row id="testemunho-jovem">
+            <Heading level={2} color="secondary" alignment="center">
+              Quem ja venceu essa jornada
+            </Heading>
+          </Row>
           <br></br> 
           <Row gutter={[48, 48]}>
             {personas.map((persona, index) => (
@@ -149,7 +130,7 @@ function SeedArea({
                     <Image src={persona.imageProfile} alt="image" width={150} height={150} />
                   </Row>
                   <br></br>
-                  <Paragraph size='small'italic>{persona.text}</Paragraph>
+                  <Paragraph size='small'italic>{persona.description}</Paragraph>
                   <br></br>
                   <Row justify="start"> 
                     <Space>
@@ -159,7 +140,7 @@ function SeedArea({
                     <Heading level={4}>{persona.name}</Heading>
                     </Space>
                   </Row>
-                  <Heading level={5} color='tertiary'>{persona.profession}</Heading>
+                  <Heading level={5} color='tertiary'>{persona.college}</Heading>
                 </CardModel>
               </Col>
             ))}

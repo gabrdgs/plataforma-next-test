@@ -17,28 +17,20 @@ export default function Login ({ id }){
 
     const [screen, setScreen] = useState(1)
 
-    const onClickAll = () => {
-        setScreen(1)
-    }
-
-    const onClickAccepted = () => {
-        setScreen(2)
-    }
-
-
     const [isModalVisible, setIsModalVisible] = useState(false);
-  
+
     const showModal = () => {
-        setIsModalVisible(true);
+    setIsModalVisible(true);
     };
 
     const handleOk = () => {
-        setIsModalVisible(false);
+    setIsModalVisible(false);
     };
 
     const handleCancel = () => {
-        setIsModalVisible(false);
+    setIsModalVisible(false);
     };
+
 
     const validateMessages = {
         required: '${label} is required!',
@@ -53,7 +45,55 @@ export default function Login ({ id }){
 
     return(
         <Row align="middle" justify="space-around">
-        <ButtonModel href='/register' width="small" height="small" color="primary" type="primary"><LoginOutlined/>Entrar</ButtonModel>
+        <ButtonModel width="small" height="small" color="primary" type="primary" onClick={showModal}><LoginOutlined/>Entrar</ButtonModel>
+        <Modal 
+          visible={isModalVisible} 
+          onOk={handleOk} 
+          onCancel={handleCancel} 
+          width={800} 
+          footer={[
+            <Button key="back" onClick={handleCancel}>
+              Cancelar
+            </Button>,
+            <Button key="submit" type="primary" onClick={handleOk} href='/register'>
+              Enviar
+            </Button>,
+          ]}>
+            <Breadcrumb style={{margin: '20px 0 0px 50px'}}>
+                <Breadcrumb.Item>
+                  <a>Login</a>
+                </Breadcrumb.Item>
+                </Breadcrumb>
+                        <div>
+                            <Form
+                                name="basic"
+                                labelCol={{ span: 8 }}
+                                wrapperCol={{ span: 16 }}
+                                initialValues={{ remember: true }}
+                                autoComplete="off"
+                            >
+                              <Form.Item
+                                label="Email"
+                                name="email"
+                                rules={[{ required: true, message: 'Por favor, indique seu email!' }]}
+                              >
+                                <Input />
+                              </Form.Item>
+                                                
+                              <Form.Item
+                                label="Password"
+                                name="password"
+                                rules={[{ required: true, message: 'Por favor, indique sua senha!' }]}
+                              >
+                                <Input.Password />
+                              </Form.Item>
+                                                
+                              <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
+                                <Checkbox>Lembrar se de mim</Checkbox>
+                              </Form.Item>
+                            </Form>
+            </div>
+          </Modal>
         </Row>
     )
 }
