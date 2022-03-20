@@ -51,6 +51,7 @@ const WheelComponent = (props) => {
                   onClick={() => {
                     message.success(`Etapa ${props.step} concluída com sucesso!`);
                     props.onClick(0, props.step);
+                    href='/matching-seed'
                   }}
                 >
                   Enviar

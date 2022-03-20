@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button, Col, Row, Card, Space, Modal, message } from 'antd';
 import { Paragraph } from '../../../components/Paragraph';
-import ModalProfile from '../shared/ModalProfile';
-import ModalPicture from '../shared/ModalPicture';
+import ModalProfile from '../../shared/ModalProfile';
+import ModalPicture from '../../shared/ModalPicture';
 
 import linkedinIcon from '../../../assets/images/brands/linkedin.png';
 

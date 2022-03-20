@@ -34,7 +34,7 @@ export default function Conclusion() {
                           Agora você já pode começar a procurar seu mentor! Preencha seu diagnóstico
                           clicando no botão a seguir:
                         </Paragraph>
-                        <ButtonModel width="large" height="large" href="/">
+                        <ButtonModel width="large" height="large" href="/assessment-seed">
                           QUERO UM MENTOR!
                         </ButtonModel>
                       </Space>

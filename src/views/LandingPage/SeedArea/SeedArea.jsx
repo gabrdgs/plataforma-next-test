@@ -17,9 +17,9 @@ import { CardModel } from '../../../components/CardModel';
 
 import journeyImage from '../../../assets/images/landingPage/seedArea/journeySeed.png';
 import seedPointsImage from '../../../assets/images/characters/rocket-girl.png';
-import imageProfile1 from '../../../assets/images/mockPersonas/student-1.png';
-import imageProfile2 from '../../../assets/images/mockPersonas/student-2.png';
-import imageProfile3 from '../../../assets/images/mockPersonas/student-3.png';
+import imageProfile1 from '../../../assets/images/mockPersonas/student-1.jpg';
+import imageProfile2 from '../../../assets/images/mockPersonas/student-2.jpg';
+import imageProfile3 from '../../../assets/images/mockPersonas/student-3.jpg';
 import linkedinImage from '../../../assets/images/brands/linkedin.png';
 
 const personas = [

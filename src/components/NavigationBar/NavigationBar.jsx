@@ -29,7 +29,7 @@ function NavigationBar() {
               <a>
                 <Logo variant="horizontal" />
               </a>
-            </Link>
+            </Link> 
           </div>
 
           <div className={styles.NavigationBar__Group}>

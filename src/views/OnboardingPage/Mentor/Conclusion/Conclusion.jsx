@@ -34,7 +34,7 @@ export default function Conclusion() {
                           Agora você já pode dar inicio ao processo da mentoria: preencha seu
                           diagnóstico clicando no botão a seguir:
                         </Paragraph>
-                        <ButtonModel width="large" height="large" href="/">
+                        <ButtonModel width="large" height="large" href="/assessment-mentor">
                           QUERO COMEÇAR!
                         </ButtonModel>
                       </Space>
