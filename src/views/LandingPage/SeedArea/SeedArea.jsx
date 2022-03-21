@@ -12,6 +12,7 @@ import { Fragment } from 'react';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 import { ButtonModel } from '../../../components/ButtonModel';
+import { SubmitButton } from '../SubmitButton';
 import { CardModel } from '../../../components/CardModel';
 
 
@@ -65,9 +66,7 @@ function SeedArea({
                     </Paragraph>
                     <br />
                     <br />
-                    <ButtonModel type="primary" width="full" height='large' shape="round">
-                      Inscreva-se
-                    </ButtonModel>
+                    <SubmitButton type="primary" width="full" height='large' shape="round"/>
                     <br />
                     <br />
                     <Paragraph>

@@ -1,0 +1,12 @@
+.SubmitButton {
+    &[data-align='center']{
+        margin:auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    
+    &[data-align='start']{
+        margin:auto;
+      }
+}

@@ -70,7 +70,7 @@ function MentorArea({ id }) {
             </Col>
               <Col id="jornada-mentor" xs={{ span: 24 }} lg={{ span: 11 }}>
                 <Heading level={2}>O que posso descobrir nessa jornada?</Heading>
-                <Heading level={3} color="senary" level={4}>
+                <Heading level={4} color="senary">
                   Jornada do Mentor
                 </Heading>
                 <List

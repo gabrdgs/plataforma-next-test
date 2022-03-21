@@ -61,7 +61,7 @@ export default function Login ({ id }){
           ]}>
             <Breadcrumb style={{margin: '20px 0 0px 50px'}}>
                 <Breadcrumb.Item>
-                  <a>Login</a>
+                  <a>Inscreva-se</a>
                 </Breadcrumb.Item>
                 </Breadcrumb>
                         <div>
@@ -89,7 +89,7 @@ export default function Login ({ id }){
                               </Form.Item>
                                                 
                               <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-                                <Checkbox>Lembrar se de mim</Checkbox>
+                                <Checkbox>Lembrar-se de mim</Checkbox>
                               </Form.Item>
                             </Form>
             </div>
@@ -97,6 +97,8 @@ export default function Login ({ id }){
         </Row>
     )
 }
+
+
 
 
 

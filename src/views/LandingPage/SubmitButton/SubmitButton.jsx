@@ -1,60 +1,20 @@
-// import styles from './Hero.module.scss';
 import {useState} from 'react';
-import { Button, Col, Row, Typography, Modal, Breadcrumb, Form, Input, Checkbox } from 'antd';
 import Image from 'next/image';
+import { Button, Col, Row, Typography, Input, Form, Modal, Space, Breadcrumb, Checkbox, InputNumber } from 'antd';
+import { LoginOutlined } from '@ant-design/icons';
+import styles from './SubmitButton.module.scss';
+
+
+import { Section } from '../../../components/Section';
+import {ButtonModel} from '../../../components/ButtonModel';
+
+import videoBackgroundImage from '../../../assets/images/landingPage/instituto-semear.png'
 
 const { Title, Text } = Typography;
 
-import { Section } from '../../../components/Section';
-import { Container } from '../../../components/Container';
-import {Wave} from '../../../components/Wave'
 
-
-import heroImage from '../../../assets/images/characters/header.png';
-
-import styles from './Hero.module.scss';
-import { Heading } from '../../../components/Heading';
-import { Paragraph } from '../../../components/Paragraph';
-import { ButtonModel } from '../../../components/ButtonModel';
-import { Fragment } from 'react';
-
-function Hero({ id }) {
-  return (
-    <Fragment>
-    <Section id={id} bgColor="primary">
-      <Container color='primary'>
-        <Row gutter={[48, 48]}>
-          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-            <Heading level ={1} color="quinary">As conexões que mudarão o seu futuro!</Heading>
-
-            <Paragraph weight='default' color='secondary'>
-              A plataforma desenvolvida para mentores e jovens universitários protagonistas que
-              juntos buscam aprimorar suas habilidades profissionais e alcançar seus sonhos.
-            </Paragraph>
-
-            <Heading level={4} color="secondary">
-              As conexões que mudarão o seu futuro!
-            </Heading>
-
-            <SubmitButton align='start'/>
-          </Col>
-
-          <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-            <div className={styles.Hero__Image}>
-              <Image src={heroImage} alt="" />
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </Section>
-    <Wave direction="up" innerColor = '#11115d' outsideColor = '#fff'/>
-    </Fragment>
-  );
-}
-
-export default Hero;
-
-function SubmitButton ({ 
+export default function Login ({ 
+  id, 
   align = 'center',
  }){
       
@@ -89,7 +49,7 @@ function SubmitButton ({
 
     return(
         <div data-align={align}>
-        <ButtonModel width="default" align="start" height="default" color="default" type="primary" onClick={showModal}>Inscreva-se</ButtonModel>
+        <ButtonModel width="full" height="large" color="default" type="primary" onClick={showModal}>Inscreva-se</ButtonModel>
         <Modal 
           visible={isModalVisible} 
           onOk={handleOk} 
@@ -142,3 +102,7 @@ function SubmitButton ({
     )
 }
 
+
+
+  
+    

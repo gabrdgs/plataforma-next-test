@@ -91,7 +91,7 @@ export function CustomForm({status, message, onValidated}) {
         >
           {status === 'sending' && 'Enviando...'}
           {status !== 'success' && status !== 'sending'
-            ? 'Inscreva-se'
+            ? 'Assinar'
             : message}
         </ButtonModel>
       </div>
