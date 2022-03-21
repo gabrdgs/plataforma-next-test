@@ -6,6 +6,9 @@ import { MenuModel } from '../../../components/MenuModel';
 import WheelComponent from './WheelComponent';
 import StepWelcome from './StepWelcome';
 
+import Styles from './Seed.module.scss'
+
+
 export default function Seed() {
   const menuItems = [
     {
@@ -69,7 +72,7 @@ export default function Seed() {
   return (
     <Fragment>
       <MenuModel menuItems={menuItems} userType="seed" />
-      <Row gutter={[32, 16]} align="middle" justify="center">
+      <Row gutter={[32, 20]} align="middle" justify="center">
         <Col xs={23} sm={23} md={20} lg={22} xl={22}>
           {content[contentIndex]}
         </Col>

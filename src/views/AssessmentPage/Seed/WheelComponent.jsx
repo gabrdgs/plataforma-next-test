@@ -23,7 +23,7 @@ const WheelComponent = (props) => {
     <Fragment>
       <Space direction="vertical" size={30} style={{ width: '100%' }}>
         <Row align="middle" justify="center">
-          <Space size={20} style={{ width: '100%' }}>
+          <Space size={250} style={{ width: '100%' }}>
             <Col xs={1} lg={24}>
               <Steps current={current} size="small" direction="vertical">
                 {steps.map((item) => (
@@ -31,7 +31,7 @@ const WheelComponent = (props) => {
                 ))}
               </Steps>
             </Col>
-            <Col sm={22} md={24}>
+            <Col sm={25} md={24}>
               {steps[current].content}
             </Col>
           </Space>

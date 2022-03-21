@@ -7,6 +7,8 @@ import StepWelcome from './StepWelcome';
 import StepChannel from './StepChannel';
 import StepProfile from './StepProfile';
 
+import styles from './Mentor.module.scss';
+
 const { Step } = Steps;
 
 export default function Mentor() {

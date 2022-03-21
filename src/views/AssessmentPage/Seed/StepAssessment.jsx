@@ -19,35 +19,36 @@ const StepAssessment = (props) => {
 
   return (
     <Fragment>
-      <Heading>{props.content.title}</Heading>
+      <Heading alignment='center'>{props.content.title}</Heading>
       <Space direction="vertical" size={20}>
-        <Paragraph size="large">
-          <Col span={20}>{props.content.subtitle}</Col>
+        <Paragraph size="large" alignment='center'>
+          <Col span={25}>{props.content.subtitle}</Col>
         </Paragraph>
-        <Row>
-          <Button onClick={showModal} align="middle" danger>
+        <Row align='center'>
+          <Button alignment='center' onClick={showModal} align="middle" danger>
             Nível Neutro <InfoCircleOutlined />
           </Button>
           <Modal
-            title={<Paragraph>Nível Neutro</Paragraph>}
+            title={<Paragraph alignment='center'>Nível Neutro</Paragraph>}
             centered={true}
             visible={isModalVisible}
             onOk={handleOk}
             onCancel={handleOk}
             footer={[
-              <Button type="primary" key="confirm" onClick={handleOk}>
-                <Paragraph color="secondary">OK</Paragraph>
+              <Button alignment='center' type="primary" key="confirm" onClick={handleOk}>
+                <Paragraph alignment='center' color="secondary">OK</Paragraph>
               </Button>,
             ]}
           >
-            <Paragraph>{props.content.neutral}</Paragraph>
+            <Paragraph alignment='center'>{props.content.neutral}</Paragraph>
           </Modal>
         </Row>
         <div>
-          <Row>
-            <Paragraph size="small">Marque uma opção: </Paragraph>
+          <Row align='center'>
+            <Paragraph alignment='center' size="small">Marque uma opção: </Paragraph>
           </Row>
-          <Row>
+          <br></br>
+          <Row align='center'>
             <NumberRate />
           </Row>
         </div>
