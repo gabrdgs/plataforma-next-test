@@ -102,7 +102,7 @@ const assessmentStatus = {
 };
 
 function NumberRate() {
-  const [inputAssessment, setInputAssessment] = useState(7);
+  const [inputAssessment, setInputAssessment] = useState(6);
   const [inputClicked, setInputClicked] = useState(false);
 
   const handleChange = (event) => {
@@ -117,7 +117,7 @@ function NumberRate() {
 
   return (
     <Rate
-      defaultValue={7}
+      defaultValue={6}
       count={10}
       character={({ index }) => (
         <Button
@@ -127,7 +127,7 @@ function NumberRate() {
           value={index}
           type={type(index)}
         >
-          {index}
+          {index + 1}
         </Button>
       )}
     />

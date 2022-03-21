@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { Col, Row, Space, Button } from 'antd';
-import { DoubleRightOutlined } from '@ant-design/icons';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 
@@ -42,13 +41,6 @@ const StepWelcome = (props) => {
               {item.title}
             </Button>
           ))}
-          {props.step === 0 ? (
-            <Button href="/profile-seed" type="text" >
-              Ir para o perfil <DoubleRightOutlined />
-            </Button>
-          ) : (
-            <div></div>
-          )}
         </Space>
       </Col>
       <Col span={8} xs={18} sm={14} md={16} lg={8} xl={7}>

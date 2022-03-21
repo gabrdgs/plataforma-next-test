@@ -6,6 +6,7 @@ import { Section } from '../../../../components/Section';
 import { CardModel } from '../../../../components/CardModel';
 import { ButtonModel } from '../../../../components/ButtonModel';
 import { Paragraph } from '../../../../components/Paragraph';
+import { SocialMedia } from '../../../../components/SocialMedia';
 
 import rocketImage from '../../../../assets/images/onboardingPage/shared/rocket.svg';
 
@@ -35,7 +36,7 @@ export default function Conclusion() {
                           diagnóstico clicando no botão a seguir:
                         </Paragraph>
                         <ButtonModel width="large" height="large" href="/assessment-mentor">
-                          QUERO MENTORADO!
+                          QUERO UM MENTORADO!
                         </ButtonModel>
                       </Space>
                     </Col>
@@ -49,6 +50,7 @@ export default function Conclusion() {
               </CardModel>
             </Row>
         </div>
+        <SocialMedia />
       </Section>
     </Fragment>
   );

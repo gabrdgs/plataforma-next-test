@@ -4,20 +4,14 @@ import { Methodology } from './Methodology';
 import { Development } from './Development';
 import { Conclusion } from './Conclusion';
 import { MenuModel } from '../../../components/MenuModel';
+import { OrderedListOutlined } from '@ant-design/icons';
 
 export default function Mentor({}) {
     const menuItems = [
       {
         key: 'begin',
-        title: 'Início',
-      },
-      {
-        key: 'mentoring',
-        title: 'Mentoria',
-      },
-      {
-        key: 'challenges',
-        title: 'Desafios',
+        title: 'Tutorial',
+        icon: <OrderedListOutlined />,
       },
     ];
   return (

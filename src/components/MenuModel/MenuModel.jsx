@@ -8,6 +8,8 @@ import { Paragraph } from '../Paragraph';
 import mentors from '../../views/shared/MockMentor';
 import seeds from '../../views/shared/MockSeed';
 
+import logoSemear from '../../assets/images/brands/logo-semear.png';
+
 const mentorUser = mentors[0];
 const seedUser = seeds[0];
 
@@ -20,9 +22,14 @@ export default function MenuModel(props) {
 
   return (
     <Fragment>
-      <Menu onClick={props.onClick} selectedKeys={props.keyMenu} mode="horizontal" >
+      <Menu onClick={props.onClick} selectedKeys={props.keyMenu} mode="horizontal">
+        <Menu.Item>
+          <Link href="/">
+            <Avatar size={36} src={<Image src={logoSemear} />} />
+          </Link>
+        </Menu.Item>
         {props.menuItems.map((item) => (
-          <Menu.Item key={item.key} icon={item.icon} disabled={item.disabled} >
+          <Menu.Item key={item.key} icon={item.icon} disabled={item.disabled}>
             {item.title}
           </Menu.Item>
         ))}
@@ -31,7 +38,7 @@ export default function MenuModel(props) {
           style={{ position: 'absolute', right: 50 }}
           title={<Avatar size={36} src={<Image src={user.imageProfile} />} />}
         >
-          <Card>
+          <Card style={{ width: '400px' }}>
             <Menu.ItemGroup>
               <Link href={`/profile-${props.userType}`}>
                 <Row align="middle">
