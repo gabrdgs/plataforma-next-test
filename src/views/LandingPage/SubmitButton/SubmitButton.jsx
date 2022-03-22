@@ -85,7 +85,7 @@ export default function Login ({
                               </Form.Item>
                                                 
                               <Form.Item
-                                label="Password"
+                                label="Senha"
                                 name="password"
                                 rules={[{ required: true, message: 'Por favor, indique sua senha!' }]}
                               >
