@@ -45,7 +45,7 @@ export default function Login ({ id }){
 
     return(
         <Row align="middle" justify="space-around">
-        <ButtonModel width="small" height="small" color="primary" type="primary" onClick={showModal}><LoginOutlined/>Entrar</ButtonModel>
+        <ButtonModel width="small" height="small" color="default" type="primary" onClick={showModal}><LoginOutlined/>Inscreva-se</ButtonModel>
         <Modal 
           visible={isModalVisible} 
           onOk={handleOk} 

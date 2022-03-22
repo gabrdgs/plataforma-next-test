@@ -83,6 +83,7 @@ export function CustomForm({status, message, onValidated}) {
         <ButtonModel
           width="large"
           height = "large"
+          color='primary'
           class={` submitButton ${
             status === 'success' ? 'submitButton--success' : ''
           }`}
