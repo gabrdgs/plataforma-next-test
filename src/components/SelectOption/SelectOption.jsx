@@ -8,7 +8,20 @@ export default function SelectOption(props) {
   const list = props.orderedList ? getOrderedArray(props.list) : props.list;
 
   return (
-    <Select placeholder={placeholder} label={label} mode={props.mode} maxTagCount="responsive">
+    <Select
+      placeholder={placeholder}
+      label={label}
+      mode={props.mode}
+      maxTagCount="responsive"
+      showSearch
+      optionFilterProp="children"
+      filterOption={(input, option) =>
+        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+      }
+      filterSort={(optionA, optionB) =>
+        optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+      }
+    >
       {list.map((item, index) => (
         <Select.Option value={item.value} key={`item-${index}`}>
           {item.value}

@@ -158,7 +158,19 @@ function FirstStep(props) {
         </Col>
       </Row>
       <Form.Item label="Escolaridade" tooltip="Qual seu grau de instrução?">
-        <SelectOption list={academicList} />
+        <SelectOption
+          list={academicList}
+          value={academicList}
+          showSearch
+          placeholder="Search to Select"
+          optionFilterProp="children"
+          filterOption={(input, option) =>
+            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+          }
+          filterSort={(optionA, optionB) =>
+            optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+          }
+        />
       </Form.Item>
       <Form.Item
         label="Número de Celular"
