@@ -18,9 +18,6 @@ export default function SelectOption(props) {
       filterOption={(input, option) =>
         option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
       }
-      filterSort={(optionA, optionB) =>
-        optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
-      }
     >
       {list.map((item, index) => (
         <Select.Option value={item.value} key={`item-${index}`}>
