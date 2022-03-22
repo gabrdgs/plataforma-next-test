@@ -160,7 +160,6 @@ function FirstStep(props) {
           list={academicList}
           value={academicList}
           showSearch
-          placeholder="Search to Select"
           optionFilterProp="children"
           filterOption={(input, option) =>
             option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
