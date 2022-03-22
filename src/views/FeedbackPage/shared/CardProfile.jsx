@@ -230,6 +230,7 @@ function ModalFeedback(props) {
           key="submit"
           onClick={props.onClickSubmit}
           style={{ display: props.submitHidden ? 'none' : '' }}
+          href='/thanks-page'
         >
           Enviar
         </Button>,

@@ -105,7 +105,7 @@ function SubmitButton ({
           ]}>
             <Breadcrumb style={{margin: '20px 0 0px 50px'}}>
                 <Breadcrumb.Item>
-                  <a>Login</a>
+                  <a>Inscreva-se</a>
                 </Breadcrumb.Item>
                 </Breadcrumb>
                         <div>

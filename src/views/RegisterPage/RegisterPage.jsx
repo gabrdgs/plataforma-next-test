@@ -21,6 +21,8 @@ import 'moment/locale/zh-cn';
 import Styles from './RegisterPage.module.scss'
 
 import { SelectOption } from '../../components/SelectOption';
+import { Container } from '../../components/Container';
+
 
 import areasList from './AreasList';
 import subareasList from './SubareasList';
@@ -57,6 +59,7 @@ export default function RegisterPage({}) {
   };
   return (
     <Fragment>
+      <Container color='blue'>
       <Row align="middle" justify="center">
         <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
           <Space direction="vertical" size={20} style={{ width: '100%' }}>
@@ -92,6 +95,7 @@ export default function RegisterPage({}) {
           </Space>
         </Col>
       </Row>
+      </Container>
     </Fragment>
   );
 }
