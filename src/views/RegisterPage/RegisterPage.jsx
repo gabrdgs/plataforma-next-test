@@ -58,8 +58,7 @@ export default function RegisterPage({}) {
     setCurrent(current - 1);
   };
   return (
-    <Fragment>
-      <Container color='blue'>
+      <Container color='blue' width="full">
       <Row align="middle" justify="center">
         <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
           <Space direction="vertical" size={20} style={{ width: '100%' }}>
@@ -96,7 +95,6 @@ export default function RegisterPage({}) {
         </Col>
       </Row>
       </Container>
-    </Fragment>
   );
 }
 

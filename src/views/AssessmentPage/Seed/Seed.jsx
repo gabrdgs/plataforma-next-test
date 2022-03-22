@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Col, Row } from 'antd';
 import { RocketOutlined, LockFilled, UnlockFilled, CheckSquareFilled } from '@ant-design/icons';
 import { MenuModel } from '../../../components/MenuModel';
+import { Section } from '../../../components/Section';
 
 import WheelComponent from './WheelComponent';
 import StepWelcome from './StepWelcome';
@@ -72,11 +73,13 @@ export default function Seed() {
   return (
     <Fragment>
       <MenuModel menuItems={menuItems} userType="seed" />
-      <Row gutter={[32, 20]} align="middle" justify="center">
-        <Col xs={23} sm={23} md={20} lg={22} xl={22}>
-          {content[contentIndex]}
-        </Col>
-      </Row>
+      <Section>
+        <Row gutter={[32, 20]} align="middle" justify="center">
+          <Col xs={23} sm={23} md={20} lg={22} xl={22}>
+            {content[contentIndex]}
+          </Col>
+        </Row>
+      </Section>
     </Fragment>
   );
 }
