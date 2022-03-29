@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Col, Row, Card, Menu, Space, Avatar, Divider } from 'antd';
 import { MessageFilled, MailFilled, QuestionCircleFilled, LogoutOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
 import { Paragraph } from '../Paragraph';
+
 import mentors from '../../views/shared/MockMentor';
 import seeds from '../../views/shared/MockSeed';
 
