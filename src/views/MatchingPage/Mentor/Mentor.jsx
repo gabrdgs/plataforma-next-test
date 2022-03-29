@@ -128,7 +128,7 @@ export default function Mentor({}) {
           onClick={onClickMenu}
           selectedKeys={keyMenu}
           menuItems={menuItems}
-          userType="mentor"
+          userType="seed"
         />
         <Row>
           <Col push={1}>
