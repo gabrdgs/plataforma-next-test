@@ -1,18 +1,5 @@
 import React, { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import {
-  Row,
-  Col,
-  Card,
-  Steps,
-  Space,
-  message,
-  Form,
-  Input,
-  Button,
-  Select,
-  DatePicker,
-} from 'antd';
+import { Row, Col, Card, Space, message, Form, Input, Button, Select, DatePicker } from 'antd';
 import { LinkedinFilled } from '@ant-design/icons';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -42,7 +29,6 @@ export default function Test({}) {
   const [current, setCurrent] = useState(0);
   const [user, setUser] = useState(0);
   const [phoneNumber, setPhone] = useState('');
-  const { handleSubmit, control, errors } = useForm();
 
   const next = () => {
     setCurrent(current + 1);
@@ -62,34 +48,14 @@ export default function Test({}) {
       <Row align="middle" justify="center">
         <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
           <Space direction="vertical" size={20} style={{ width: '100%' }}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="input-group">
-                <label className="label">Firstname</label>
-                <Controller
-                  as={<Input placeholder="FirstName" />}
-                  name="FirstName"
-                  control={control}
-                  defaultValue=""
-                  rules={{ required: true }}
-                />
-                
-              </div>
+            <form>
               <div className="steps-content">
                 <Card>
                   <Form layout="vertical" scrollToFirstError>
                     <Row gutter={12}>
                       <Col {...layoutCols}>
                         <Form.Item>
-                          <Controller
-                            name="FirstName"
-                            defaultValue=""
-                            control={control}
-                            rules={{
-                              required: true,
-                            }}
-                            as={<Input placeholder="FirstName" />}
-                          />
-                         
+                          <Input placeholder="FirstName" />
                         </Form.Item>
                       </Col>
                       <Col {...layoutCols}>
