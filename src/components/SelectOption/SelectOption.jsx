@@ -1,12 +1,10 @@
 import React from 'react';
 import { Select } from 'antd';
-import 'antd/dist/antd.css';
 
 export default function SelectOption(props) {
   const placeholder = props.placeholder ? props.placeholder : '';
   const label = props.label ? props.label : '';
   const list = props.orderedList ? getOrderedArray(props.list) : props.list;
-
   return (
     <Select
       placeholder={placeholder}
