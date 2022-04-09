@@ -193,11 +193,11 @@ function SecondStepMentor() {
       <Form.Item label="Curso de Formação">
         <SelectOption list={coursesList} orderedList />
       </Form.Item>
-      <Form.Item label="Área de Atuação">
-        <SelectOption list={areasList} orderedList />
+      <Form.Item label="Área de Atuação" tooltip="Máximo 3 opções">
+        <SelectOption list={areasList} orderedList mode="multiple" maxOptions={3} />
       </Form.Item>
-      <Form.Item label="Subárea de Atuação">
-        <SelectOption list={subareasList} orderedList mode="multiple" />
+      <Form.Item label="Subárea de Atuação" tooltip="Máximo 10 opções">
+        <SelectOption list={subareasList} orderedList mode="multiple" maxOptions={10} />
       </Form.Item>
       <Form.Item label="Empresa">
         <Input />
@@ -218,10 +218,10 @@ function SecondStepSeed() {
       <Form.Item label="Curso">
         <SelectOption list={coursesList} orderedList />
       </Form.Item>
-      <Form.Item label="Área de Interesse">
+      <Form.Item label="Área de Interesse" tooltip="Máximo 3 opções" maxOptions={3}>
         <SelectOption list={areasList} orderedList />
       </Form.Item>
-      <Form.Item label="Subárea de Interesse">
+      <Form.Item label="Subárea de Interesse" tooltip="Máximo 10 opções" maxOptions={10}>
         <SelectOption list={subareasList} mode="multiple" orderedList />
       </Form.Item>
     </Form>
