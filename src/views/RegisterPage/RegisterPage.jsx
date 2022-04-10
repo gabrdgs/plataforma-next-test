@@ -22,7 +22,7 @@ import Styles from './RegisterPage.module.scss'
 
 import { SelectOption } from '../../components/SelectOption';
 import { Container } from '../../components/Container';
-
+import { NavigationBar } from '../../components/NavigationBar';
 
 import areasList from './AreasList';
 import subareasList from './SubareasList';
@@ -32,6 +32,7 @@ import universitiesList from './UniversitiesList';
 const { Step } = Steps;
 
 export default function RegisterPage({}) {
+  
   const [current, setCurrent] = useState(0);
   const [user, setUser] = useState(0);
 
@@ -58,7 +59,8 @@ export default function RegisterPage({}) {
     setCurrent(current - 1);
   };
   return (
-      <Container color='blue' width="full">
+    <Fragment>
+      <Container width="full">
       <Row align="middle" justify="center">
         <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
           <Space direction="vertical" size={20} style={{ width: '100%' }}>
@@ -68,21 +70,21 @@ export default function RegisterPage({}) {
               ))}
             </Steps>
             <div className="steps-content">
-              <Card>{contentSteps[current].content}</Card>
+              <Card className={Styles.RegisterPage__Card} >{contentSteps[current].content}</Card>
             </div>
             <div className="steps-buttons">
               <Row justify="end" align="middle">
                 <Space size={5}>
                   {current < contentSteps.length - 1 && (
-                    <Button type="primary" onClick={() => next()}>
-                      Próximo
-                    </Button>
+                      <Button type="primary" onClick={() => next()}>
+                        Avançar
+                      </Button>
                   )}
                   {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
                   {current === contentSteps.length - 1 && (
                     <Button
                       type="primary"
-                      onClick={() => message.success('Cadastrado com sucesso!')}
+                      onClick={() => message.success('Sucesso! Seu cadastro foi realizado.')}
                       href = {user === 1 ? "/onboarding-seed" : "/onboarding-mentor"}
                     >
                       Enviar
@@ -95,6 +97,7 @@ export default function RegisterPage({}) {
         </Col>
       </Row>
       </Container>
+      </Fragment>
   );
 }
 
@@ -119,26 +122,59 @@ function FirstStep(props) {
     sm : { span: 12 }
   };
 
+  const [form] = Form.useForm();
+
+  const onFinish = (values) => {
+    console.log(values);
+  };
+
   return (
-    <Form layout="vertical" scrollToFirstError>
+    <Form form = {form} layout="vertical" scrollToFirstError onFinish={onFinish} >
       <Row gutter={12}>
         <Col {...layoutCols}>
-          <Form.Item>
-            <Input placeholder="Nome" />
+          <Form.Item
+            label=" "
+            required
+            rules={[{required: true}]}
+          >
+            <Input required placeholder="Nome" />
           </Form.Item>
         </Col>
         <Col {...layoutCols}>
-          <Form.Item>
+          <Form.Item  
+            required
+            label=" "
+          >
             <Input placeholder="Último nome" />
           </Form.Item>
         </Col>
       </Row>
-      <Form.Item label="CPF" tooltip="O CPF será utilizado como ID de usuário">
-        <Input maxLength="11" minLength="11" name="documentId" showCount />
+      <Form.Item label="CPF" required tooltip="Preencha esse campo com seu número de CPF">
+        <Input maxLength="11" minLength="11" name="documentId" showCount placeholder = "xxx.xxx.xxx-xx"/>
       </Form.Item>
       <Row gutter={12}>
         <Col {...layoutCols}>
-          <Form.Item label="Quero ser" tooltip="Como você se define? Mentor(a) ou Mentorado(a)">
+          <Form.Item
+          label = "Seu Email"
+          required
+          tooltip="Preencha aqui com seu melhor endereço de e-mail"
+          >
+            <Input placeholder="Email" />
+          </Form.Item>
+        </Col>
+        <Col {...layoutCols}>
+        <Form.Item
+        label="Número de Celular"
+        required
+        tooltip="Seu número de telefone oficial para que possamos nos comunicar caso necessário, utilize o número do Whatsapp para facilitar a comunicação"
+      >
+        <PhoneInput country={'br'} value={phoneNumber} onChange={(phone) => setPhone(phone)} />
+      </Form.Item>
+      </Col>
+      </Row>
+      <Row gutter={12}>
+        <Col {...layoutCols}>
+          <Form.Item required label="Quero ser" tooltip="Você está se inscrevendo para ajudar jovens na função de mentor ou para ser um jovem mentorado?">
             <Select onChange={(user) => props.setUser(user)}>
               <Select.Option value={0}>Mentor(a)</Select.Option>
               <Select.Option value={1}>Mentorado(a)</Select.Option>
@@ -146,7 +182,10 @@ function FirstStep(props) {
           </Form.Item>
         </Col>
         <Col {...layoutCols}>
-          <Form.Item label="Data de Nascimento">
+          <Form.Item 
+          required
+          label="Data de Nascimento"
+          tooltip="O dia em que você nasceu, o campo será ordenado automaticamente ao digitar a data">
             <DatePicker
               placeholder="Selecione uma data"
               style={{
@@ -157,7 +196,7 @@ function FirstStep(props) {
           </Form.Item>
         </Col>
       </Row>
-      <Form.Item label="Escolaridade" tooltip="Qual seu grau de instrução?">
+      <Form.Item required label="Escolaridade" tooltip="Qual meu nível de escolaridade? Até quais desses níveis eu fui?">
         <SelectOption
           list={academicList}
           value={academicList}
@@ -169,14 +208,9 @@ function FirstStep(props) {
         />
       </Form.Item>
       <Form.Item
-        label="Número de Celular"
-        tooltip="Utilize o número do Whatsapp para facilitar a comunicação"
-      >
-        <PhoneInput country={'br'} value={phoneNumber} onChange={(phone) => setPhone(phone)} />
-      </Form.Item>
-      <Form.Item
         label="Linkedin"
-        tooltip="O seu LinkedIn facilita que outros usuários conheçam mais sobre seu perfil"
+        required
+        tooltip="Cole aqui o link do seu perfil do LinkedIn, caso tenha uma conta"
       >
         <Input prefix={<LinkedinFilled />} />
       </Form.Item>
@@ -187,22 +221,22 @@ function FirstStep(props) {
 function SecondStepMentor() {
   return (
     <Form layout="vertical" scrollToFirstError>
-      <Form.Item label="Instituição de Ensino">
+      <Form.Item required label="Instituição de Ensino">
         <SelectOption list={universitiesList} orderedList />
       </Form.Item>
-      <Form.Item label="Curso de Formação">
+      <Form.Item required label="Curso de Formação">
         <SelectOption list={coursesList} orderedList />
       </Form.Item>
-      <Form.Item label="Área de Atuação" tooltip="Máximo 3 opções">
+      <Form.Item required label="Área de Atuação" tooltip="Máximo 3 opções">
         <SelectOption list={areasList} orderedList mode="multiple" maxOptions={3} />
       </Form.Item>
-      <Form.Item label="Subárea de Atuação" tooltip="Máximo 10 opções">
+      <Form.Item required label="Subárea de Atuação" tooltip="Máximo 10 opções">
         <SelectOption list={subareasList} orderedList mode="multiple" maxOptions={10} />
       </Form.Item>
-      <Form.Item label="Empresa">
+      <Form.Item required label="Empresa">
         <Input />
       </Form.Item>
-      <Form.Item label="Cargo">
+      <Form.Item required label="Cargo">
         <Input />
       </Form.Item>
     </Form>
@@ -212,16 +246,16 @@ function SecondStepMentor() {
 function SecondStepSeed() {
   return (
     <Form layout="vertical" scrollToFirstError>
-      <Form.Item label="Instituição de Ensino">
+      <Form.Item required label="Instituição de Ensino">
         <SelectOption list={universitiesList} orderedList />
       </Form.Item>
-      <Form.Item label="Curso">
-        <SelectOption list={coursesList} orderedList />
+      <Form.Item required label="Curso">
+        <SelectOption required list={coursesList} orderedList />
       </Form.Item>
-      <Form.Item label="Área de Interesse" tooltip="Máximo 3 opções" maxOptions={3}>
+      <Form.Item required label="Área de Interesse" tooltip="Máximo 3 opções" maxOptions={3}>
         <SelectOption list={areasList} orderedList />
       </Form.Item>
-      <Form.Item label="Subárea de Interesse" tooltip="Máximo 10 opções" maxOptions={10}>
+      <Form.Item required label="Subárea de Interesse" tooltip="Máximo 10 opções" maxOptions={10}>
         <SelectOption list={subareasList} mode="multiple" orderedList />
       </Form.Item>
     </Form>
