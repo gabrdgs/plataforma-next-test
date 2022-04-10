@@ -1,0 +1,27 @@
+.NavBarGeneral{
+  align-items: center;
+  backface-visibility: hidden;
+  background-color:#6200EE;
+  height: 70px;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  margin-bottom: 5px;
+  padding-top: 16px;
+  padding-left: 32px;
+
+  &__Logo {
+    height: 60px;
+    margin-right: auto;
+
+    & img {
+      height: 100%;
+    }
+  }
+
+
+  
+}

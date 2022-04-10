@@ -8,4 +8,10 @@
         box-shadow:         1px 0px 4px 0px rgba(50, 50, 50, 0.37);
     }
 
+    @media only screen and (max-width: 600px) {
+        &__Phone{
+            width: 50px !important;
+
+        }
+    }
 }

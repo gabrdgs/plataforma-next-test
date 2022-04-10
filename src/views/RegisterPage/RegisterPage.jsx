@@ -22,7 +22,8 @@ import Styles from './RegisterPage.module.scss'
 
 import { SelectOption } from '../../components/SelectOption';
 import { Container } from '../../components/Container';
-import { NavigationBar } from '../../components/NavigationBar';
+import { NavBarGeneral } from '../../components/NavBarGeneral';
+import { ButtonModel } from '../../components/ButtonModel';
 
 import areasList from './AreasList';
 import subareasList from './SubareasList';
@@ -59,7 +60,8 @@ export default function RegisterPage({}) {
     setCurrent(current - 1);
   };
   return (
-    <Fragment>
+      <Fragment>
+      <NavBarGeneral/>
       <Container width="full">
       <Row align="middle" justify="center">
         <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
@@ -76,19 +78,23 @@ export default function RegisterPage({}) {
               <Row justify="end" align="middle">
                 <Space size={5}>
                   {current < contentSteps.length - 1 && (
-                      <Button type="primary" onClick={() => next()}>
+                      <ButtonModel color="quinary"
+                      width='small' type="primary" onClick={() => next()}>
                         Avançar
-                      </Button>
+                      </ButtonModel>
                   )}
-                  {current > 0 && <Button onClick={() => prev()}>Anterior</Button>}
+                  {current > 0 && <ButtonModel color="quinary"
+                      width='small' onClick={() => prev()}>Anterior</ButtonModel>}
                   {current === contentSteps.length - 1 && (
-                    <Button
+                    <ButtonModel
+                      color="quinary"
+                      width='small'
                       type="primary"
                       onClick={() => message.success('Sucesso! Seu cadastro foi realizado.')}
                       href = {user === 1 ? "/onboarding-seed" : "/onboarding-mentor"}
                     >
                       Enviar
-                    </Button>
+                    </ButtonModel>
                   )}
                 </Space>
               </Row>
@@ -163,12 +169,13 @@ function FirstStep(props) {
           </Form.Item>
         </Col>
         <Col {...layoutCols}>
-        <Form.Item
-        label="Número de Celular"
+        <Form.Item 
+        
+        label="Celular"
         required
         tooltip="Seu número de telefone oficial para que possamos nos comunicar caso necessário, utilize o número do Whatsapp para facilitar a comunicação"
       >
-        <PhoneInput country={'br'} value={phoneNumber} onChange={(phone) => setPhone(phone)} />
+        <PhoneInput className={Styles.RegisterPage__Phone}  country={'br'} value={phoneNumber} onChange={(phone) => setPhone(phone)} />
       </Form.Item>
       </Col>
       </Row>
