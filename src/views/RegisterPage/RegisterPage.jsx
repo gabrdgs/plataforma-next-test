@@ -78,18 +78,19 @@ export default function RegisterPage({}) {
               <Row justify="end" align="middle">
                 <Space size={5}>
                   {current < contentSteps.length - 1 && (
-                      <ButtonModel color="quinary"
+                      <ButtonModel color="quinary" className={Styles.RegisterPage__Button}
                       width='small' type="primary" onClick={() => next()}>
                         Avançar
                       </ButtonModel>
                   )}
-                  {current > 0 && <ButtonModel color="quinary"
+                  {current > 0 && <ButtonModel color="quinary" className={Styles.RegisterPage__Button}
                       width='small' onClick={() => prev()}>Anterior</ButtonModel>}
                   {current === contentSteps.length - 1 && (
                     <ButtonModel
                       color="quinary"
                       width='small'
                       type="primary"
+                      className={Styles.RegisterPage__Button}
                       onClick={() => message.success('Sucesso! Seu cadastro foi realizado.')}
                       href = {user === 1 ? "/onboarding-seed" : "/onboarding-mentor"}
                     >
@@ -203,6 +204,12 @@ function FirstStep(props) {
           </Form.Item>
         </Col>
       </Row>
+      <Form.Item required label="Qual projeto você participa ?" tooltip="Você pode nos indicar de qual projeto você esta participando ?">
+            <Select>
+              <Select.Option value={0}>Processo Seletivo 2022</Select.Option>
+              <Select.Option value={1}>PlantYou AllYear - Direito</Select.Option>
+            </Select>
+      </Form.Item>
       <Form.Item required label="Escolaridade" tooltip="Qual meu nível de escolaridade? Até quais desses níveis eu fui?">
         <SelectOption
           list={academicList}
