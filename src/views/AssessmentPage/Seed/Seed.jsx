@@ -114,7 +114,7 @@ const firstWheel = [
     gif: 'https://media.giphy.com/media/xT5LMXR7iA0mSSxOBG/giphy.gif',
   },
   {
-    title: 'Capital Cultural',
+    title: 'Atividade Física',
     subtitle: 'Com base no nível neutro, como você avalia a sua prática de exercícios físicos?',
     neutral:
       'Sei a importância da prática de exercícios físicos como fonte de energia para o melhor funcionamento do meu corpo e mente e tento os praticar pelo menos 3 vezes na semana.',
