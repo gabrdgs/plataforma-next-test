@@ -158,8 +158,7 @@ function FirstStep(props) {
           placeholder="xxx.xxx.xxx-xx"
         />
       </Form.Item>
-      <Row gutter={12}>
-        <Col {...layoutCols}>
+    
           <Form.Item
             label="Seu Email"
             required
@@ -167,9 +166,9 @@ function FirstStep(props) {
           >
             <Input placeholder="Email" />
           </Form.Item>
-        </Col>
-        <Col {...layoutCols}>
-          <Form.Item
+      <Row>
+        <Col  {...layoutCols}>
+        <Form.Item
             label="Celular"
             required
             tooltip="Seu número de telefone oficial para que possamos nos comunicar caso necessário, utilize o número do Whatsapp para facilitar a comunicação"
@@ -182,17 +181,7 @@ function FirstStep(props) {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row>
-        <Col span={24}>
-          <Form.Item
-            label="Celular"
-            required
-            tooltip="Seu número de telefone oficial para que possamos nos comunicar caso necessário, utilize o número do Whatsapp para facilitar a comunicação"
-          >
-            <CountriesList />
-          </Form.Item>
-        </Col>
+  
       </Row>
       <Row gutter={12}>
         <Col {...layoutCols}>
