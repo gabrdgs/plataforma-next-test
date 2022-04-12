@@ -8,7 +8,6 @@ import {
   message,
   Form,
   Input,
-  Button,
   Select,
   DatePicker,
 } from 'antd';
@@ -29,6 +28,7 @@ import areasList from './AreasList';
 import subareasList from './SubareasList';
 import coursesList from './CoursesList';
 import universitiesList from './UniversitiesList';
+import CountriesList from './CountriesList';
 
 const { Step } = Steps;
 
@@ -136,53 +136,71 @@ function FirstStep(props) {
   };
 
   return (
-    <Form form = {form} layout="vertical" scrollToFirstError onFinish={onFinish} >
+    <Form form={form} layout="vertical" scrollToFirstError onFinish={onFinish}>
       <Row gutter={12}>
         <Col {...layoutCols}>
-          <Form.Item
-            label=" "
-            required
-            rules={[{required: true}]}
-          >
+          <Form.Item label=" " required rules={[{ required: true }]}>
             <Input required placeholder="Nome" />
           </Form.Item>
         </Col>
         <Col {...layoutCols}>
-          <Form.Item  
-            required
-            label=" "
-          >
+          <Form.Item required label=" ">
             <Input placeholder="Último nome" />
           </Form.Item>
         </Col>
       </Row>
       <Form.Item label="CPF" required tooltip="Preencha esse campo com seu número de CPF">
-        <Input maxLength="11" minLength="11" name="documentId" showCount placeholder = "xxx.xxx.xxx-xx"/>
+        <Input
+          maxLength="11"
+          minLength="11"
+          name="documentId"
+          showCount
+          placeholder="xxx.xxx.xxx-xx"
+        />
       </Form.Item>
       <Row gutter={12}>
         <Col {...layoutCols}>
           <Form.Item
-          label = "Seu Email"
-          required
-          tooltip="Preencha aqui com seu melhor endereço de e-mail"
+            label="Seu Email"
+            required
+            tooltip="Preencha aqui com seu melhor endereço de e-mail"
           >
             <Input placeholder="Email" />
           </Form.Item>
         </Col>
         <Col {...layoutCols}>
-        <Form.Item 
-        
-        label="Celular"
-        required
-        tooltip="Seu número de telefone oficial para que possamos nos comunicar caso necessário, utilize o número do Whatsapp para facilitar a comunicação"
-      >
-        <PhoneInput className={Styles.RegisterPage__Phone}  country={'br'} value={phoneNumber} onChange={(phone) => setPhone(phone)} />
-      </Form.Item>
-      </Col>
+          <Form.Item
+            label="Celular"
+            required
+            tooltip="Seu número de telefone oficial para que possamos nos comunicar caso necessário, utilize o número do Whatsapp para facilitar a comunicação"
+          >
+            <PhoneInput
+              className={Styles.RegisterPage__Phone}
+              country={'br'}
+              value={phoneNumber}
+              onChange={(phone) => setPhone(phone)}
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={24}>
+          <Form.Item
+            label="Celular"
+            required
+            tooltip="Seu número de telefone oficial para que possamos nos comunicar caso necessário, utilize o número do Whatsapp para facilitar a comunicação"
+          >
+            <CountriesList />
+          </Form.Item>
+        </Col>
       </Row>
       <Row gutter={12}>
         <Col {...layoutCols}>
-          <Form.Item required label="Quero ser" tooltip="Você está se inscrevendo para ajudar jovens na função de mentor ou para ser um jovem mentorado?">
+          <Form.Item
+            required
+            label="Quero ser"
+            tooltip="Você está se inscrevendo para ajudar jovens na função de mentor ou para ser um jovem mentorado?"
+          >
             <Select onChange={(user) => props.setUser(user)}>
               <Select.Option value={0}>Mentor(a)</Select.Option>
               <Select.Option value={1}>Mentorado(a)</Select.Option>
@@ -190,10 +208,11 @@ function FirstStep(props) {
           </Form.Item>
         </Col>
         <Col {...layoutCols}>
-          <Form.Item 
-          required
-          label="Data de Nascimento"
-          tooltip="O dia em que você nasceu, o campo será ordenado automaticamente ao digitar a data">
+          <Form.Item
+            required
+            label="Data de Nascimento"
+            tooltip="O dia em que você nasceu, o campo será ordenado automaticamente ao digitar a data"
+          >
             <DatePicker
               placeholder="Selecione uma data"
               style={{
@@ -204,13 +223,21 @@ function FirstStep(props) {
           </Form.Item>
         </Col>
       </Row>
-      <Form.Item required label="Qual projeto você participa ?" tooltip="Você pode nos indicar de qual projeto você esta participando ?">
-            <Select>
-              <Select.Option value={0}>Processo Seletivo 2022</Select.Option>
-              <Select.Option value={1}>PlantYou AllYear - Direito</Select.Option>
-            </Select>
+      <Form.Item
+        required
+        label="Qual projeto você participa ?"
+        tooltip="Você pode nos indicar de qual projeto você esta participando ?"
+      >
+        <Select>
+          <Select.Option value={0}>Processo Seletivo 2022</Select.Option>
+          <Select.Option value={1}>PlantYou AllYear - Direito</Select.Option>
+        </Select>
       </Form.Item>
-      <Form.Item required label="Escolaridade" tooltip="Qual meu nível de escolaridade? Até quais desses níveis eu fui?">
+      <Form.Item
+        required
+        label="Escolaridade"
+        tooltip="Qual meu nível de escolaridade? Até quais desses níveis eu fui?"
+      >
         <SelectOption
           list={academicList}
           value={academicList}
