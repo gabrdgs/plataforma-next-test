@@ -155,7 +155,7 @@ function FirstStep(props) {
           minLength="11"
           name="documentId"
           showCount
-          placeholder="xxx.xxx.xxx-xx"
+          placeholder="XXX.XXX.XXX-XX"
         />
       </Form.Item>
     

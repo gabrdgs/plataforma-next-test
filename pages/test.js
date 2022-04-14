@@ -8,11 +8,6 @@ import { ButtonModel } from '../src/components/ButtonModel';
 
 const { Step } = Steps;
 
-const schema = yup.object().shape({
-  name: yup.string().required(),
-  lastname: yup.number().required().positive().integer().max(11).min({limit: 11 | Ref, message: string})
-});
-
 export default function RegisterPage({}) {
   const [current, setCurrent] = useState(0);
   const [data, setData] = useState({});
@@ -76,6 +71,7 @@ export default function RegisterPage({}) {
 
 function FirstStep(props) {
   const [form] = Form.useForm();
+  const [cpfNumber, setCpfNumber] = useState('');
 
   const onCheck = async () => {
     try {
@@ -85,6 +81,15 @@ function FirstStep(props) {
   const layoutCols = {
     xs: { span: 24 },
     sm: { span: 12 },
+  };
+
+  const cpfMask = (value) => {
+    return value
+      .replace(/\D/g, '')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+      .replace(/(-\d{2})\d+?$/, '$1');
   };
 
   return (
@@ -105,8 +110,27 @@ function FirstStep(props) {
           </Form.Item>
         </Col>
         <Col {...layoutCols}>
-          <Form.Item name="lastname" label=" ">
-            <Input placeholder="Último nome" />
+          <Form.Item
+            name="cpf"
+            label=" "
+            rules={[
+              {
+                required: true,
+                message: 'Apenas números',
+                pattern: new RegExp(/^[0-9]+$/),
+              },
+            ]}
+          >
+            <Input
+              placeholder="cpf"
+              minLength={11}
+              status="Utilize 11 dígitos"
+              value={cpfNumber}
+              onChange={(e) => {
+                setCpfNumber(cpfMask(e.target.value));
+              }}
+            />
+            <p hidden>{cpfNumber}</p>
           </Form.Item>
         </Col>
       </Row>
