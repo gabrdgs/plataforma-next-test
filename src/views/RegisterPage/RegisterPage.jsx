@@ -184,7 +184,12 @@ function FirstStep(props) {
   };
 
   return (
-    <Form form={form} layout="vertical" onFinish={props.onSucess} scrollToFirstError>
+    <Form
+      form={form}
+      layout="vertical"
+      onFinish={props.onSucess}
+      scrollToFirstError
+    >
       <Row gutter={12}>
         <Col {...layoutCols}>
           <Form.Item name="name" label=" " rules={rules.name}>
