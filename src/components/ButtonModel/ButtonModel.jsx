@@ -14,11 +14,9 @@ export default function ButtonModel({
   danger = false,
   href = '',
   onClick,
-  htmlType,
 }) {
-
-  const ButtonConfig = () => {
-    return (
+  return href ? (
+    <Link href={href} passHref>
       <Button
         className={styles.ButtonModel}
         data-border={border}
@@ -29,18 +27,23 @@ export default function ButtonModel({
         data-align={align}
         danger={danger}
         onClick={onClick}
-        htmlType={htmlType}
       >
         {children}
       </Button>
-    );
-  }
-
-  return href ? (
-    <Link href={href} passHref>
-      <ButtonConfig />
     </Link>
   ) : (
-    <ButtonConfig />
+    <Button
+      className={styles.ButtonModel}
+      data-border={border}
+      data-width={width}
+      data-height={height}
+      data-color={color}
+      disabled={disabled}
+      data-align={align}
+      danger={danger}
+      onClick={onClick}
+    >
+      {children}
+    </Button>
   );
 }
