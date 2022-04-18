@@ -1,0 +1,28 @@
+<Row justify="end" align="middle">
+        <Space size={5}>
+          <Col>
+        <Form.Item>
+          <ButtonModel
+            color="quinary"
+            width="small"
+            type="primary"
+            htmlType="submit"
+          >
+            Anterior
+          </ButtonModel>
+          </Form.Item>
+          </Col>
+          <Col>
+          <Form.Item>
+          <ButtonModel
+            color="quinary"
+            width="small"
+            type="primary"
+            htmlType="submit"
+          >
+            Enviar
+          </ButtonModel>
+        </Form.Item>
+          </Col>
+        </Space>
+      </Row>
