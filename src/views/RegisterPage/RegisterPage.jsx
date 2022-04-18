@@ -1,18 +1,5 @@
-import React, { Fragment, useState, useEffect, useCallback } from 'react';
-import {
-  Row,
-  Col,
-  Card,
-  Steps,
-  Space,
-  message,
-  Form,
-  Input,
-  Select,
-  DatePicker,
-  InputNumber,
-} from 'antd';
-import 'antd/dist/antd.css';
+import React, { Fragment, useState, useCallback } from 'react';
+import { Row, Col, Card, Steps, Space, message, Form, Input, Select, InputNumber } from 'antd';
 import { LinkedinFilled } from '@ant-design/icons';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -20,7 +7,7 @@ import 'moment/locale/zh-cn';
 
 import Styles from './RegisterPage.module.scss';
 
-import { SelectOption } from '../../components/SelectOption';
+import { FormSelect } from '../../components/FormSelect';
 import { Container } from '../../components/Container';
 import { NavBarGeneral } from '../../components/NavBarGeneral';
 import { ButtonModel } from '../../components/ButtonModel';
@@ -34,6 +21,114 @@ const MAX_AREA = 3;
 const MAX_SUBAREA = 10;
 
 const { Step } = Steps;
+
+const rules = {
+  name: [
+    {
+      required: true,
+      pattern: /^[ a-zA-ZÀ-ÿ\u00f1\u00d1]*$/,
+      message: 'Por favor, preencha seu nome!',
+    },
+  ],
+  lastname: [
+    {
+      required: true,
+      pattern: /^[ a-zA-ZÀ-ÿ\u00f1\u00d1]*$/,
+      message: 'Por favor, preencha seu último nome!',
+    },
+  ],
+  email: [
+    {
+      required: true,
+      type: 'email',
+      message: 'Digite um e-mail válido',
+    },
+  ],
+  cpf: [
+    {
+      required: true,
+      pattern: /^(?:\d*)$/,
+      message: '',
+    },
+    {
+      validator: (_, value) => cpfValidator(value),
+      message: 'Digite um CPF válido!',
+    },
+  ],
+  phoneNumber: [
+    {
+      required: true,
+      message: 'Digite um número telefone de válido',
+    },
+  ],
+  select: [
+    {
+      required: true,
+      message: 'Escolha uma opção',
+    },
+  ],
+  day: [
+    {
+      required: true,
+      message: '',
+      pattern: /^(?:\d*)$/,
+    },
+    {
+      validator: (_, value) => {
+        if (value > 0 && value <= 31) return Promise.resolve();
+        else return Promise.reject('Date is invalid');
+      },
+      message: 'Data inválida',
+    },
+  ],
+  linkedin: [
+    {
+      required: true,
+      validator: (_, value) => linkedinValidator(value),
+      message: 'Digite uma URL válida para o seu perfil LinkedIn',
+    },
+  ],
+  select: [
+    {
+      required: true,
+      message: 'Escolha uma opção',
+    },
+  ],
+  selectArea: [
+    {
+      required: true,
+      message: 'Escolha ao menos uma opção',
+    },
+    {
+      type: 'array',
+      max: MAX_AREA,
+      message: `Escolha no máximo ${MAX_AREA} opções`,
+    },
+  ],
+  selectSubarea: [
+    {
+      required: true,
+      message: 'Escolha ao menos uma opção',
+    },
+    {
+      type: 'array',
+      max: MAX_SUBAREA,
+      message: `Escolha no máximo ${MAX_SUBAREA} opções`,
+    },
+  ],
+  company: [
+    {
+      required: true,
+      message: 'Digite a empresa em que você trabalha',
+    },
+  ],
+  position: [
+    {
+      required: true,
+      message: 'Digite o cargo que você ocupa',
+    },
+  ],
+};
 
 export default function RegisterPage({}) {
   const [current, setCurrent] = useState(0);
@@ -112,7 +207,6 @@ function FirstStep(props) {
     { value: 'Doutorado' },
     { value: 'Pós-Doutorado' },
   ];
-
   const layoutCols = {
     xs: { span: 24 },
     sm: { span: 12 },
@@ -123,65 +217,6 @@ function FirstStep(props) {
       const values = await form.validateFields();
       console.log(values);
     } catch (errorInfo) {}
-  };
-
-  const rules = {
-    name: [
-      {
-        required: true,
-        pattern: /^[ a-zA-ZÀ-ÿ\u00f1\u00d1]*$/,
-        message: 'Por favor, preencha seu nome!',
-      },
-    ],
-    lastname: [
-      {
-        required: true,
-        pattern: /^[ a-zA-ZÀ-ÿ\u00f1\u00d1]*$/,
-        message: 'Por favor, preencha seu último nome!',
-      },
-    ],
-    email: [
-      {
-        required: true,
-        type: 'email',
-        message: 'Digite um e-mail válido',
-      },
-    ],
-    cpf: [
-      {
-        required: true,
-        pattern: /^(?:\d*)$/,
-        message: '',
-      },
-      {
-        validator: (_, value) => cpfValidator(value),
-        message: 'Digite um cpf válido!',
-      },
-    ],
-    phoneNumber: [
-      {
-        required: true,
-        message: 'Digite um número telefone de válido',
-      },
-    ],
-    select: [
-      {
-        required: true,
-        message: 'Escolha uma opção',
-      },
-    ],
-    birthdate: [
-      {
-        required: true,
-        message: 'Digite uma data válida de nascimento',
-      },
-    ],
-    linkedin: [
-      {
-        type: 'url',
-        message: 'Digite uma url válida',
-      },
-    ],
   };
 
   return (
@@ -198,7 +233,7 @@ function FirstStep(props) {
           </Form.Item>
         </Col>
       </Row>
-      <Form.Item label="CPF" required tooltip="Preencha esse campo com seu número de CPF">
+      <Form.Item label="CPF" tooltip="Preencha esse campo com seu número de CPF">
         <Form.Item name="cpf" noStyle rules={rules.cpf}>
           <InputNumber
             style={{ width: '100%', height: '32px' }}
@@ -247,7 +282,7 @@ function FirstStep(props) {
             label="Quero ser"
             tooltip="Você está se inscrevendo para ajudar jovens na função de mentor ou para ser um jovem mentorado?"
           >
-            <Select onChange={(user) => props.setUser(user)}>
+            <Select onChange={(user) => props.setUser(user)} allowClear>
               <Select.Option value={0}>Mentor(a)</Select.Option>
               <Select.Option value={1}>Mentorado(a)</Select.Option>
             </Select>
@@ -255,18 +290,38 @@ function FirstStep(props) {
         </Col>
         <Col {...layoutCols}>
           <Form.Item
-            name="birthdate"
-            rules={rules.birthdate}
             label="Data de Nascimento"
-            tooltip="O dia em que você nasceu, o campo será ordenado automaticamente ao digitar a data"
+            tooltip="Digite o dia (DD), mês (MM) e ano (AAAA) do seu nascimento"
           >
-            <DatePicker
-              placeholder="Selecione uma data"
-              style={{
-                width: '100%',
-              }}
-              format={['DD-MM-YYYY', 'DD-MM-YY']}
-            />
+            <Input.Group>
+              <Row gutter={6}>
+                <Col span={7}>
+                  <FormSelect
+                    placeholder="DD"
+                    name="day"
+                    rules={rules.day}
+                    list={Array.from({ length: 31 }, (_, i) => i + 1)}
+                    isArrayOfObjects={false}
+                  />
+                </Col>
+                <Col span={7}>
+                  <FormSelect
+                    placeholder="MM"
+                    name="month"
+                    list={Array.from({ length: 12 }, (_, i) => i + 1)}
+                    isArrayOfObjects={false}
+                  />
+                </Col>
+                <Col span={10}>
+                  <FormSelect
+                    placeholder="AAAA"
+                    name="year"
+                    list={Array.from({ length: 123 }, (_, i) => i + 1900)}
+                    isArrayOfObjects={false}
+                  />
+                </Col>
+              </Row>
+            </Input.Group>
           </Form.Item>
         </Col>
       </Row>
@@ -276,36 +331,18 @@ function FirstStep(props) {
         label="Qual projeto você participa ?"
         tooltip="Você pode nos indicar de qual projeto você esta participando ?"
       >
-        <Select>
+        <Select allowClear>
           <Select.Option value={0}>Processo Seletivo 2022</Select.Option>
           <Select.Option value={1}>PlantYou AllYear - Direito</Select.Option>
         </Select>
       </Form.Item>
-      <Form.Item
-        name="schooling"
-        label="Escolaridade"
-        tooltip="Qual meu nível de escolaridade? Até quais desses níveis eu fui?"
-        rules={rules.select}
-      >
-        <Select
-          showSearch
-          optionFilterProp="children"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-        >
-          {academicList.map((item, index) => (
-            <Select.Option value={item.value} key={`item-${index}`}>
-              {item.value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
+      <FormSelect name="schooling" rules={rules.select} label="Escolaridade" list={academicList} />
       <Form.Item
         label="Linkedin"
         name="linkedin"
         rules={rules.linkedin}
-        tooltip="Cole aqui o link do seu perfil do LinkedIn, caso tenha uma conta"
+        tooltip="Cole aqui o link do seu perfil LinkedIn, caso tenha uma conta"
+        placeholder="https://www.linkedin.com/in/exemplo"
       >
         <Input prefix={<LinkedinFilled />} />
       </Form.Item>
@@ -370,50 +407,25 @@ const cpfValidator = (value) => {
   return Promise.resolve();
 };
 
+const isRegexExactMatch = (value, regexp) => {
+  const res = value.match(regexp);
+  return res && res[0] && res[0] === res.input;
+};
+
+const linkedinValidator = (value) => {
+  const linkedInProfileURLRegExp =
+    '(https?:\\/\\/(www.)?linkedin.com\\/(mwlite\\/|m\\/)?in\\/[a-zA-Z0-9_.-]+\\/?)';
+  const valueOptions = [`${value}`, `https://www.${value}`, `https://www.linkedin.com/${value}`];
+
+  const res = valueOptions.some((item) => {
+    return isRegexExactMatch(item, linkedInProfileURLRegExp);
+  });
+  if (res) return Promise.resolve();
+  return Promise.reject('URL Inválida');
+};
+
 function SecondStepMentor(props) {
   const [form] = Form.useForm();
-  const rules = {
-    select: [
-      {
-        required: true,
-        message: 'Escolha uma opção',
-      },
-    ],
-    selectArea: [
-      {
-        required: true,
-        message: 'Escolha ao menos uma opção',
-      },
-      {
-        type: 'array',
-        max: MAX_AREA,
-        message: `Escolha no máximo ${MAX_AREA} opções`,
-      },
-    ],
-    selectSubarea: [
-      {
-        required: true,
-        message: 'Escolha ao menos uma opção',
-      },
-      {
-        type: 'array',
-        max: MAX_SUBAREA,
-        message: `Escolha no máximo ${MAX_SUBAREA} opções`,
-      },
-    ],
-    company: [
-      {
-        required: true,
-        message: 'Digite a empresa em que você trabalha',
-      },
-    ],
-    position: [
-      {
-        required: true,
-        message: 'Digite o cargo que você ocupa',
-      },
-    ],
-  };
   const onCheck = async () => {
     try {
       const values = await form.validateFields();
@@ -424,83 +436,29 @@ function SecondStepMentor(props) {
 
   return (
     <Form form={form} layout="vertical" onFinish={props.onSucess} scrollToFirstError>
-      <Form.Item rules={rules.select} name="college" label="Instituição de Ensino">
-        <Select
-          showSearch
-          optionFilterProp="children"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-          rules={rules.select}
-        >
-          {universitiesList.map((item, index) => (
-            <Select.Option value={item.value} key={`item-${index}`}>
-              {item.value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-      <Form.Item rules={rules.select} name="course" label="Curso de Formação">
-        <Select
-          showSearch
-          optionFilterProp="children"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-          rules={rules.select}
-        >
-          {coursesList.map((item, index) => (
-            <Select.Option value={item.value} key={`item-${index}`}>
-              {item.value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        rules={rules.selectArea}
+      <FormSelect
+        name="college"
+        rules={rules.select}
+        label="Instituição de Ensino"
+        list={universitiesList}
+      />
+      <FormSelect name="course" rules={rules.select} label="Curso de Formação" list={coursesList} />
+      <FormSelect
         name="area"
+        rules={rules.selectArea}
         label="Área de Atuação"
-        tooltip={`Máximo ${MAX_AREA} opções`}
-      >
-        <Select
-          showSearch
-          optionFilterProp="children"
-          mode="multiple"
-          name="area"
-          maxTagCount="responsive"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-        >
-          {areasList.map((item, index) => (
-            <Select.Option value={item.value} key={`item-${index}`}>
-              {item.value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        rules={rules.selectSubarea}
+        list={areasList}
+        tooltip={`Selecione as áreas profissionais em que você atua/trabalha. Máximo ${MAX_AREA} opções`}
+        mode="multiple"
+      />
+      <FormSelect
         name="subarea"
+        rules={rules.selectSubarea}
         label="Subárea de Atuação"
-        tooltip={`Máximo ${MAX_SUBAREA} opções`}
-      >
-        <Select
-          showSearch
-          optionFilterProp="children"
-          mode="multiple"
-          maxTagCount="responsive"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-        >
-          {subareasList.map((item, index) => (
-            <Select.Option value={item.value} key={`item-${index}`}>
-              {item.value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
+        list={subareasList}
+        tooltip={`Selecione as áreas profissionais específicas em que você atua/trabalha. Máximo ${MAX_SUBAREA} opções`}
+        mode="multiple"
+      />
       <Form.Item
         rules={rules.company}
         name="company"
@@ -543,36 +501,6 @@ function SecondStepMentor(props) {
 
 function SecondStepSeed(props) {
   const [form] = Form.useForm();
-  const rules = {
-    select: [
-      {
-        required: true,
-        message: 'Escolha uma opção',
-      },
-    ],
-    selectArea: [
-      {
-        required: true,
-        message: 'Escolha ao menos uma opção',
-      },
-      {
-        type: 'array',
-        max: MAX_AREA,
-        message: `Escolha no máximo ${MAX_AREA} opções`,
-      },
-    ],
-    selectSubarea: [
-      {
-        required: true,
-        message: 'Escolha ao menos uma opção',
-      },
-      {
-        type: 'array',
-        max: MAX_SUBAREA,
-        message: `Escolha no máximo ${MAX_SUBAREA} opções`,
-      },
-    ],
-  };
   const onCheck = async () => {
     try {
       const values = await form.validateFields();
@@ -582,83 +510,29 @@ function SecondStepSeed(props) {
   };
   return (
     <Form form={form} layout="vertical" onFinish={props.onSucess} scrollToFirstError>
-      <Form.Item rules={rules.select} name="college" label="Instituição de Ensino">
-        <Select
-          showSearch
-          optionFilterProp="children"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-          rules={rules.select}
-        >
-          {universitiesList.map((item, index) => (
-            <Select.Option value={item.value} key={`item-${index}`}>
-              {item.value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-      <Form.Item rules={rules.select} name="course" label="Curso de Formação">
-        <Select
-          showSearch
-          optionFilterProp="children"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-          rules={rules.select}
-        >
-          {coursesList.map((item, index) => (
-            <Select.Option value={item.value} key={`item-${index}`}>
-              {item.value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        rules={rules.selectArea}
+      <FormSelect
+        name="college"
+        rules={rules.select}
+        label="Instituição de Ensino"
+        list={universitiesList}
+      />
+      <FormSelect name="course" rules={rules.select} label="Curso de Formação" list={coursesList} />
+      <FormSelect
         name="area"
+        rules={rules.selectArea}
         label="Área de Interesse"
-        tooltip={`Máximo ${MAX_AREA} opções`}
-      >
-        <Select
-          showSearch
-          optionFilterProp="children"
-          mode="multiple"
-          name="area"
-          maxTagCount="responsive"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-        >
-          {areasList.map((item, index) => (
-            <Select.Option value={item.value} key={`item-${index}`}>
-              {item.value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        rules={rules.selectSubarea}
+        list={areasList}
+        tooltip={`Selecione as áreas profissionais em que você gostaria de atuar/trabalhar. Máximo ${MAX_AREA} opções`}
+        mode="multiple"
+      />
+      <FormSelect
         name="subarea"
+        rules={rules.selectSubarea}
         label="Subárea de Interesse"
-        tooltip={`Máximo ${MAX_SUBAREA} opções`}
-      >
-        <Select
-          showSearch
-          optionFilterProp="children"
-          mode="multiple"
-          maxTagCount="responsive"
-          filterOption={(input, option) =>
-            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-        >
-          {subareasList.map((item, index) => (
-            <Select.Option value={item.value} key={`item-${index}`}>
-              {item.value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
+        list={subareasList}
+        tooltip={`Selecione as áreas profissionais específicas em que você gostaria de atuar/trabalhar. Máximo ${MAX_SUBAREA} opções`}
+        mode="multiple"
+      />
       <Row justify="end" align="middle">
         <Space size={5}>
           <Form.Item>

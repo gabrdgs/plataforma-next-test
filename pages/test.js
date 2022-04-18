@@ -5,7 +5,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import 'moment/locale/zh-cn';
 
-import { SelectOption } from '../src/components/SelectOption';
+import { FormSelect } from '../src/components/FormSelect';
 import { Container } from '../src/components/Container';
 
 const academicList = [
@@ -92,7 +92,7 @@ export default function Test({}) {
                       </Col>
                     </Row>
                     <Form.Item label="Escolaridade" tooltip="Qual seu grau de instrução?">
-                      <SelectOption
+                      <FormSelect
                         list={academicList}
                         value={academicList}
                         showSearch

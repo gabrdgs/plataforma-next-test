@@ -25,7 +25,7 @@ export default function MenuModel(props) {
       <Menu onClick={props.onClick} selectedKeys={props.keyMenu} mode="horizontal">
         <Menu.Item>
           <Link href="/">
-            <Avatar size={36} src={<Image src={logoSemear} />} />
+            <Avatar size={36} src={<Image alt="Logo Semear"src={logoSemear} />} />
           </Link>
         </Menu.Item>
         {props.menuItems.map((item) => (
@@ -36,14 +36,14 @@ export default function MenuModel(props) {
         <Menu.SubMenu
           key="card-profile"
           style={{ position: 'absolute', right: 50 }}
-          title={<Avatar size={36} src={<Image src={user.imageProfile} />} />}
+          title={<Avatar size={36} src={<Image alt="Foto do Usuário" src={user.imageProfile} />} />}
         >
           <Card style={{ width: '400px' }}>
             <Menu.ItemGroup>
               <Link href={`/profile-${props.userType}`}>
                 <Row align="middle">
                   <Space size={20}>
-                    <Avatar size={96} src={<Image src={user.imageProfile} />} />
+                    <Avatar size={96} src={<Image alt="Foto do Usuário" src={user.imageProfile} />} />
                     <Col span={20}>
                       <Paragraph strong>{user.name}</Paragraph>
                       <Paragraph size="small">{subtitleUser}</Paragraph>
