@@ -14,8 +14,8 @@ const layout = {
       xxl: { span: 21 },
     },
     twoColumns: {
-      xs: { span: 10 },
-      sm: { span: 10 },
+      xs: { span: 21 },
+      sm: { span: 21 },
       md: { span: 8 },
       lg: { span: 8 },
       xl: { span: 8 },

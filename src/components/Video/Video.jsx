@@ -24,7 +24,7 @@ export default function Video({
     setIsModalVisible(false);
   };
 
-  const style = width == "middle" && { paddingTop: '30%' };
+  const style = width == "middle" && { paddingTop: '28%' };
 
   return (
     <div className={styles.Video} data-width={width} data-image={bgImage}>
