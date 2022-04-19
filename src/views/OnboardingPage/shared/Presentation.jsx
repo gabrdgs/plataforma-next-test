@@ -8,8 +8,6 @@ import { ParagraphModel } from '../../../components/ParagraphModel';
 import { ContainerModel } from '../../../components/ContainerModel';
 import { Video } from '../../../components/Video';
 import { ButtonModel } from '../../../components/ButtonModel';
-import { SocialMedia } from '../../../components/SocialMedia';
-import layout from './Layout';
 
 import handsImage from '../../../assets/images/onboardingPage/shared/hands.svg';
 import percentageStudents from '../../../assets/images/onboardingPage/shared/percentage-students.jpg';
@@ -19,25 +17,38 @@ import networking from '../../../assets/images/onboardingPage/shared/networking.
 import scholarship from '../../../assets/images/onboardingPage/shared/scholarship.jpg';
 import prosperityCycle from '../../../assets/images/onboardingPage/shared/prosperity-cycle.jpg';
 
+const PARAGRAPH_SPACE = 20;
+const CONTAINER_SPACE = 80;
+const ELEMENTS_SPACE = 40;
+const LAYOUT_ONECOLLUMN = {
+  xs: { span: 21 },
+  sm: { span: 21 },
+};
+const LAYOUT_TWOCOLLUMNS_TEXT = {
+  xs: { span: 13 },
+  sm: { span: 13 },
+};
+const LAYOUT_TWOCOLLUMNS_IMG = { xs: { span: 8 }, sm: { span: 8 } };
+const SIZE_IMAGE_TWOCOLLUMNS = { xs: { span: 18 }, sm: { span: 18 } };
 const CONTAINER_COLOR = 'greyFive';
 
-export default function Presentation({ onClick }) {
+export default function Presentation({}) {
   const pillarsContent = [
     {
       title: 'Bolsas',
-      image: <Image src={scholarship} alt="Bolsas auxilio" />,
+      image: <Image src={scholarship} passHref alt="Bolsas auxilio" />,
       subtitle: 'Bolsa com duração de 1 ano, ',
       text: 'que consiste em um auxílio financeiro durante o primeiro ano do jovem na universidade, para possibilitar mais foco nos estudos e menos preocupações financeiras.',
     },
     {
       title: 'Mentorias',
-      image: <Image src={mentoring} alt="Mentorias" />,
+      image: <Image src={mentoring} passHref alt="Mentorias" />,
       subtitle: 'A mentoria, ',
       text: 'que é o coração do Semear, sendo um suporte acadêmico, profissional e socioemocional durante a graduação com profissionais de sucesso de diversas empresas.',
     },
     {
       title: 'Rede de Contatos',
-      image: <Image src={networking} alt="Rede de contatos" />,
+      image: <Image src={networking} passHref alt="Rede de contatos" />,
       subtitle: 'Acesso a uma rede de contatos, ',
       text: 'onde os jovens encontrarão oportunidades profissionais, expansão da visão de mundo e consciência social por meio das conexões criadas.',
     },
@@ -47,10 +58,10 @@ export default function Presentation({ onClick }) {
     <Fragment>
       <NavBarGeneral />
       <ContainerModel color={CONTAINER_COLOR}>
-        <Space direction="vertical" size={layout.space.container} style={{ width: '100%' }}>
+        <Space direction="vertical" size={CONTAINER_SPACE} style={{ width: '100%' }}>
           <ContainerModel color="primary">
             <Row justify="center" align="middle" style={{ padding: '40px 0' }}>
-              <Col {...layout.columns.twoColumnTxt}>
+              <Col {...LAYOUT_TWOCOLLUMNS_TEXT}>
                 <HeadingModel level={1} color="primaryLight">
                   Seja bem vindo(a)!
                 </HeadingModel>
@@ -60,9 +71,9 @@ export default function Presentation({ onClick }) {
                   a sua primeira mentoria por meio da nossa plataforma.
                 </ParagraphModel>
               </Col>
-              <Col {...layout.columns.twoColumnImg}>
+              <Col {...LAYOUT_TWOCOLLUMNS_IMG}>
                 <Row justify="center">
-                  <Col {...layout.imageSize}>
+                  <Col {...SIZE_IMAGE_TWOCOLLUMNS }>
                     <Image src={handsImage} />
                   </Col>
                 </Row>
@@ -70,7 +81,7 @@ export default function Presentation({ onClick }) {
             </Row>
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
-            <Space direction="vertical" size={layout.space.elements} style={{ width: '100%' }}>
+            <Space direction="vertical" size={ELEMENTS_SPACE} style={{ width: '100%' }}>
               <Row justify="center">
                 <ParagraphModel size="large" color="default">
                   Para começar, assista ao vídeo a seguir e conheça mais sobre a nossa organização.
@@ -88,7 +99,7 @@ export default function Presentation({ onClick }) {
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
             <Row justify="center">
-              <Col {...layout.columns.twoColumnTxt}>
+              <Col {...LAYOUT_TWOCOLLUMNS_TEXT}>
                 <Space direction="vertical" size={20} style={{ width: '100%' }}>
                   <HeadingModel level={2} color="primary" underline>
                     Quem nós somos?
@@ -107,9 +118,9 @@ export default function Presentation({ onClick }) {
                   </ParagraphModel>
                 </Space>
               </Col>
-              <Col {...layout.columns.twoColumnImg}>
+              <Col {...LAYOUT_TWOCOLLUMNS_IMG}>
                 <Row justify="center">
-                  <Col {...layout.imageSize}>
+                  <Col {...SIZE_IMAGE_TWOCOLLUMNS }>
                     <Image src={percentageStudents} />
                   </Col>
                 </Row>
@@ -117,21 +128,17 @@ export default function Presentation({ onClick }) {
             </Row>
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
-            <Space direction="vertical" size={layout.space.elements} style={{ width: '100%' }}>
+            <Space direction="vertical" size={ELEMENTS_SPACE} style={{ width: '100%' }}>
               <Row justify="center" align="middle">
-                <Col {...layout.columns.twoColumnImg}>
+                <Col {...LAYOUT_TWOCOLLUMNS_IMG}>
                   <Row justify="center">
-                    <Col {...layout.imageSize}>
+                    <Col {...SIZE_IMAGE_TWOCOLLUMNS }>
                       <Image src={salaryGap} />
                     </Col>
                   </Row>
                 </Col>
-                <Col {...layout.columns.twoColumnTxt}>
-                  <Space
-                    direction="vertical"
-                    size={layout.space.paragraph}
-                    style={{ width: '100%' }}
-                  >
+                <Col {...LAYOUT_TWOCOLLUMNS_TEXT}>
+                  <Space direction="vertical" size={PARAGRAPH_SPACE} style={{ width: '100%' }}>
                     <ParagraphModel>
                       Quando um jovem de baixa renda quebra as barreiras sociais e adentra o Ensino
                       Superior, ele tem a chance de romper com esse ciclo vicioso e dar a
@@ -149,7 +156,7 @@ export default function Presentation({ onClick }) {
                 </Col>
               </Row>
               <Row justify="center">
-                <Col {...layout.columns.oneColumn}>
+                <Col {...LAYOUT_ONECOLLUMN}>
                   <ParagraphModel>
                     A partir desse cenário, o Semear reconhece que não há uma má distribuição de
                     talentos, mas sim uma má distribuição de oportunidades.
@@ -163,7 +170,7 @@ export default function Presentation({ onClick }) {
                 </Col>
               </Row>
               <Row justify="center">
-                <Col {...layout.columns.oneColumn}>
+                <Col {...LAYOUT_ONECOLLUMN}>
                   <Image src={prosperityCycle} />
                 </Col>
               </Row>
@@ -171,7 +178,7 @@ export default function Presentation({ onClick }) {
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
             <Row justify="center">
-              <Col {...layout.columns.oneColumn}>
+              <Col {...LAYOUT_ONECOLLUMN}>
                 <Space direction="vertical" size={20} style={{ width: '100%' }}>
                   <HeadingModel level={2} color="primary" underline>
                     Qual é a nossa missão?
@@ -192,7 +199,7 @@ export default function Presentation({ onClick }) {
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
             <Row justify="center">
-              <Col {...layout.columns.oneColumn}>
+              <Col {...LAYOUT_ONECOLLUMN}>
                 <Space direction="vertical" size={20} style={{ width: '100%' }}>
                   <HeadingModel level={3} color="primary">
                     E como fazemos isso?
@@ -206,7 +213,7 @@ export default function Presentation({ onClick }) {
                         </HeadingModel>
                         <Row justify="center">
                           <Col span={21}>
-                            <Space direction="vertical" size={layout.space.paragraph}>
+                            <Space direction="vertical" size={PARAGRAPH_SPACE}>
                               {item.image}
                               <ParagraphModel size="small">
                                 <strong>{item.subtitle}</strong>
@@ -224,18 +231,13 @@ export default function Presentation({ onClick }) {
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
             <Row justify="end" align="middle">
-              <Col span={layout.columns.oneColumn} pull={1}>
-                <ButtonModel color="quinary" width="default" type="primary" onClick={() => onClick(1)}>
-                  Avançar
-                </ButtonModel>
-              </Col>
+              <Col span={19} />
+              <ButtonModel color="quinary" width="small" type="primary">
+                Avançar
+              </ButtonModel>
             </Row>
           </ContainerModel>
-          <ContainerModel color="primary">
-            <Row justify="center" style={{ padding: '40px 0' }}>
-              <SocialMedia />
-            </Row>
-          </ContainerModel>
+          <ContainerModel color={CONTAINER_COLOR} />
         </Space>
       </ContainerModel>
     </Fragment>
