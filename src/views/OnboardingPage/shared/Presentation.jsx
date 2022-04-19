@@ -61,7 +61,7 @@ export default function Presentation({ onClick }) {
                 </ParagraphModel>
               </Col>
               <Col {...layout.columns.twoColumnImg}>
-                <Row justify="center">
+                <Row justify="center" style={{ transform: 'rotate(20deg)' }}>
                   <Col {...layout.imageSize}>
                     <Image src={handsImage} />
                   </Col>
@@ -72,23 +72,29 @@ export default function Presentation({ onClick }) {
           <ContainerModel color={CONTAINER_COLOR}>
             <Space direction="vertical" size={layout.space.elements} style={{ width: '100%' }}>
               <Row justify="center">
-                <ParagraphModel size="large" color="default">
-                  Para começar, assista ao vídeo a seguir e conheça mais sobre a nossa organização.
-                </ParagraphModel>
+                <Col {...layout.columns.oneColumn}>
+                  <ParagraphModel size="large" color="default">
+                    Para começar, assista ao vídeo a seguir e conheça mais sobre a nossa
+                    organização.
+                  </ParagraphModel>
+                </Col>
               </Row>
               <Row justify="center">
                 <Video
                   youtubeID="uJUhDhMRNqw"
                   title="Apresentação Institucional"
                   bgColor="primary"
+                  colorButton="primary"
+                  bgImage="tutorialone"
                   width="middle"
+                  
                 />
               </Row>
             </Space>
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
-            <Row justify="center">
-              <Col {...layout.columns.twoColumnTxt}>
+            <Row justify="space-around">
+              <Col {...layout.columns.twoColumnInfoText}>
                 <Space direction="vertical" size={20} style={{ width: '100%' }}>
                   <HeadingModel level={2} color="primary" underline>
                     Quem nós somos?
@@ -107,26 +113,18 @@ export default function Presentation({ onClick }) {
                   </ParagraphModel>
                 </Space>
               </Col>
-              <Col {...layout.columns.twoColumnImg}>
-                <Row justify="center">
-                  <Col {...layout.imageSize}>
-                    <Image src={percentageStudents} />
-                  </Col>
-                </Row>
+              <Col {...layout.columns.twoColumnInfo}>
+                <Image src={percentageStudents} />
               </Col>
             </Row>
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
             <Space direction="vertical" size={layout.space.elements} style={{ width: '100%' }}>
-              <Row justify="center" align="middle">
-                <Col {...layout.columns.twoColumnImg}>
-                  <Row justify="center">
-                    <Col {...layout.imageSize}>
-                      <Image src={salaryGap} />
-                    </Col>
-                  </Row>
+              <Row justify="space-around" align="middle">
+                <Col {...layout.columns.twoColumnInfo} order={0}>
+                  <Image src={salaryGap} />
                 </Col>
-                <Col {...layout.columns.twoColumnTxt}>
+                <Col {...layout.columns.twoColumnInfoText} order={1}>
                   <Space
                     direction="vertical"
                     size={layout.space.paragraph}
@@ -164,7 +162,9 @@ export default function Presentation({ onClick }) {
               </Row>
               <Row justify="center">
                 <Col {...layout.columns.oneColumn}>
-                  <Image src={prosperityCycle} />
+                  <Row justify="center">
+                    <Image src={prosperityCycle} />
+                  </Row>
                 </Col>
               </Row>
             </Space>
@@ -198,17 +198,17 @@ export default function Presentation({ onClick }) {
                     E como fazemos isso?
                   </HeadingModel>
                   <ParagraphModel strong>Atuamos à partir dos nossos 3 pilares:</ParagraphModel>
-                  <Row justify="space-around" gutter={48}>
+                  <Row justify="space-between">
                     {pillarsContent.map((item, index) => (
-                      <Col span={7} key={`pillar-${index + 1}`}>
+                      <Col {...layout.columns.threeColumns} key={`pillar-${index + 1}`}>
                         <HeadingModel level={3} color="orange" alignment="center">
                           {item.title}
                         </HeadingModel>
                         <Row justify="center">
-                          <Col span={21}>
+                          <Col span={22}>
                             <Space direction="vertical" size={layout.space.paragraph}>
                               {item.image}
-                              <ParagraphModel size="small">
+                              <ParagraphModel>
                                 <strong>{item.subtitle}</strong>
                                 {item.text}
                               </ParagraphModel>
@@ -224,15 +224,25 @@ export default function Presentation({ onClick }) {
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
             <Row justify="end" align="middle">
-              <Col span={layout.columns.oneColumn} pull={1}>
-                <ButtonModel color="quinary" width="default" type="primary" onClick={() => onClick(1)}>
-                  Avançar
-                </ButtonModel>
+              <Col {...layout.columns.oneColumn} pull={1}>
+                <Row justify="end" align="middle">
+                  <ButtonModel
+                    color="quinary"
+                    width="default"
+                    type="primary"
+                    onClick={() => {
+                      onClick(1);
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    Avançar
+                  </ButtonModel>
+                </Row>
               </Col>
             </Row>
           </ContainerModel>
           <ContainerModel color="primary">
-            <Row justify="center" style={{ padding: '40px 0' }}>
+            <Row justify="center" style={{ padding: '20px 0' }}>
               <SocialMedia />
             </Row>
           </ContainerModel>

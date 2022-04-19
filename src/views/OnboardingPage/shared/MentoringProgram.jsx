@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Row, Col, Space } from 'antd';
 import Image from 'next/image';
 
@@ -81,7 +81,8 @@ export default function MentoringProgram({ content, onClick, user }) {
                 youtubeID="Or5Im4742A0"
                 title="Direitos e Deveres do Mentor"
                 bgColor="primary"
-                bgImage="primary"
+                colorButton='primary'
+                bgImage={`tutorial${user}`}
                 width="middle"
               />
             </Row>
@@ -103,14 +104,14 @@ export default function MentoringProgram({ content, onClick, user }) {
                       jovem iniciante em sua jornada de desenvolvimento pessoal e profissional.
                     </strong>
                   </ParagraphModel>
-                  <Col span={8}>
+                  <Col xs={21} lg={13}>
                     <HeadingModel level={3} color="primary">
                       Sendo assim, algumas características de um bom mentor são:
                     </HeadingModel>
                   </Col>
                   <Row justify="space-around" gutter={48}>
                     {mentorCharacteristicsContent.map((item, index) => (
-                      <Col span={5} key={`caractheristic-${index + 1}`}>
+                      <Col {...layout.columns.fourColumns} key={`caractheristic-${index + 1}`}>
                         {item}
                       </Col>
                     ))}
@@ -120,8 +121,8 @@ export default function MentoringProgram({ content, onClick, user }) {
             </Row>
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
-            <Row justify="center">
-              <Col {...layout.columns.twoColumnTxt}>
+            <Row justify="space-around">
+              <Col {...layout.columns.twoColumnInfoText}>
                 <Space direction="vertical" size={layout.space.paragraph} style={{ width: '100%' }}>
                   <HeadingModel level={2} color="primary" underline>
                     Roda da Trilha
@@ -136,7 +137,7 @@ export default function MentoringProgram({ content, onClick, user }) {
                   </ParagraphModel>
                 </Space>
               </Col>
-              <Col {...layout.columns.twoColumnImg}>
+              <Col {...layout.columns.twoColumnInfo}>
                 <Row justify="center">
                   <Col {...layout.imageSize}>
                     <Image src={maslowPyramid} />
@@ -145,21 +146,16 @@ export default function MentoringProgram({ content, onClick, user }) {
               </Col>
             </Row>
           </ContainerModel>
-
           {wheelContent.map((item, index) => (
             <ContainerModel color="primaryLight" key={`wheel-${index + 1}`}>
               <Row align="middle">
-                <Col span={1} push={3}>
+                <Col span={1} push={2}>
                   {item.number}
                 </Col>
               </Row>
-              <Row style={{ padding: '20px 0' }} align="middle">
-                <Col span={11}>
-                  <Row justify="center">
-                    <Col {...layout.imageSize}>{item.image}</Col>
-                  </Row>
-                </Col>
-                <Col span={10}>
+              <Row align="middle" justify="space-around">
+                <Col {...layout.columns.twoColumns}>{item.image}</Col>
+                <Col {...layout.columns.twoColumns}>
                   <ParagraphModel size="large">{item.text}</ParagraphModel>
                 </Col>
               </Row>
@@ -167,8 +163,8 @@ export default function MentoringProgram({ content, onClick, user }) {
           ))}
 
           <ContainerModel color={CONTAINER_COLOR}>
-            <Row justify="center">
-              <Col {...layout.columns.twoColumnTxt}>
+            <Row justify="space-around">
+              <Col {...layout.columns.twoColumnInfoText}>
                 <Space direction="vertical" size={layout.space.paragraph} style={{ width: '100%' }}>
                   <HeadingModel level={2} color="primary" underline>
                     Assessment
@@ -176,12 +172,8 @@ export default function MentoringProgram({ content, onClick, user }) {
                   {content.assessment}
                 </Space>
               </Col>
-              <Col {...layout.columns.twoColumnImg}>
-                <Row justify="center">
-                  <Col {...layout.imageSize}>
-                    <Image src={assessmentGraphic} />
-                  </Col>
-                </Row>
+              <Col {...layout.columns.twoColumnInfo}>
+                <Image src={assessmentGraphic} />
               </Col>
             </Row>
           </ContainerModel>
@@ -215,28 +207,36 @@ export default function MentoringProgram({ content, onClick, user }) {
                       Agora que você já está por dentro de como funciona a mentoria aqui no Semear,
                       iremos te dizer seus próximos passos!
                     </ParagraphModel>
-                    {content.nextSteps}
                   </Space>
+                  {content.nextSteps}
                 </Col>
               </Row>
             </Space>
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
             <Row justify="end">
-              <Col pull={1}>
-                <Space size={10}>
-                  <ButtonModel color="quinaryText" type="primary" onClick={() => onClick(0)}>
+              <Col {...layout.columns.oneColumn} pull={1}>
+                <Row justify="end">
+                  <ButtonModel
+                    color="quinaryText"
+                    type="primary"
+                    onClick={() => {
+                      onClick(0);
+                      window.scrollTo(0, 0);
+                    }}
+                  >
                     Voltar
                   </ButtonModel>
+
                   <ButtonModel color="default" type="primary" href={`/assessment-${user}`}>
                     Fazer diagnóstico
                   </ButtonModel>
-                </Space>
+                </Row>
               </Col>
             </Row>
           </ContainerModel>
           <ContainerModel color="primary">
-            <Row justify="center" style={{ padding: '40px 0' }}>
+            <Row justify="center" style={{ padding: '20px 0' }}>
               <SocialMedia />
             </Row>
           </ContainerModel>

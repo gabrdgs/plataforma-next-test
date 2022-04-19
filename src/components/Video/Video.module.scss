@@ -1,27 +1,54 @@
 .Video {
-    background-repeat: no-repeat;
-    background-size:cover;
-    height: 430px;
-    border-radius: none;
+  background-repeat: no-repeat;
+  height: 450px;
+  border-radius: none;
+
+  &[data-width='default'] {
+    width: 100%;
+    background-size: cover;
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
-    
-    &[data-width="default"]{
-        width: 100%;
-    }
+  }
 
-    &[data-width="middle"]{
-        width: 65%;
-    }
-    
-    &[data-image='default']{
-        background-image: url('../../assets/images/landingPage/instituto-semear2.png');
-    }
+  &[data-width='middle'] {
+    width: 65%;
+    background-size: contain;
+  }
 
-    &[data-image='primary']{
-        background-image: url('../../assets/images/landingPage/instituto-semear.png');
-    }
+  &[data-image='default'] {
+    background-image: url('../../assets/images/landingPage/instituto-semear2.png');
+  }
+
+  &[data-image='primary'] {
+    background-image: url('../../assets/images/landingPage/instituto-semear.png');
+  }
+
+  &[data-image='tutorialone'] {
+    background-image: url('../../assets/images/onboardingPage/shared/tutorial-video-1.jpg');
+  }
+
+  &[data-image='tutorialseed'] {
+    background-image: url('../../assets/images/onboardingPage/shared/tutorial-video-seed.jpg');
+  }
+
+  &[data-image='tutorialmentor'] {
+    background-image: url('../../assets/images/onboardingPage/shared/tutorial-video-mentor.jpg');
+  }
 }
 
-
+.Button {
+  border: none;
+  &[data-color='default'] {
+    background-color: #3700b3;
+    color: white;
+  }
+  &[data-color='primary'] {
+    background-color: #6200ee;
+    color: white;
+  }
+  &[data-color='orange'] {
+    background-color: #f4511e;
+    color: white;
+  }
+}
