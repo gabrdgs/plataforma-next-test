@@ -8,32 +8,30 @@ import 'moment/locale/zh-cn';
 import Styles from './RegisterPage.module.scss';
 
 import { FormSelect } from '../../components/FormSelect';
-import { ContainerModel } from '../../components/ContainerModel';
+import { Container } from '../../components/Container';
 import { NavBarGeneral } from '../../components/NavBarGeneral';
 import { ButtonModel } from '../../components/ButtonModel';
-import { SocialMedia } from '../../components/SocialMedia';
 
 import areasList from './AreasList';
 import subareasList from './SubareasList';
 import coursesList from './CoursesList';
 import universitiesList from './UniversitiesList';
-import rules from './Rules';
+import rules from './Rules'
 
 const { Step } = Steps;
 
 const MAX_AREA = 3;
 const MAX_SUBAREA = 10;
 
-const userObj = {
-  0: 'mentor',
-  1: 'seed',
-};
-
 export default function RegisterPage({}) {
   const [form] = Form.useForm();
   const [current, setCurrent] = useState(0);
   const [data, setData] = useState({});
   const [user, setUser] = useState(0);
+
+  useEffect(() => {
+    console.log(form.getFieldsValue(true));
+  });
 
   const next = useCallback(
     (data) => {
@@ -52,10 +50,8 @@ export default function RegisterPage({}) {
   );
 
   const handleSubmit = useCallback((data) => {
-    setData(data);
-    message.success('Sucesso! Seu cadastro foi realizado.');
-    const valuesForm = form.getFieldsValue(true);
-    window.location.href = window.location.href = `/onboarding-${userObj[valuesForm.user]}`;
+    setData(data)
+     message.success('Sucesso! Seu cadastro foi realizado.');
   }, []);
 
   const propsSecondStep = {
@@ -63,41 +59,34 @@ export default function RegisterPage({}) {
     onSucess: handleSubmit,
     data: data,
     form: form,
-    user: user,
   };
-
-  const content = [
-    <FirstStep setUser={setUser} data={data} onSucess={next} form={form} />,
-    <SecondStep {...propsSecondStep} />,
-  ];
 
   return (
     <Fragment>
-      <ContainerModel width="full" color="greyFive">
-        <NavBarGeneral />
-        <Space direction="vertical" size={40} style={{ width: '100%' }}>
-          <ContainerModel width="full" color="greyFive">
-            <Row align="middle" justify="center">
-              <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
-                <Space direction="vertical" size={20} style={{ width: '100%' }}>
-                  <Steps current={current} responsive={false}>
-                    <Step key={`content-${1}`} />
-                    <Step key={`content-${2}`} />
-                  </Steps>
-                  <div className="steps-content">
-                    <Card className={Styles.RegisterPage__Card}>{content[current]}</Card>
-                  </div>
-                </Space>
-              </Col>
-            </Row>
-          </ContainerModel>
-          <ContainerModel color="primary">
-            <Row justify="center" style={{ padding: '20px 0' }}>
-              <SocialMedia />
-            </Row>
-          </ContainerModel>
-        </Space>
-      </ContainerModel>
+      <NavBarGeneral />
+      <Container width="full">
+        <Row align="middle" justify="center">
+          <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
+            <Space direction="vertical" size={20} style={{ width: '100%' }}>
+              <Steps current={current} responsive={false}>
+                <Step key={`content-${1}`} />
+                <Step key={`content-${2}`} />
+              </Steps>
+              <div className="steps-content">
+                <Card className={Styles.RegisterPage__Card}>
+                  {current === 0 ? (
+                    <FirstStep setUser={setUser} data={data} onSucess={next} form={form} />
+                  ) : user === 0 ? (
+                    <SecondStepMentor {...propsSecondStep} />
+                  ) : (
+                    <SecondStepSeed {...propsSecondStep} />
+                  )}
+                </Card>
+              </div>
+            </Space>
+          </Col>
+        </Row>
+      </Container>
     </Fragment>
   );
 }
@@ -165,7 +154,7 @@ function FirstStep(props) {
         <Input placeholder="Email" />
       </Form.Item>
       <Row>
-        <Col>
+        <Col {...layoutCols}>
           <Form.Item
             label="Celular"
             name="phoneNumber"
@@ -178,7 +167,7 @@ function FirstStep(props) {
               preferredCountries={['br']}
               value={phoneNumber}
               onChange={(phone) => setPhone(phone)}
-              inputStyle={{ width: '35vw' }}
+              inputStyle={{ width: '400px' }}
             />
           </Form.Item>
         </Col>
@@ -263,44 +252,17 @@ function FirstStep(props) {
   );
 }
 
-function SecondStep(props) {
+function SecondStepMentor(props) {
   const onCheck = async () => {
     try {
       const values = await props.forms.validateFields();
+      message.success('Sucesso! Seu cadastro foi realizado.');
       props.onSucess;
-      window.scrollTo(0, 0);
     } catch (errorInfo) {}
   };
+
   return (
     <Form form={props.form} layout="vertical" onFinish={props.onSucess} scrollToFirstError>
-      {props.user === 0 ? <SecondStepMentor /> : <SecondStepSeed />}
-      <Row justify="end" align="middle">
-        <Space size={5}>
-          <Form.Item>
-            <ButtonModel color="quinary" width="small" type="primary" onClick={props.onBack}>
-              Voltar
-            </ButtonModel>
-          </Form.Item>
-          <Form.Item>
-            <ButtonModel
-              color="quinary"
-              width="small"
-              type="primary"
-              htmlType="submit"
-              onClick={onCheck}
-            >
-              Enviar
-            </ButtonModel>
-          </Form.Item>
-        </Space>
-      </Row>
-    </Form>
-  );
-}
-
-function SecondStepMentor() {
-  return (
-    <Fragment>
       <FormSelect
         name="college"
         rules={rules.select}
@@ -340,13 +302,40 @@ function SecondStepMentor() {
       >
         <Input />
       </Form.Item>
-    </Fragment>
+      <Row justify="end" align="middle">
+        <Space size={5}>
+          <Form.Item>
+            <ButtonModel color="quinary" width="small" type="primary" onClick={props.onBack}>
+              Voltar
+            </ButtonModel>
+          </Form.Item>
+          <Form.Item>
+            <ButtonModel
+              color="quinary"
+              width="small"
+              type="primary"
+              htmlType="submit"
+              onClick={onCheck}
+            >
+              Enviar
+            </ButtonModel>
+          </Form.Item>
+        </Space>
+      </Row>
+    </Form>
   );
 }
 
-function SecondStepSeed() {
+function SecondStepSeed(props) {
+  const [form] = Form.useForm();
+  const onCheck = async () => {
+    try {
+      const values = await props.forms.validateFields();
+      props.onSucess;
+    } catch (errorInfo) {}
+  };
   return (
-    <Fragment>
+    <Form form={props.form} layout="vertical" onFinish={props.onSucess} scrollToFirstError>
       <FormSelect
         name="college"
         rules={rules.select}
@@ -370,7 +359,27 @@ function SecondStepSeed() {
         tooltip={`Selecione as áreas profissionais específicas em que você gostaria de atuar/trabalhar. Máximo ${MAX_SUBAREA} opções`}
         mode="multiple"
       />
-    </Fragment>
+      <Row justify="end" align="middle">
+        <Space size={5}>
+          <Form.Item>
+            <ButtonModel color="quinary" width="small" type="primary" onClick={props.onBack}>
+              Voltar
+            </ButtonModel>
+          </Form.Item>
+          <Form.Item>
+            <ButtonModel
+              color="quinary"
+              width="small"
+              type="primary"
+              htmlType="submit"
+              onClick={onCheck}
+            >
+              Enviar
+            </ButtonModel>
+          </Form.Item>
+        </Space>
+      </Row>
+    </Form>
   );
 }
 

@@ -1,30 +1,23 @@
-import React from 'react';
+import { Fragment } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Col, Row } from 'antd';
+import { Logo } from '../Logo';
+import { Container } from '../Container';
 
 import Styles from './NavBarGeneral.module.scss';
 
-import semearLogo from '../Logo/images/logo-horizontal.png';
 
-function NavBarGeneral({ children }) {
+
+function NavBarGeneral() {
   return (
-    <nav className={Styles.NavBarGeneral}>
-      <Row>
-        <div className={Styles.NavBarGeneral__Logo}>
-          <Link href="/">
-            <a>
-              <Row justify="start" align="middle">
-                <Col span={18}>
-                  <Image alt="Logo Semear" src={semearLogo} width={190} height={45} />
-                </Col>
-              </Row>
-            </a>
-          </Link>
-        </div>
-        {children}
-      </Row>
-    </nav>
+        <nav className={Styles.NavBarGeneral}>
+          <div className={Styles.NavBarGeneral__Logo}>
+            <Link href="/">
+              <a>
+                <Logo variant="horizontal" />
+              </a>
+            </Link> 
+          </div>
+        </nav>
   );
 }
 

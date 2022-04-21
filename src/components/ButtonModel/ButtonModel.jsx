@@ -15,7 +15,6 @@ export default function ButtonModel({
   href = '',
   onClick,
   htmlType,
-  icon,
 }) {
 
   const ButtonConfig = () => {
@@ -31,7 +30,6 @@ export default function ButtonModel({
         danger={danger}
         onClick={onClick}
         htmlType={htmlType}
-        icon={icon}
       >
         {children}
       </Button>
@@ -40,9 +38,7 @@ export default function ButtonModel({
 
   return href ? (
     <Link href={href} passHref>
-      <a>
-        <ButtonConfig />
-      </a>
+      <ButtonConfig />
     </Link>
   ) : (
     <ButtonConfig />

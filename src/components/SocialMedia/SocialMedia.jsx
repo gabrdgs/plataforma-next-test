@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
-import { Col, Row, Space } from 'antd';
+import React from 'react';
+import { Button, Col, Row, Typography, Card, Space, List, Avatar } from 'antd';
 import Image from 'next/image';
+import styles from './SocialMedia.module.scss';
 
 import {
   InstagramOutlined,
@@ -10,12 +11,13 @@ import {
 } from '@ant-design/icons';
 
 import semearLogo from '../Logo/images/logo-horizontal.png';
+import { Fragment } from 'react/cjs/react.production.min';
 
 export default function SocialMedia() {
   return (
     <Fragment>
-      <Space direction="vertical" size="large">
-        <Row justify="center">
+      <Space direction='vertical' size ="large">
+        <Row>
           <Col>
             <Space size="large">
               <a href="https://www.instagram.com/isemearoficial/" target="_blank" rel="noreferrer">
@@ -27,18 +29,14 @@ export default function SocialMedia() {
               <a href="https://www.linkedin.com/company/isemear" target="_blank" rel="noreferrer">
                 <LinkedinOutlined style={{ fontSize: '40px', color: '#fff' }} />
               </a>
-              <a
-                href="https://www.youtube.com/channel/UCVX26cPzN0MrCHTrrL4HYug"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="https://www.youtube.com/channel/UCVX26cPzN0MrCHTrrL4HYug" target="_blank" rel="noreferrer">
                 <YoutubeOutlined style={{ fontSize: '40px', color: '#fff' }} />
               </a>
             </Space>
           </Col>
         </Row>
-        <Row justify="center" align="middle">
-          <Col span={18}>
+        <Row align="middle">
+          <Col span={15} offset={5}>
             <Image alt="Logo Semear" src={semearLogo} width={190} height={45} />
           </Col>
         </Row>

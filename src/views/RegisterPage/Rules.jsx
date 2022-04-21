@@ -96,6 +96,12 @@ const rules = {
       message: 'Digite uma URL válida para o seu perfil LinkedIn',
     },
   ],
+  select: [
+    {
+      required: true,
+      message: 'Escolha uma opção',
+    },
+  ],
   selectArea: [
     {
       required: true,
@@ -147,16 +153,7 @@ const cpfValidator = (value) => {
     value == '66666666666' ||
     value == '77777777777' ||
     value == '88888888888' ||
-    value == '99999999999' ||
-    value == '111111111111' ||
-    value == '222222222222' ||
-    value == '333333333333' ||
-    value == '444444444444' ||
-    value == '555555555555' ||
-    value == '666666666666' ||
-    value == '777777777777' ||
-    value == '888888888888' ||
-    value == '999999999999'
+    value == '99999999999'
   )
     return Promise.reject('CPF Inválido 2');
   let valueString = value;

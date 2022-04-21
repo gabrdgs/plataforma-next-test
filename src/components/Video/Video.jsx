@@ -1,14 +1,16 @@
 import { useState } from 'react';
+import Image from 'next/image';
 import { Button, Row, Modal } from 'antd';
 import { CaretRightOutlined } from '@ant-design/icons';
 import styles from './Video.module.scss';
+
+import { Section } from '../Section';
 
 export default function Video({ 
   youtubeID,
   title,
   width = 'default', 
   bgImage = 'default', 
-  colorButton = 'default',
 }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -24,19 +26,15 @@ export default function Video({
     setIsModalVisible(false);
   };
 
-  const style = width == "middle" && { paddingTop: '28%' };
-
   return (
     <div className={styles.Video} data-width={width} data-image={bgImage}>
-      <Row align="middle" justify="center" style={style}>
+      <Row align="middle" justify="center">
         <Button
           type="primary"
           onClick={showModal}
           shape="circle"
           icon={<CaretRightOutlined />}
           size="large"
-          className={styles.Button}
-          data-color={colorButton}
         />
         <Modal
           visible={isModalVisible}
