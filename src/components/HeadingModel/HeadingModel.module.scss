@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.Heading {
+  font-family: Poppins !important;
+
+  & [data-level='1'] {
+    font-size: 93px;
+  }
+
+  & [data-alignment='start'] {
+    text-align: left;
+  }
+
+  & [data-alignment='end'] {
+    text-align: right;
+  }
+
+  & [data-alignment='center'] {
+    text-align: center;
+  }
+
+  & [data-color='default'] {
+    color: #0f0e0e;
+  }
+
+  & [data-color='light'] {
+    color: #fff;
+  }
+
+  & [data-color='primary'] {
+    color: #6200ee;
+  }
+
+  & [data-color='primaryDark'] {
+    color: #3700b3;
+  }
+
+  & [data-color='primaryLight'] {
+    color: #f5fcfe;
+  }
+
+  & [data-color='secondary'] {
+    color: #0ba2b3;
+  }
+
+  & [data-color='secondaryDark'] {
+    color: #03766b;
+  }
+
+  & [data-color='grayOne'] {
+    color: #797a95;
+  }
+
+  & [data-color='grayTwo'] {
+    color: #999ab4;
+  }
+
+  & [data-color='grayThree'] {
+    color: #bdbfd9;
+  }
+
+  & [data-color='orange'] {
+    color: #f4511e;
+  }
+}
