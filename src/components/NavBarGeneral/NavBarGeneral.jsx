@@ -7,20 +7,23 @@ import Styles from './NavBarGeneral.module.scss';
 
 import semearLogo from '../Logo/images/logo-horizontal.png';
 
-function NavBarGeneral() {
+function NavBarGeneral({ children }) {
   return (
     <nav className={Styles.NavBarGeneral}>
-      <div className={Styles.NavBarGeneral__Logo}>
-        <Link href="/">
-          <a>
-            <Row justify="start" align="middle">
-              <Col span={18}>
-                <Image alt="Logo Semear" src={semearLogo} width={190} height={45} />
-              </Col>
-            </Row>
-          </a>
-        </Link>
-      </div>
+      <Row>
+        <div className={Styles.NavBarGeneral__Logo}>
+          <Link href="/">
+            <a>
+              <Row justify="start" align="middle">
+                <Col span={18}>
+                  <Image alt="Logo Semear" src={semearLogo} width={190} height={45} />
+                </Col>
+              </Row>
+            </a>
+          </Link>
+        </div>
+        {children}
+      </Row>
     </nav>
   );
 }

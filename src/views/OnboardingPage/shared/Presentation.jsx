@@ -21,7 +21,7 @@ import prosperityCycle from '../../../assets/images/onboardingPage/shared/prospe
 
 const CONTAINER_COLOR = 'greyFive';
 
-export default function Presentation({ onClick }) {
+export default function Presentation({ onClick, user }) {
   const pillarsContent = [
     {
       title: 'Bolsas',
@@ -43,9 +43,17 @@ export default function Presentation({ onClick }) {
     },
   ];
 
+  const buttonInfo = user === 'mentor' ? 'mentorado' : 'mentor';
+
   return (
     <Fragment>
-      <NavBarGeneral />
+      <NavBarGeneral>
+        <Row justify="end">
+          <Col pull={6}>
+            <ButtonModel>{`Quero um ${buttonInfo}`}</ButtonModel>
+          </Col>
+        </Row>
+      </NavBarGeneral>
       <ContainerModel color={CONTAINER_COLOR}>
         <Space direction="vertical" size={layout.space.container} style={{ width: '100%' }}>
           <ContainerModel color="primary">
@@ -87,7 +95,6 @@ export default function Presentation({ onClick }) {
                   colorButton="primary"
                   bgImage="tutorialone"
                   width="middle"
-                  
                 />
               </Row>
             </Space>
@@ -198,24 +205,28 @@ export default function Presentation({ onClick }) {
                     E como fazemos isso?
                   </HeadingModel>
                   <ParagraphModel strong>Atuamos à partir dos nossos 3 pilares:</ParagraphModel>
-                  <Row justify="space-between">
+                  <Row justify="space-around" gutter={48}>
                     {pillarsContent.map((item, index) => (
-                      <Col {...layout.columns.threeColumns} key={`pillar-${index + 1}`}>
-                        <HeadingModel level={3} color="orange" alignment="center">
-                          {item.title}
-                        </HeadingModel>
-                        <Row justify="center">
-                          <Col span={22}>
-                            <Space direction="vertical" size={layout.space.paragraph}>
-                              {item.image}
+                      <Fragment key={`pillar-${index + 1}`}>
+                        <Col {...layout.columns.threeColumns}>
+                          <HeadingModel level={3} color="orange" alignment="center">
+                            {item.title}
+                          </HeadingModel>
+                          <Row justify="center">
+                            <Space
+                              direction="vertical"
+                              size={layout.space.paragraph}
+                              style={{ width: '100%' }}
+                            >
+                              <Row justify="center">{item.image}</Row>
                               <ParagraphModel>
                                 <strong>{item.subtitle}</strong>
                                 {item.text}
                               </ParagraphModel>
                             </Space>
-                          </Col>
-                        </Row>
-                      </Col>
+                          </Row>
+                        </Col>
+                      </Fragment>
                     ))}
                   </Row>
                 </Space>

@@ -35,10 +35,6 @@ export default function RegisterPage({}) {
   const [data, setData] = useState({});
   const [user, setUser] = useState(0);
 
-  useEffect(() => {
-    console.log(form.getFieldsValue(true));
-  });
-
   const next = useCallback(
     (data) => {
       setData(data);
@@ -58,6 +54,8 @@ export default function RegisterPage({}) {
   const handleSubmit = useCallback((data) => {
     setData(data);
     message.success('Sucesso! Seu cadastro foi realizado.');
+    const valuesForm = form.getFieldsValue(true);
+    window.location.href = window.location.href = `/onboarding-${userObj[valuesForm.user]}`;
   }, []);
 
   const propsSecondStep = {
@@ -127,7 +125,6 @@ function FirstStep(props) {
   const onCheck = async () => {
     try {
       const values = await props.form.validateFields();
-      window.scrollTo(0, 0);
     } catch (errorInfo) {}
   };
 
@@ -168,7 +165,7 @@ function FirstStep(props) {
         <Input placeholder="Email" />
       </Form.Item>
       <Row>
-        <Col {...layoutCols}>
+        <Col>
           <Form.Item
             label="Celular"
             name="phoneNumber"
@@ -181,7 +178,7 @@ function FirstStep(props) {
               preferredCountries={['br']}
               value={phoneNumber}
               onChange={(phone) => setPhone(phone)}
-              inputStyle={{ width: '400px' }}
+              inputStyle={{ width: '35vw' }}
             />
           </Form.Item>
         </Col>
@@ -291,7 +288,6 @@ function SecondStep(props) {
               type="primary"
               htmlType="submit"
               onClick={onCheck}
-              href={`/onboarding-${userObj[props.user]}`}
             >
               Enviar
             </ButtonModel>

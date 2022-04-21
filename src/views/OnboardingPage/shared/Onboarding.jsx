@@ -88,12 +88,12 @@ export default function Onboarding({ user }) {
   const handleClick = (value) => {
       setStep(value)
   }
-  const content = user === "seed" ? contentSeed : contentMentor;
+  const content = user === 'mentor' ? contentMentor : contentSeed;
 
   return (
     <Fragment>
       {step === 0 ? (
-        <Presentation onClick={handleClick} />
+        <Presentation onClick={handleClick} user={user} />
       ) : (
         <MentoringProgram content={content} onClick={handleClick} user={user}/>
       )}

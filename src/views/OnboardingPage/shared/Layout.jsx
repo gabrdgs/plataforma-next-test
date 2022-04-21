@@ -38,12 +38,12 @@ const layout = {
       xxl: { span: 13, order: 0 },
     },
     twoColumnInfo: {
-      xs: { span: 21, order: 1 },
-      sm: { span: 18, order: 1 },
-      md: { span: 14, order: 1 },
-      lg: { span: 5 },
-      xl: { span: 5 },
-      xxl: { span: 5 },
+      xs: { span: 18, order: 1 },
+      sm: { span: 13, order: 1 },
+      md: { span: 11, order: 1 },
+      lg: { span: 7 },
+      xl: { span: 7 },
+      xxl: { span: 7 },
     },
     twoColumnInfoText: {
       xs: { span: 21, order: 0 },
@@ -53,11 +53,10 @@ const layout = {
       xl: { span: 13, order: 1 },
       xxl: { span: 13, order: 1 },
     },
-
     threeColumns: {
       xs: { span: 21 },
       sm: { span: 21 },
-      md: { span: 13 },
+      md: { span: 10 },
       lg: { span: 7 },
       xl: { span: 7 },
       xxl: { span: 7 },

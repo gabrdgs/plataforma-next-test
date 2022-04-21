@@ -29,10 +29,10 @@ const CONTAINER_COLOR = 'greyFive';
 
 export default function MentoringProgram({ content, onClick, user }) {
   const mentorCharacteristicsContent = [
-    <Image src={mentorPointsOne} passHref alt="Primeira caracterísitca de um mentor" />,
-    <Image src={mentorPointsTwo} passHref alt="Segunda caracterísitca de um mentor" />,
-    <Image src={mentorPointsThree} passHref alt="Terceira caracterísitca de um mentor" />,
-    <Image src={mentorPointsFour} passHref alt="Quarta caracterísitca de um mentor" />,
+    <Image src={mentorPointsOne} alt="Primeira caracterísitca de um mentor" />,
+    <Image src={mentorPointsTwo} alt="Segunda caracterísitca de um mentor" />,
+    <Image src={mentorPointsThree} alt="Terceira caracterísitca de um mentor" />,
+    <Image src={mentorPointsFour} alt="Quarta caracterísitca de um mentor" />,
   ];
   const wheelContent = [
     {
@@ -53,9 +53,18 @@ export default function MentoringProgram({ content, onClick, user }) {
     },
   ];
 
+  const buttonInfo = user === 'mentor' ? 'mentorado' : 'mentor';
+  const userYoutubeID = user === 'mentor' ? 'Or5Im4742A0' : 'zqxlDS0IlyE';
+
   return (
     <Fragment>
-      <NavBarGeneral />
+      <NavBarGeneral>
+        <Row justify="end">
+          <Col pull={6}>
+            <ButtonModel>{`Quero um ${buttonInfo}`}</ButtonModel>
+          </Col>
+        </Row>
+      </NavBarGeneral>
       <ContainerModel color={CONTAINER_COLOR}>
         <Space direction="vertical" size={layout.space.container} style={{ width: '100%' }}>
           <ContainerModel color="primary">
@@ -78,10 +87,10 @@ export default function MentoringProgram({ content, onClick, user }) {
             </Row>
             <Row justify="center" style={{ paddingBottom: '80px' }}>
               <Video
-                youtubeID="Or5Im4742A0"
+                youtubeID={userYoutubeID}
                 title="Direitos e Deveres do Mentor"
                 bgColor="primary"
-                colorButton='primary'
+                colorButton="primary"
                 bgImage={`tutorial${user}`}
                 width="middle"
               />
@@ -112,7 +121,7 @@ export default function MentoringProgram({ content, onClick, user }) {
                   <Row justify="space-around" gutter={48}>
                     {mentorCharacteristicsContent.map((item, index) => (
                       <Col {...layout.columns.fourColumns} key={`caractheristic-${index + 1}`}>
-                        {item}
+                        <Row justify="center">{item}</Row>
                       </Col>
                     ))}
                   </Row>
@@ -138,11 +147,7 @@ export default function MentoringProgram({ content, onClick, user }) {
                 </Space>
               </Col>
               <Col {...layout.columns.twoColumnInfo}>
-                <Row justify="center">
-                  <Col {...layout.imageSize}>
-                    <Image src={maslowPyramid} />
-                  </Col>
-                </Row>
+                <Image src={maslowPyramid} />
               </Col>
             </Row>
           </ContainerModel>
@@ -161,7 +166,6 @@ export default function MentoringProgram({ content, onClick, user }) {
               </Row>
             </ContainerModel>
           ))}
-
           <ContainerModel color={CONTAINER_COLOR}>
             <Row justify="space-around">
               <Col {...layout.columns.twoColumnInfoText}>
