@@ -1,5 +1,4 @@
 import React from 'react'
-import { Col, Row } from 'antd';
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 
 import {CustomForm} from './CustomForm.jsx'
@@ -9,18 +8,16 @@ const mailingUrl = `https://isemear.us5.list-manage.com/subscribe/post?u=46231f5
 export default function LeadForm() {
   return (
     <div className="mc__form-container">
-      <Row justify="center">
-        <MailchimpSubscribe
-          url={mailingUrl}
-          render={({ subscribe, status, message }) => (
-            <CustomForm
-              message={message}
-              onValidated={(formData) => subscribe(formData)}
-              status={status}
-            />
-          )}
-        />
-      </Row>
+      <MailchimpSubscribe
+        url={mailingUrl}
+        render={({subscribe, status, message}) => (
+          <CustomForm
+            message={message}
+            onValidated={(formData) => subscribe(formData)}
+            status={status}
+          />
+        )}
+      />
     </div>
-  );
+  )
 }
