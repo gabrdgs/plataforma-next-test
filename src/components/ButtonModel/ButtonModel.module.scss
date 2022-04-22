@@ -2,15 +2,16 @@
   font-family: Poppins !important;
   border: none;
   text-align: center;
-
-  &[data-align='center'] {
+  
+  &[data-align='center']{
+    margin:auto;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  &[data-align='start'] {
-    margin: auto;
+  &[data-align='start']{
+    margin:auto;
   }
 
   &[data-border='round'] {
@@ -41,6 +42,10 @@
     width: 100%;
   }
 
+  &[data-width='half'] {
+    width: 50%;
+  }
+
   &[data-height='default'] {
     height: 35px;
   }
@@ -54,23 +59,23 @@
   }
 
   &[data-color='default'] {
-    background-color: #f4511e;
-    color: #fff;
+    background-color: #ff7139;
+    color:#fff;
   }
 
   &[data-color='default']:hover {
     background-color: #ff994b;
-    color: #fff;
+    color:#fff;
   }
 
   &[data-color='primary'] {
-    background-color: #004aad;
-    color: #fff;
+    background-color: #004aad ;
+    color:#fff;
   }
 
   &[data-color='primary']:hover {
-    background-color: #006eff;
-    color: #fff;
+    background-color: #006eff ;
+    color:#fff;
   }
 
   &[data-color='secondary'] {
@@ -86,11 +91,13 @@
   }
 
   &[data-color='quinary'] {
-    background-color: #3700b3;
+    background-color: #3700B3;
     color: white;
   }
-  &[data-color='quinaryText'] {
-    background-color: #f0f1f5;
-    color: #3700b3;
+
+  &[data-color='senary'] {
+    background-color: #0BA2B3;
+    color: white;
   }
+  
 }
