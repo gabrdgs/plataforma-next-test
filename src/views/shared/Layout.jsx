@@ -29,14 +29,6 @@ const layout = {
       xl: { span: 8, order: 1 },
       xxl: { span: 8, order: 1 },
     },
-    twoColumnSteps: {
-      xs: { span: 1, order: 1 },
-      sm: { span: 1, order: 1 },
-      md: { span: 9, order: 1 },
-      lg: { span: 9, order: 1 },
-      xl: { span: 8, order: 1 },
-      xxl: { span: 8, order: 1 },
-    },
     twoColumnTxt: {
       xs: { span: 21, order: 0 },
       sm: { span: 21, order: 0 },
@@ -44,6 +36,22 @@ const layout = {
       lg: { span: 12, order: 0 },
       xl: { span: 13, order: 0 },
       xxl: { span: 13, order: 0 },
+    },
+    twoColumnStepsTxt: {
+      xs: { span: 21, order: 0 },
+      sm: { span: 21, order: 0 },
+      md: { span: 15, order: 0 },
+      lg: { span: 15, order: 0 },
+      xl: { span: 16, order: 0 },
+      xxl: { span: 16, order: 0 },
+    },
+    twoColumnSteps: {
+      xs: { span: 1, order: 1 },
+      sm: { span: 1, order: 1 },
+      md: { span: 9, order: 1 },
+      lg: { span: 9, order: 1 },
+      xl: { span: 8, order: 1 },
+      xxl: { span: 8, order: 1 },
     },
     twoColumnInfo: {
       xs: { span: 18, order: 1 },

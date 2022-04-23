@@ -36,20 +36,20 @@ export default function MentoringProgram({ content, onClick, user }) {
   ];
   const wheelContent = [
     {
-      image: <Image src={fundationWheel} passHref alt="Primeira roda da trilha" />,
+      image: <Image src={fundationWheel} alt="Primeira roda da trilha" />,
       text: 'Sendo assim, no primeiro ano da faculdade temos a Roda Alicerce, que foca em resolver problemas relacionados às necessidades básicas dos jovens e fatores que influenciam na sua capacidade de continuar estudando e no seu rendimento acadêmico.',
-      number: <Image src={numberOne} passHref alt="Primeiro item" />,
+      number: <Image src={numberOne} alt="Primeiro item" />,
     },
 
     {
-      image: <Image src={purposeWheel} passHref alt="Segunda roda da trilha" />,
+      image: <Image src={purposeWheel} alt="Segunda roda da trilha" />,
       text: 'Entre o segundo e terceiro ano da faculdade temos a Roda Propósito, cuja função é ajudar o jovem a explorar caminhos de carreira, passando por uma jornada ligada ao nível de conhecimento do jovem sobre si mesmo e a carreira que quer seguir.',
-      number: <Image src={numberTwo} passHref alt="Segundo item" />,
+      number: <Image src={numberTwo} alt="Segundo item" />,
     },
     {
-      image: <Image src={professionalWheel} passHref alt="Terceira roda da trilha" />,
+      image: <Image src={professionalWheel} alt="Terceira roda da trilha" />,
       text: 'Por fim, entre o quarto e quinto ano os jovens vivenciam a Roda profissional, na qual apoiamos o ingresso no emprego dos sonhos, enfim quebrando o ciclo da pobreza. Nessa roda, é possível entendermos se a expectativa de carreira do jovem está alinhada com a realidade e o quanto este jovem está se preparando para seu primeiro emprego dos sonhos.',
-      number: <Image src={numberThree} passHref alt="Terceiro item" />,
+      number: <Image src={numberThree} alt="Terceiro item" />,
     },
   ];
 

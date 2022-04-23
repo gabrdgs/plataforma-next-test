@@ -11,7 +11,6 @@ export default function FormSelect({
   tooltip = '',
   mode,
   orderedList = false,
-  initialValues = '',
 }) {
 
   let listUptated = orderedList ? getOrderedArray(list) : list;

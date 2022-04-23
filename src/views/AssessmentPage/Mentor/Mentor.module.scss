@@ -1,0 +1,35 @@
+.StepWelcome{
+    
+    &__Card{
+        border-width:1pt;
+        border-style:solid;      
+        border-color:#6200EE;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    &__Item{
+        width: 50%;
+    }
+
+    &__Avatar{
+        background-color:#6200EE;
+        margin-bottom: 15px;
+    }
+
+
+}
+
+.WheelComponent{
+    &__StepsList{
+        background-color:#3700B3;
+    }
+
+    &__StepTitle{
+        color:#fff
+    }
+
+    &__Button{
+        padding-top: 50px;
+    }
+}
