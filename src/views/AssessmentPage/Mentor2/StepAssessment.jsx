@@ -5,7 +5,7 @@ import { Paragraph } from '../../../components/Paragraph';
 import { Heading } from '../../../components/Heading';
 
 import { InfoCircleOutlined } from '@ant-design/icons';
-import rules from '../../RegisterPage/Rules';
+import rules from '../../shared/Rules';
 
 const { Option } = Select;
 
@@ -26,14 +26,12 @@ const StepAssessment = (props) => {
         <Heading alignment="center" color="purple">
           {props.content.title}
         </Heading>
-        <Space direction="vertical" size={0}>
           <Paragraph size="large" alignment="center">
             <Col span={25}>{props.content.subtitle}</Col>
           </Paragraph>
           <Row align="center">
            <StepChannel content={props.content} />
           </Row>
-        </Space>
       </Form.Item>
     </Form>
   );

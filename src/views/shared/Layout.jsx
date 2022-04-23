@@ -29,6 +29,14 @@ const layout = {
       xl: { span: 8, order: 1 },
       xxl: { span: 8, order: 1 },
     },
+    twoColumnSteps: {
+      xs: { span: 1, order: 1 },
+      sm: { span: 1, order: 1 },
+      md: { span: 9, order: 1 },
+      lg: { span: 9, order: 1 },
+      xl: { span: 8, order: 1 },
+      xxl: { span: 8, order: 1 },
+    },
     twoColumnTxt: {
       xs: { span: 21, order: 0 },
       sm: { span: 21, order: 0 },
