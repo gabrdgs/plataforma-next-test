@@ -113,7 +113,11 @@ export default function MentoringProgram({ content, onClick, user }) {
                   </Col>
                   <Row justify="space-around" gutter={48}>
                     {mentorCharacteristicsContent.map((item, index) => (
-                      <Col {...layout.columns.fourColumns} key={`caractheristic-${index + 1}`}>
+                      <Col
+                        {...layout.columns.fourColumns}
+                        key={`caractheristic-${index + 1}`}
+                        className={Styles.Onboarding__Columns}
+                      >
                         <Row justify="center">{item}</Row>
                       </Col>
                     ))}
@@ -140,7 +144,7 @@ export default function MentoringProgram({ content, onClick, user }) {
                 </Space>
               </Col>
               <Col {...layout.columns.twoColumnInfo}>
-                <div className={Styles.MentoringProgram__InfographImage}>
+                <div className={Styles.Onboarding__InfographImage}>
                   <Image src={maslowPyramid} alt="piramide de Maslow" />
                 </div>
               </Col>
@@ -150,7 +154,7 @@ export default function MentoringProgram({ content, onClick, user }) {
             <ContainerModel color="primaryLight" key={`wheel-${index + 1}`}>
               <Row align="middle">
                 <Col span={1} push={2}>
-                  <div className={Styles.MentoringProgram__numbersImage}>{item.number}</div>
+                  <div className={Styles.Onboarding__NumbersImage}>{item.number}</div>
                 </Col>
               </Row>
               <Row align="middle" justify="space-around">
@@ -172,7 +176,7 @@ export default function MentoringProgram({ content, onClick, user }) {
                 </Space>
               </Col>
               <Col {...layout.columns.twoColumnInfo}>
-                <div className={Styles.MentoringProgram__InfographImage}>
+                <div className={Styles.Onboarding__InfographImage}>
                   <Image src={assessmentGraphic} alt="imagem gráfico assessment" />
                 </div>
               </Col>

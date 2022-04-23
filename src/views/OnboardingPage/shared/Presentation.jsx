@@ -26,19 +26,19 @@ export default function Presentation({ onClick, user }) {
   const pillarsContent = [
     {
       title: 'Bolsas',
-      image: <Image src={scholarship} alt="Bolsas auxilio"/>,
+      image: <Image src={scholarship} alt="Bolsas auxilio" />,
       subtitle: 'Bolsa com duração de 1 ano, ',
       text: 'que consiste em um auxílio financeiro durante o primeiro ano do jovem na universidade, para possibilitar mais foco nos estudos e menos preocupações financeiras.',
     },
     {
       title: 'Mentorias',
-      image: <Image src={mentoring} alt="Mentorias"/>,
+      image: <Image src={mentoring} alt="Mentorias" />,
       subtitle: 'A mentoria, ',
       text: 'que é o coração do Semear, sendo um suporte acadêmico, profissional e socioemocional durante a graduação com profissionais de sucesso de diversas empresas.',
     },
     {
       title: 'Rede de Contatos',
-      image: <Image src={networking} alt="Rede de contatos"/>,
+      image: <Image src={networking} alt="Rede de contatos" />,
       subtitle: 'Acesso a uma rede de contatos, ',
       text: 'onde os jovens encontrarão oportunidades profissionais, expansão da visão de mundo e consciência social por meio das conexões criadas.',
     },
@@ -113,7 +113,7 @@ export default function Presentation({ onClick, user }) {
                 </Space>
               </Col>
               <Col {...layout.columns.twoColumnInfo}>
-                <div className={Styles.MentoringProgram__InfographImage}>
+                <div className={Styles.Onboarding__InfographImage}>
                   <Image src={percentageStudents} alt="imagem porcentagem de estudantes" />
                 </div>
               </Col>
@@ -123,7 +123,7 @@ export default function Presentation({ onClick, user }) {
             <Space direction="vertical" size={layout.space.elements} style={{ width: '100%' }}>
               <Row justify="space-around" align="middle">
                 <Col {...layout.columns.twoColumnInfo} order={0}>
-                  <div className={Styles.MentoringProgram__InfographImage}>
+                  <div className={Styles.Onboarding__InfographImage}>
                     <Image src={salaryGap} alt="imagem diferença de salários" />
                   </div>
                 </Col>
@@ -204,7 +204,10 @@ export default function Presentation({ onClick, user }) {
                   <Row justify="space-around" gutter={48}>
                     {pillarsContent.map((item, index) => (
                       <Fragment key={`pillar-${index + 1}`}>
-                        <Col {...layout.columns.threeColumns}>
+                        <Col
+                          {...layout.columns.threeColumns}
+                          className={Styles.Onboarding__Columns}
+                        >
                           <HeadingModel level={3} color="orange" alignment="center">
                             {item.title}
                           </HeadingModel>
@@ -233,7 +236,7 @@ export default function Presentation({ onClick, user }) {
             <Row justify="end" align="middle">
               <Col {...layout.columns.oneColumn} pull={1}>
                 <Row justify="end" align="middle">
-                  <div className={Styles.MentoringProgram__ButtonResp}>
+                  <div className={Styles.Onboarding__ButtonResp}>
                     <ButtonModel
                       color="quinary"
                       width="default"
