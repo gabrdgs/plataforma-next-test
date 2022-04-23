@@ -9,7 +9,7 @@ import { ContainerModel } from '../../../components/ContainerModel';
 import { Video } from '../../../components/Video';
 import { ButtonModel } from '../../../components/ButtonModel';
 import { SocialMedia } from '../../../components/SocialMedia';
-import layout from './Layout';
+import layout from '../../shared/Layout';
 
 import rocket from '../../../assets/images/onboardingPage/shared/rocket.svg';
 import maslowPyramid from '../../../assets/images/onboardingPage/shared/maslow-pyramid.jpg';

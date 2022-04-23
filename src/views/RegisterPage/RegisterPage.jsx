@@ -17,7 +17,7 @@ import areasList from './AreasList';
 import subareasList from './SubareasList';
 import coursesList from './CoursesList';
 import universitiesList from './UniversitiesList';
-import rules from './Rules';
+import rules from '../shared/Rules';
 
 const { Step } = Steps;
 
