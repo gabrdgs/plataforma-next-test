@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Col, Row, Space } from 'antd';
+import { Col, Row, Space, Breadcrumb } from 'antd';
 import { Heading } from '../../../components/Heading';
 import { Paragraph } from '../../../components/Paragraph';
 
@@ -24,10 +24,6 @@ const StepWelcome = ({}) => {
             </Paragraph>
           </Row>
           <Row>
-            <Paragraph>
-              Depois, nossa <strong>Calculadora de Matches</strong> encontrará o mentor mais
-              qualificado para trabalhar em soluções junto com você.
-            </Paragraph>
           </Row>
         </Space>
       </Col>

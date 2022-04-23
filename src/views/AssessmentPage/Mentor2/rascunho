@@ -1,0 +1,33 @@
+ <Row>
+                {buttonSteps.map((item, index) => (
+                <ButtonModel
+                icon={item.icon}
+                color="quinary"
+                border="square"
+                disabled={item.disabled}
+                block
+                height="large"
+                width="half"
+                key={`btn-${index}`}
+                onClick={() => props.onClick(index + 1)}
+                >
+              {item.title}
+              </ButtonModel>
+                ))}
+              </Row>
+              
+
+ {buttonSteps.map((item, index) => (
+                <ButtonModel
+                icon={item.icon}
+                color="quinary"
+                border="square"
+                disabled={item.disabled}
+                block
+                height="large"
+                width="half"
+                key={`btn-${index}`}
+                >
+              {item.title}
+              </ButtonModel>
+                ))}

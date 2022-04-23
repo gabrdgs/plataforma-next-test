@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Steps, Button, message, Col, Row, Space } from 'antd';
 import { RocketOutlined } from '@ant-design/icons';
 import { MenuModel } from '../../../components/MenuModel';
+import { NavBarGeneral } from '../../../components/NavBarGeneral';
 
 import StepWelcome from './StepWelcome';
 import StepChannel from './StepChannel';
@@ -56,6 +57,7 @@ export default function Mentor() {
 
   return (
     <Fragment>
+      <NavBarGeneral/>
       <MenuModel menuItems={menuItems} userType="mentor" />
       <Row align="middle" justify="center">
         <Steps current={current} size="small" direction="horizontal" style={{ width: '60%' }}>

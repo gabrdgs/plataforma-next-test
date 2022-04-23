@@ -249,7 +249,7 @@ function FirstStep(props) {
       <Row justify="end" align="middle">
         <Form.Item>
           <ButtonModel
-            color="quinary"
+            color="senary"
             width="small"
             type="primary"
             htmlType="submit"
@@ -277,13 +277,13 @@ function SecondStep(props) {
       <Row justify="end" align="middle">
         <Space size={5}>
           <Form.Item>
-            <ButtonModel color="quinary" width="small" type="primary" onClick={props.onBack}>
+            <ButtonModel color="senary" width="small" type="primary" onClick={props.onBack}>
               Voltar
             </ButtonModel>
           </Form.Item>
           <Form.Item>
             <ButtonModel
-              color="quinary"
+              color="senary"
               width="small"
               type="primary"
               htmlType="submit"
