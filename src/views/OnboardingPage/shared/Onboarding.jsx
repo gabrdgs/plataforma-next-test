@@ -1,8 +1,11 @@
 import React, { Fragment, useState } from 'react';
+import { Row, Col } from 'antd';
 
 import { Presentation } from '../shared';
 import { MentoringProgram } from '../shared';
 import { ParagraphModel } from '../../../components/ParagraphModel';
+import {ButtonModel} from '../../../components/ButtonModel';
+import { NavBarGeneral } from '../../../components/NavBarGeneral';
 
 const contentSeed = {
   introduction: (
@@ -86,16 +89,24 @@ const contentMentor = {
 export default function Onboarding({ user }) {
   const [step, setStep] = useState(0);
   const handleClick = (value) => {
-      setStep(value)
-  }
+    setStep(value);
+  };
   const content = user === 'mentor' ? contentMentor : contentSeed;
+  const buttonInfo = user === 'mentor' ? 'mentorado' : 'mentor';
 
   return (
     <Fragment>
+      <NavBarGeneral>
+        <Row justify="end">
+          <Col pull={6}>
+            <ButtonModel href={`/assessment-${user}`}>{`Quero um ${buttonInfo}`}</ButtonModel>
+          </Col>
+        </Row>
+      </NavBarGeneral>
       {step === 0 ? (
         <Presentation onClick={handleClick} user={user} />
       ) : (
-        <MentoringProgram content={content} onClick={handleClick} user={user}/>
+        <MentoringProgram content={content} onClick={handleClick} user={user} />
       )}
     </Fragment>
   );

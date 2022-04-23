@@ -10,6 +10,7 @@ import { Video } from '../../../components/Video';
 import { ButtonModel } from '../../../components/ButtonModel';
 import { SocialMedia } from '../../../components/SocialMedia';
 import layout from './Layout';
+import Styles from './Onboarding.module.scss';
 
 import handsImage from '../../../assets/images/onboardingPage/shared/hands.svg';
 import percentageStudents from '../../../assets/images/onboardingPage/shared/percentage-students.jpg';
@@ -25,35 +26,26 @@ export default function Presentation({ onClick, user }) {
   const pillarsContent = [
     {
       title: 'Bolsas',
-      image: <Image src={scholarship} alt="Bolsas auxilio" />,
+      image: <Image src={scholarship} alt="Bolsas auxilio"/>,
       subtitle: 'Bolsa com duração de 1 ano, ',
       text: 'que consiste em um auxílio financeiro durante o primeiro ano do jovem na universidade, para possibilitar mais foco nos estudos e menos preocupações financeiras.',
     },
     {
       title: 'Mentorias',
-      image: <Image src={mentoring} alt="Mentorias" />,
+      image: <Image src={mentoring} alt="Mentorias"/>,
       subtitle: 'A mentoria, ',
       text: 'que é o coração do Semear, sendo um suporte acadêmico, profissional e socioemocional durante a graduação com profissionais de sucesso de diversas empresas.',
     },
     {
       title: 'Rede de Contatos',
-      image: <Image src={networking} alt="Rede de contatos" />,
+      image: <Image src={networking} alt="Rede de contatos"/>,
       subtitle: 'Acesso a uma rede de contatos, ',
       text: 'onde os jovens encontrarão oportunidades profissionais, expansão da visão de mundo e consciência social por meio das conexões criadas.',
     },
   ];
 
-  const buttonInfo = user === 'mentor' ? 'mentorado' : 'mentor';
-
   return (
     <Fragment>
-      <NavBarGeneral>
-        <Row justify="end">
-          <Col pull={6}>
-            <ButtonModel>{`Quero um ${buttonInfo}`}</ButtonModel>
-          </Col>
-        </Row>
-      </NavBarGeneral>
       <ContainerModel color={CONTAINER_COLOR}>
         <Space direction="vertical" size={layout.space.container} style={{ width: '100%' }}>
           <ContainerModel color="primary">
@@ -71,7 +63,7 @@ export default function Presentation({ onClick, user }) {
               <Col {...layout.columns.twoColumnImg}>
                 <Row justify="center" style={{ transform: 'rotate(20deg)' }}>
                   <Col {...layout.imageSize}>
-                    <Image src={handsImage} />
+                    <Image src={handsImage} alt="Imagem mãos" />
                   </Col>
                 </Row>
               </Col>
@@ -121,7 +113,9 @@ export default function Presentation({ onClick, user }) {
                 </Space>
               </Col>
               <Col {...layout.columns.twoColumnInfo}>
-                <Image src={percentageStudents} />
+                <div className={Styles.MentoringProgram__InfographImage}>
+                  <Image src={percentageStudents} alt="imagem porcentagem de estudantes" />
+                </div>
               </Col>
             </Row>
           </ContainerModel>
@@ -129,7 +123,9 @@ export default function Presentation({ onClick, user }) {
             <Space direction="vertical" size={layout.space.elements} style={{ width: '100%' }}>
               <Row justify="space-around" align="middle">
                 <Col {...layout.columns.twoColumnInfo} order={0}>
-                  <Image src={salaryGap} />
+                  <div className={Styles.MentoringProgram__InfographImage}>
+                    <Image src={salaryGap} alt="imagem diferença de salários" />
+                  </div>
                 </Col>
                 <Col {...layout.columns.twoColumnInfoText} order={1}>
                   <Space
@@ -170,7 +166,7 @@ export default function Presentation({ onClick, user }) {
               <Row justify="center">
                 <Col {...layout.columns.oneColumn}>
                   <Row justify="center">
-                    <Image src={prosperityCycle} />
+                    <Image src={prosperityCycle} alt="imagem ciclo de prosperidade" />
                   </Row>
                 </Col>
               </Row>
@@ -237,17 +233,19 @@ export default function Presentation({ onClick, user }) {
             <Row justify="end" align="middle">
               <Col {...layout.columns.oneColumn} pull={1}>
                 <Row justify="end" align="middle">
-                  <ButtonModel
-                    color="quinary"
-                    width="default"
-                    type="primary"
-                    onClick={() => {
-                      onClick(1);
-                      window.scrollTo(0, 0);
-                    }}
-                  >
-                    Avançar
-                  </ButtonModel>
+                  <div className={Styles.MentoringProgram__ButtonResp}>
+                    <ButtonModel
+                      color="quinary"
+                      width="default"
+                      type="primary"
+                      onClick={() => {
+                        onClick(1);
+                        window.scrollTo(0, 0);
+                      }}
+                    >
+                      Avançar
+                    </ButtonModel>
+                  </div>
                 </Row>
               </Col>
             </Row>

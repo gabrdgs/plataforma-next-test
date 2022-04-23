@@ -10,6 +10,7 @@ import { Video } from '../../../components/Video';
 import { ButtonModel } from '../../../components/ButtonModel';
 import { SocialMedia } from '../../../components/SocialMedia';
 import layout from './Layout';
+import Styles from './Onboarding.module.scss';
 
 import rocket from '../../../assets/images/onboardingPage/shared/rocket.svg';
 import maslowPyramid from '../../../assets/images/onboardingPage/shared/maslow-pyramid.jpg';
@@ -29,10 +30,10 @@ const CONTAINER_COLOR = 'greyFive';
 
 export default function MentoringProgram({ content, onClick, user }) {
   const mentorCharacteristicsContent = [
-    <Image src={mentorPointsOne} alt="Primeira caracterísitca de um mentor" />,
-    <Image src={mentorPointsTwo} alt="Segunda caracterísitca de um mentor" />,
-    <Image src={mentorPointsThree} alt="Terceira caracterísitca de um mentor" />,
-    <Image src={mentorPointsFour} alt="Quarta caracterísitca de um mentor" />,
+    <Image key="" src={mentorPointsOne} alt="Primeira caracterísitca de um mentor" />,
+    <Image key="" src={mentorPointsTwo} alt="Segunda caracterísitca de um mentor" />,
+    <Image key="" src={mentorPointsThree} alt="Terceira caracterísitca de um mentor" />,
+    <Image key="" src={mentorPointsFour} alt="Quarta caracterísitca de um mentor" />,
   ];
   const wheelContent = [
     {
@@ -53,25 +54,17 @@ export default function MentoringProgram({ content, onClick, user }) {
     },
   ];
 
-  const buttonInfo = user === 'mentor' ? 'mentorado' : 'mentor';
   const userYoutubeID = user === 'mentor' ? 'Or5Im4742A0' : 'zqxlDS0IlyE';
 
   return (
     <Fragment>
-      <NavBarGeneral>
-        <Row justify="end">
-          <Col pull={6}>
-            <ButtonModel>{`Quero um ${buttonInfo}`}</ButtonModel>
-          </Col>
-        </Row>
-      </NavBarGeneral>
       <ContainerModel color={CONTAINER_COLOR}>
         <Space direction="vertical" size={layout.space.container} style={{ width: '100%' }}>
           <ContainerModel color="primary">
             <Row justify="center" align="middle" style={{ padding: '20px 0' }}>
               <Col {...layout.columns.twoColumnTxt}>
                 <Space direction="vertical" style={{ width: '100%' }} size={layout.space.paragraph}>
-                  <HeadingModel level={1} color="primaryLight">
+                  <HeadingModel level={2} color="primaryLight">
                     Agora que você já conhece mais o instituto...
                   </HeadingModel>
                   {content.introduction}
@@ -80,7 +73,7 @@ export default function MentoringProgram({ content, onClick, user }) {
               <Col {...layout.columns.twoColumnImg}>
                 <Row justify="center" style={{ transform: 'rotate(60deg)' }}>
                   <Col {...layout.imageSize}>
-                    <Image src={rocket} />
+                    <Image src={rocket} alt="imagem foguete" />
                   </Col>
                 </Row>
               </Col>
@@ -147,7 +140,9 @@ export default function MentoringProgram({ content, onClick, user }) {
                 </Space>
               </Col>
               <Col {...layout.columns.twoColumnInfo}>
-                <Image src={maslowPyramid} />
+                <div className={Styles.MentoringProgram__InfographImage}>
+                  <Image src={maslowPyramid} alt="piramide de Maslow" />
+                </div>
               </Col>
             </Row>
           </ContainerModel>
@@ -155,7 +150,7 @@ export default function MentoringProgram({ content, onClick, user }) {
             <ContainerModel color="primaryLight" key={`wheel-${index + 1}`}>
               <Row align="middle">
                 <Col span={1} push={2}>
-                  {item.number}
+                  <div className={Styles.MentoringProgram__numbersImage}>{item.number}</div>
                 </Col>
               </Row>
               <Row align="middle" justify="space-around">
@@ -177,7 +172,9 @@ export default function MentoringProgram({ content, onClick, user }) {
                 </Space>
               </Col>
               <Col {...layout.columns.twoColumnInfo}>
-                <Image src={assessmentGraphic} />
+                <div className={Styles.MentoringProgram__InfographImage}>
+                  <Image src={assessmentGraphic} alt="imagem gráfico assessment" />
+                </div>
               </Col>
             </Row>
           </ContainerModel>

@@ -93,4 +93,11 @@
     background-color: #f0f1f5;
     color: #3700b3;
   }
+
+     @media only screen and (max-width: 600px) {
+      &[data-width='default'] {
+        width: 160px;
+      }
+    }
 }
+
