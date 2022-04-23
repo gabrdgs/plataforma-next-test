@@ -99,5 +99,10 @@
     background-color: #0BA2B3;
     color: white;
   }
-  
+
+  @media only screen and (max-width: 600px) {
+      &[data-width='default'] {
+        width: 160px;
+      }
+    }
 }
