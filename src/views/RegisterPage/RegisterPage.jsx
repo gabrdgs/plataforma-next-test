@@ -17,7 +17,8 @@ import areasList from './AreasList';
 import subareasList from './SubareasList';
 import coursesList from './CoursesList';
 import universitiesList from './UniversitiesList';
-import rules from './Rules';
+import rules from '../shared/Rules';
+import { cpfMask } from '../shared/utils';
 
 const { Step } = Steps;
 
@@ -55,7 +56,7 @@ export default function RegisterPage({}) {
     setData(data);
     message.success('Sucesso! Seu cadastro foi realizado.');
     const valuesForm = form.getFieldsValue(true);
-    window.location.href = window.location.href = `/onboarding-${userObj[valuesForm.user]}`;
+    window.location.href = `/onboarding-${userObj[valuesForm.user]}`;
   }, []);
 
   const propsSecondStep = {
@@ -85,7 +86,14 @@ export default function RegisterPage({}) {
                     <Step key={`content-${2}`} />
                   </Steps>
                   <div className="steps-content">
-                    <Card className={Styles.RegisterPage__Card}>{content[current]}</Card>
+                    <Form
+                      form={form}
+                      layout="vertical"
+                      onFinish={current < content.length - 1 ? next : handleSubmit}
+                      scrollToFirstError
+                    >
+                      <Card className={Styles.RegisterPage__Card}>{content[current]}</Card>
+                    </Form>
                   </div>
                 </Space>
               </Col>
@@ -129,7 +137,7 @@ function FirstStep(props) {
   };
 
   return (
-    <Form form={props.form} layout="vertical" onFinish={props.onSucess} scrollToFirstError>
+    <Fragment>
       <Row gutter={12}>
         <Col {...layoutCols}>
           <Form.Item name="name" label=" " rules={rules.name}>
@@ -233,7 +241,7 @@ function FirstStep(props) {
       >
         <Select allowClear>
           <Select.Option value={0}>Processo Seletivo 2022</Select.Option>
-          <Select.Option value={1}>PlantYou AllYear - Direito</Select.Option>
+          <Select.Option value={1}>PlantYou All Year - Carreiras na Área Jurídica</Select.Option>
         </Select>
       </Form.Item>
       <FormSelect name="schooling" rules={rules.select} label="Escolaridade" list={academicList} />
@@ -259,7 +267,7 @@ function FirstStep(props) {
           </ButtonModel>
         </Form.Item>
       </Row>
-    </Form>
+    </Fragment>
   );
 }
 
@@ -267,17 +275,16 @@ function SecondStep(props) {
   const onCheck = async () => {
     try {
       const values = await props.forms.validateFields();
-      props.onSucess;
       window.scrollTo(0, 0);
     } catch (errorInfo) {}
   };
   return (
-    <Form form={props.form} layout="vertical" onFinish={props.onSucess} scrollToFirstError>
+    <Fragment>
       {props.user === 0 ? <SecondStepMentor /> : <SecondStepSeed />}
       <Row justify="end" align="middle">
         <Space size={5}>
           <Form.Item>
-            <ButtonModel color="senary" width="small" type="primary" onClick={props.onBack}>
+            <ButtonModel color="borderPurple" width="small" type="primary" onClick={props.onBack}>
               Voltar
             </ButtonModel>
           </Form.Item>
@@ -294,7 +301,7 @@ function SecondStep(props) {
           </Form.Item>
         </Space>
       </Row>
-    </Form>
+    </Fragment>
   );
 }
 
@@ -373,16 +380,3 @@ function SecondStepSeed() {
     </Fragment>
   );
 }
-
-const cpfMask = (value) => {
-  let valueString = value;
-  if (valueString.length == 10) valueString = `0${value}`;
-  {
-    return valueString
-      .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
-      .replace(/(\d{3})(\d)/, '$1.$2') // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d{1,2})/, '$1-$2')
-      .replace(/(-\d{2})\d+?$/, '$1'); // captura 2 numeros seguidos de um traço e não deixa ser digitado mais nada
-  }
-};

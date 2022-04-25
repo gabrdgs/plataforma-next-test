@@ -100,6 +100,22 @@
     color: white;
   }
 
+  &[data-color='borderBlue'] {
+    background-color: #fff;
+    color: #0BA2B3;
+    border-color: #0BA2B3;
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  &[data-color='borderPurple'] {
+    background-color: #fff;
+    color: #3700B3;
+    border-color: #3700B3;
+    border-style: solid;
+    border-width: 1px;
+  }
+ 
   @media only screen and (max-width: 600px) {
       &[data-width='default'] {
         width: 160px;

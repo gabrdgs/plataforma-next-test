@@ -38,7 +38,9 @@ export default function ButtonModel({
 
   return href ? (
     <Link href={href} passHref>
-      <a><ButtonConfig/></a>   
+      <a>
+        <ButtonConfig />
+      </a>
     </Link>
   
   ) : (

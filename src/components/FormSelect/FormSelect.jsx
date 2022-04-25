@@ -11,7 +11,6 @@ export default function FormSelect({
   tooltip = '',
   mode,
   orderedList = false,
-  initialValues = '',
 }) {
 
   let listUptated = orderedList ? getOrderedArray(list) : list;
@@ -32,6 +31,9 @@ export default function FormSelect({
         optionFilterProp="children"
         allowClear
         style={{ width: '100%' }}
+        filterSort={(optionA, optionB) =>
+          optionA.children.toLowerCase().localeCompare(optionB.children.toLowerCase())
+        }
       >
         {listUptated.map((item, index) => (
           <Select.Option value={item.value} key={`item-${index}`}>

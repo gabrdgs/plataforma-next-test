@@ -9,8 +9,10 @@ import { ContainerModel } from '../../../components/ContainerModel';
 import { Video } from '../../../components/Video';
 import { ButtonModel } from '../../../components/ButtonModel';
 import { SocialMedia } from '../../../components/SocialMedia';
-import layout from './Layout';
+
 import Styles from './Onboarding.module.scss';
+
+import layout from '../../shared/Layout';
 
 import handsImage from '../../../assets/images/onboardingPage/shared/hands.svg';
 import percentageStudents from '../../../assets/images/onboardingPage/shared/percentage-students.jpg';

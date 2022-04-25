@@ -1,0 +1,63 @@
+.StepWelcome{
+    
+    &__Card{
+        border-width:1pt;
+        border-style:solid;      
+        border-color:#6200EE;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    &__Item{
+        width: 50%;
+    }
+
+    &__Avatar{
+        background-color:#6200EE;
+        margin-bottom: 15px;
+    }
+
+
+}
+
+.WheelComponent{
+
+    &__StepPrincipalTitle{
+        padding-top: 32px;
+    }
+
+    &__StepNumber{
+        color:#fff;
+    }
+
+    &__StepTitle{
+        color:#fff;
+    }
+
+    &__StepContent{
+        height: 400px;
+    }
+
+    &__StepNumber{
+        padding: 2vw;
+    }
+
+    @media (max-width: 767px) {
+        &__StepNumber{
+            padding: 10vh 0.5vw;
+        }
+    }
+
+    @media (max-width: 767px) {
+        
+        &__StepContent{
+            height: 90%;
+        }
+    }
+
+    @media only screen and (max-width: 764px) {
+        &__StepPrincipalTitle{
+           display:none !important; 
+        }
+    }
+}
