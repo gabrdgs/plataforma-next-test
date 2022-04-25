@@ -2,16 +2,16 @@
   font-family: Poppins !important;
   border: none;
   text-align: center;
-  
-  &[data-align='center']{
-    margin:auto;
+
+  &[data-align='center'] {
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  &[data-align='start']{
-    margin:auto;
+  &[data-align='start'] {
+    margin: auto;
   }
 
   &[data-border='round'] {
@@ -46,6 +46,12 @@
     width: 50%;
   }
 
+  @media only screen and (max-width: 600px) {
+    &[data-width='default'] {
+      width: 160px;
+    }
+  }
+
   &[data-height='default'] {
     height: 35px;
   }
@@ -60,38 +66,37 @@
 
   &[data-color='default'] {
     background-color: #f4511e;
-    color:#fff;
+    color: #fff;
   }
 
   &[data-color='default']:hover {
     background-color: #ff994b;
-    color:#fff;
+    color: #fff;
   }
 
   &[data-color='primary'] {
-    background-color: #3700B3;
+    background-color: #3700b3;
     color: white;
   }
 
   &[data-color='primaryBorder'] {
     background-color: #fff;
-    color: #3700B3;
-    border-color: #3700B3;
+    color: #3700b3;
+    border-color: #3700b3;
     border-style: solid;
     border-width: 1px;
   }
 
   &[data-color='secondary'] {
-    background-color: #0BA2B3;
+    background-color: #0ba2b3;
     color: white;
   }
 
   &[data-color='secondaryBorder'] {
     background-color: #fff;
-    color: #0BA2B3;
-    border-color: #0BA2B3;
+    color: #0ba2b3;
+    border-color: #0ba2b3;
     border-style: solid;
     border-width: 1px;
   }
-  
 }

@@ -4,7 +4,31 @@
   font-family: Poppins !important;
 
   & [data-level='1'] {
-    font-size: 93px;
+    font-size: 73px;
+    margin-top: 20px;
+  }
+
+  & [data-level='2'] {
+    font-size: 50px;
+    margin-top: 20px;
+  }
+
+  & [data-level='3'] {
+    font-size: 34px;
+    margin-top: 20px;
+  }
+   
+
+   @media only screen and (max-width: 800px) {
+    & [data-level='1'] {
+      font-size: 42px;
+    }
+    & [data-level='2'] {
+      font-size: 33px;
+    }
+    & [data-level='3'] {
+      font-size: 30px;
+    }
   }
 
   & [data-alignment='start'] {
@@ -62,4 +86,6 @@
   & [data-color='orange'] {
     color: #f4511e;
   }
+
+ 
 }

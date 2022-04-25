@@ -14,7 +14,7 @@ export default function HeadingModel({
 }) {
   return (
     <div className={styles.Heading}>
-      <Title level={level} data-color={color} italic={italic} underline={underline} data-alignment={alignment}>
+      <Title data-level={level} data-color={color} italic={italic} underline={underline} data-alignment={alignment}>
         {children}
       </Title>
     </div>

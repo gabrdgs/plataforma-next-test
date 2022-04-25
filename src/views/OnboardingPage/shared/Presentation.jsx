@@ -10,6 +10,8 @@ import { Video } from '../../../components/Video';
 import { ButtonModel } from '../../../components/ButtonModel';
 import { SocialMedia } from '../../../components/SocialMedia';
 
+import Styles from './Onboarding.module.scss';
+
 import layout from '../../shared/Layout';
 
 import handsImage from '../../../assets/images/onboardingPage/shared/hands.svg';
@@ -44,17 +46,8 @@ export default function Presentation({ onClick, user }) {
     },
   ];
 
-  const buttonInfo = user === 'mentor' ? 'mentorado' : 'mentor';
-
   return (
     <Fragment>
-      <NavBarGeneral>
-        <Row justify="end">
-          <Col pull={6}>
-            <ButtonModel>{`Quero um ${buttonInfo}`}</ButtonModel>
-          </Col>
-        </Row>
-      </NavBarGeneral>
       <ContainerModel color={CONTAINER_COLOR}>
         <Space direction="vertical" size={layout.space.container} style={{ width: '100%' }}>
           <ContainerModel color="primary">
@@ -72,7 +65,7 @@ export default function Presentation({ onClick, user }) {
               <Col {...layout.columns.twoColumnImg}>
                 <Row justify="center" style={{ transform: 'rotate(20deg)' }}>
                   <Col {...layout.imageSize}>
-                    <Image src={handsImage} />
+                    <Image src={handsImage} alt="Imagem mãos" />
                   </Col>
                 </Row>
               </Col>
@@ -122,7 +115,9 @@ export default function Presentation({ onClick, user }) {
                 </Space>
               </Col>
               <Col {...layout.columns.twoColumnInfo}>
-                <Image src={percentageStudents} />
+                <div className={Styles.Onboarding__InfographImage}>
+                  <Image src={percentageStudents} alt="imagem porcentagem de estudantes" />
+                </div>
               </Col>
             </Row>
           </ContainerModel>
@@ -130,7 +125,9 @@ export default function Presentation({ onClick, user }) {
             <Space direction="vertical" size={layout.space.elements} style={{ width: '100%' }}>
               <Row justify="space-around" align="middle">
                 <Col {...layout.columns.twoColumnInfo} order={0}>
-                  <Image src={salaryGap} />
+                  <div className={Styles.Onboarding__InfographImage}>
+                    <Image src={salaryGap} alt="imagem diferença de salários" />
+                  </div>
                 </Col>
                 <Col {...layout.columns.twoColumnInfoText} order={1}>
                   <Space
@@ -171,7 +168,7 @@ export default function Presentation({ onClick, user }) {
               <Row justify="center">
                 <Col {...layout.columns.oneColumn}>
                   <Row justify="center">
-                    <Image src={prosperityCycle} />
+                    <Image src={prosperityCycle} alt="imagem ciclo de prosperidade" />
                   </Row>
                 </Col>
               </Row>
@@ -209,7 +206,10 @@ export default function Presentation({ onClick, user }) {
                   <Row justify="space-around" gutter={48}>
                     {pillarsContent.map((item, index) => (
                       <Fragment key={`pillar-${index + 1}`}>
-                        <Col {...layout.columns.threeColumns}>
+                        <Col
+                          {...layout.columns.threeColumns}
+                          className={Styles.Onboarding__Columns}
+                        >
                           <HeadingModel level={3} color="orange" alignment="center">
                             {item.title}
                           </HeadingModel>
@@ -238,17 +238,19 @@ export default function Presentation({ onClick, user }) {
             <Row justify="end" align="middle">
               <Col {...layout.columns.oneColumn} pull={1}>
                 <Row justify="end" align="middle">
-                  <ButtonModel
-                    color="quinary"
-                    width="default"
-                    type="primary"
-                    onClick={() => {
-                      onClick(1);
-                      window.scrollTo(0, 0);
-                    }}
-                  >
-                    Avançar
-                  </ButtonModel>
+                  <div className={Styles.Onboarding__ButtonResp}>
+                    <ButtonModel
+                      color="quinary"
+                      width="default"
+                      type="primary"
+                      onClick={() => {
+                        onClick(1);
+                        window.scrollTo(0, 0);
+                      }}
+                    >
+                      Avançar
+                    </ButtonModel>
+                  </div>
                 </Row>
               </Col>
             </Row>
