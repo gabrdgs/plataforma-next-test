@@ -48,7 +48,7 @@ const StepWelcome = (props) => {
               </Paragraph>
             </Row>
             <Row justify="start">
-              <ButtonModel color="primary" border="square" block height="large" width="full">
+              <ButtonModel color="primaryDefault" border="square" block height="large" width="full">
                 Etapa 1
               </ButtonModel>
               <Card className={Styles.StepWelcome__Card}>
@@ -90,7 +90,7 @@ const StepWelcome = (props) => {
                       icon={item.icon}
                       disabled={item.disabled}
                       width="small"
-                      color="primary"
+                      color="primaryDefault"
                       key={`btn-${index}`}
                       onClick={() => props.onClick(index + 1)}
                     >
