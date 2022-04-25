@@ -107,5 +107,13 @@
     border-style: solid;
     border-width: 1px;
   }
+
+  &[data-color='borderPurple'] {
+    background-color: #fff;
+    color: #3700B3;
+    border-color: #3700B3;
+    border-style: solid;
+    border-width: 1px;
+  }
   
 }

@@ -284,7 +284,7 @@ function SecondStep(props) {
       <Row justify="end" align="middle">
         <Space size={5}>
           <Form.Item>
-            <ButtonModel color="senary" width="small" type="primary" onClick={props.onBack}>
+            <ButtonModel color="borderPurple" width="small" type="primary" onClick={props.onBack}>
               Voltar
             </ButtonModel>
           </Form.Item>
