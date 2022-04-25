@@ -231,7 +231,6 @@ export default function MentoringProgram({ content, onClick, user }) {
                   >
                     Voltar
                   </ButtonModel>
-
                   <ButtonModel color="default" type="primary" href={`/assessment-${ user }`}>
                     Fazer diagnóstico
                   </ButtonModel>
