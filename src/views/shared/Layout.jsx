@@ -65,9 +65,9 @@ const layout = {
       xs: { span: 21, order: 0 },
       sm: { span: 21, order: 0 },
       md: { span: 21, order: 0 },
-      lg: { span: 13, order: 1 },
-      xl: { span: 13, order: 1 },
-      xxl: { span: 13, order: 1 },
+      lg: { span: 11, order: 1 },
+      xl: { span: 11, order: 1 },
+      xxl: { span: 11, order: 1 },
     },
     threeColumns: {
       xs: { span: 21 },
