@@ -240,7 +240,7 @@ export default function Presentation({ onClick, user }) {
                 <Row justify="end" align="middle">
                   <div className={Styles.Onboarding__ButtonResp}>
                     <ButtonModel
-                      color="quinary"
+                      color="primary"
                       width="default"
                       type="primary"
                       onClick={() => {

@@ -221,11 +221,11 @@ export default function MentoringProgram({ content, onClick, user }) {
             </Space>
           </ContainerModel>
           <ContainerModel color={CONTAINER_COLOR}>
-            <Row justify="end">
-              <Col {...layout.columns.oneColumn} pull={1}>
+            <Col span={23}>
+              <Row justify="end">
                 <Row justify="end">
                   <ButtonModel
-                    color="quinaryText"
+                    color="primaryText"
                     type="primary"
                     onClick={() => {
                       onClick(0);
@@ -234,12 +234,12 @@ export default function MentoringProgram({ content, onClick, user }) {
                   >
                     Voltar
                   </ButtonModel>
-                  <ButtonModel color="default" type="primary" href={`/assessment-${ user }`}>
+                  <ButtonModel color="default" type="primary" href={`/assessment-${user}`}>
                     Fazer diagnóstico
                   </ButtonModel>
                 </Row>
-              </Col>
-            </Row>
+              </Row>
+            </Col>
           </ContainerModel>
           <ContainerModel color="primary">
             <Row justify="center" style={{ padding: '20px 0' }}>
