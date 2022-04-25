@@ -10,15 +10,10 @@ import { ButtonModel } from '../../../components/ButtonModel';
 
 const StepAssessment = (props) => {
   const propsStep = {
-    onBack: props.onBack,
-    onSuccess: props.onSuccess,
-    data: props.data,
-    form: props.form,
     content: props.content,
     current: props.current,
-    length: props.length,
   };
-  const content = [<FirstStep {...propsStep} />, <GeneralSteps {...propsStep} />];
+  const content = [<FirstStep />, <GeneralSteps {...propsStep} />];
 
   const onCheck = async () => {
     try {
@@ -30,7 +25,13 @@ const StepAssessment = (props) => {
     <Row align="center">
       <Form form={props.form} layout="vertical" onFinish={props.onSuccess} scrollToFirstError>
         {props.current === 0 ? content[0] : content[1]}
-        <FormButton current={props.current} length={props.length} color="secondary" onCheck={onCheck}/>
+        <FormButton
+          current={props.current}
+          length={props.length}
+          color="secondary"
+          onCheck={onCheck}
+          onBack={props.onBack}
+        />
       </Form>
     </Row>
   );

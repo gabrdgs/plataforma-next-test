@@ -67,10 +67,13 @@ export default function RegisterPage({}) {
     user: user,
   };
 
-  const content = [
-    <FirstStep setUser={setUser} data={data} onSucess={next} form={form} />,
-    <SecondStep {...propsSecondStep} />,
-  ];
+  const content = [<FirstStep setUser={setUser} />, <SecondStep {...propsSecondStep} />];
+
+  const onCheck = async () => {
+    try {
+      const values = await props.form.validateFields();
+    } catch (errorInfo) {}
+  };
 
   return (
     <ContainerModel width="full" color="greyFive">
@@ -93,7 +96,13 @@ export default function RegisterPage({}) {
                   >
                     <Card className={Styles.RegisterPage__Card}>
                       {content[current]}
-                      <FormButton current={current} length={content.length} color="secondary" />
+                      <FormButton
+                        current={current}
+                        length={content.length}
+                        color="secondary"
+                        onBack={prev}
+                        onSucess={onCheck}
+                      />
                     </Card>
                   </Form>
                 </div>
@@ -131,12 +140,6 @@ function FirstStep(props) {
     sm: { span: 12 },
   };
 
-  const onCheck = async () => {
-    try {
-      const values = await props.form.validateFields();
-    } catch (errorInfo) {}
-  };
-
   return (
     <Fragment>
       <Row gutter={12}>
@@ -151,7 +154,7 @@ function FirstStep(props) {
           </Form.Item>
         </Col>
       </Row>
-      <Form.Item label="CPF" tooltip="Preencha esse campo com seu número de CPF">
+      <Form.Item label="CPF" tooltip="Preencha esse campo com seu número de CPF" required>
         <Form.Item name="cpf" noStyle rules={rules.cpf}>
           <InputNumber
             style={{ width: '100%', height: '32px' }}
@@ -260,17 +263,7 @@ function FirstStep(props) {
 }
 
 function SecondStep(props) {
-  const onCheck = async () => {
-    try {
-      const values = await props.forms.validateFields();
-      window.scrollTo(0, 0);
-    } catch (errorInfo) {}
-  };
-  return (
-    <Fragment>
-      {props.user === 0 ? <SecondStepMentor /> : <SecondStepSeed />}
-    </Fragment>
-  );
+  return <Fragment>{props.user === 0 ? <SecondStepMentor /> : <SecondStepSeed />}</Fragment>;
 }
 
 function SecondStepMentor() {
