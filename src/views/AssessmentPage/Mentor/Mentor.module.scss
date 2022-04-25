@@ -21,15 +21,43 @@
 }
 
 .WheelComponent{
-    &__StepsList{
-        background-color:#3700B3;
+
+    &__StepPrincipalTitle{
+        padding-top: 32px;
+    }
+
+    &__StepNumber{
+        color:#fff;
     }
 
     &__StepTitle{
-        color:#fff
+        color:#fff;
     }
 
-    &__Button{
-        padding-top: 50px;
+    &__StepContent{
+        height: 400px;
+    }
+
+    &__StepNumber{
+        padding: 2vw;
+    }
+
+    @media (max-width: 767px) {
+        &__StepNumber{
+            padding: 10vh 0.5vw;
+        }
+    }
+
+    @media (max-width: 767px) {
+        
+        &__StepContent{
+            height: 90%;
+        }
+    }
+
+    @media only screen and (max-width: 764px) {
+        &__StepPrincipalTitle{
+           display:none !important; 
+        }
     }
 }

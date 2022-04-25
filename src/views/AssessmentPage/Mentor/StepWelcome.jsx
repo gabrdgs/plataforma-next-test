@@ -29,7 +29,6 @@ const StepWelcome = (props) => {
   return (
     <Fragment>
       <Row
-        gutter={[32, 16]}
         className={Styles.StepWelcome__Section}
         justify="center"
         align="middle"

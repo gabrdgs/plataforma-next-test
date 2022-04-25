@@ -99,7 +99,7 @@ const GeneralSteps = (props) => {
         <Space size={5}>
           {props.current > 0 && (
             <Form.Item>
-              <ButtonModel width="small" color="senary" onClick={props.onBack}>
+              <ButtonModel width="small" color="borderBlue" onClick={props.onBack}>
                 Voltar
               </ButtonModel>
             </Form.Item>

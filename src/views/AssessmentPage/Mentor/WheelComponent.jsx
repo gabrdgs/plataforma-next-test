@@ -49,11 +49,11 @@ const WheelComponent = (props) => {
 
   return (
     <Fragment>
-      <Row justify="space-around" gutter={48}>
+      <Row justify="space-around">
         <Col {...layout.columns.twoColumnStepsTxt} style={{ paddingTop: '50px' }}>
           <Row justify="center">
             <Col span={21}>
-              <Heading alignment="center" color="purple">
+              <Heading alignment="center" color="purple" >
                 {content[current].title}
               </Heading>
             </Col>
@@ -66,7 +66,7 @@ const WheelComponent = (props) => {
             </Col>
           </Row>
           <Row justify="center" >
-            <Col span={21}>
+            <Col span={21} className={Styles.WheelComponent__StepContent}>
               <StepAssessment
                 form={form}
                 content={content[current]}
@@ -80,11 +80,14 @@ const WheelComponent = (props) => {
           </Row>
         </Col>
         <Col {...layout.columns.twoColumnSteps}>
-          <ContainerModel color="primaryDark" className={Styles.WheelComponent__StepsList}>
-            <Heading level={4} color="secondary" alignment="center">
+          <ContainerModel color="primaryDark">
+            <Row align='middle' justify='center' className={Styles.WheelComponent__StepPrincipalTitle}>
+            <Heading level={4} color="secondary" alignment="center" >
               Teste de Canal
             </Heading>
-            <Steps current={current} size="small" direction="vertical">
+            </Row>
+           
+            <Steps current={current} size="small" direction="vertical" className={Styles.WheelComponent__StepNumber}>
               {steps.map((item) => (
                 <Step
                   className={Styles.WheelComponent__StepTitle}
