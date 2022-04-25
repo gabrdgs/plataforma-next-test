@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Row, Form, Input, InputNumber, Space } from 'antd';
 
 import { ButtonModel } from '../../../components/ButtonModel';
@@ -19,7 +19,18 @@ const StepAssessment = (props) => {
   };
   const content = [<FirstStep {...propsStep} />, <GeneralSteps {...propsStep} />];
 
-  return <Row align="center">{props.current === 0 ? content[0] : content[1]}</Row>;
+  return (
+    <Row align="center">
+      <Form
+        form={props.form}
+        layout="vertical"
+        onFinish={props.onSuccess}
+        scrollToFirstError
+      >
+        {props.current === 0 ? content[0] : content[1]}
+      </Form>
+    </Row>
+  );
 };
 export default StepAssessment;
 
@@ -31,14 +42,13 @@ const FirstStep = (props) => {
   };
 
   return (
-    <Form
-      form={props.form}
-      layout="vertical"
-      onFinish={props.onSuccess}
-      scrollToFirstError
-      style={{ width: '500px' }}
-    >
-      <Form.Item label="CPF" tooltip="Preencha esse campo com seu número de CPF" required>
+    <Fragment>
+      <Form.Item
+        label="CPF"
+        tooltip="Preencha esse campo com seu número de CPF"
+        required
+        style={{ width: '500px' }}
+      >
         <Form.Item name="cpf" noStyle rules={rules.cpf}>
           <InputNumber
             style={{ width: '100%', height: '32px' }}
@@ -57,6 +67,7 @@ const FirstStep = (props) => {
         name="email"
         tooltip="Preencha aqui com seu melhor endereço de e-mail"
         rules={rules.email}
+        style={{ width: '500px' }}
       >
         <Input placeholder="Email" />
       </Form.Item>
@@ -67,7 +78,7 @@ const FirstStep = (props) => {
           </ButtonModel>
         </Form.Item>
       </Row>
-    </Form>
+    </Fragment>
   );
 };
 
@@ -78,7 +89,7 @@ const GeneralSteps = (props) => {
     } catch (errorInfo) {}
   };
   return (
-    <Form form={props.form} layout="vertical" onFinish={props.onSuccess} scrollToFirstError>
+    <Fragment>
       <FormRadioGroup
         list={props.content.options}
         rules={rules.select}
@@ -109,6 +120,6 @@ const GeneralSteps = (props) => {
           )}
         </Space>
       </Row>
-    </Form>
+    </Fragment>
   );
 };

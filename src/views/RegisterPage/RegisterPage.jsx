@@ -86,7 +86,14 @@ export default function RegisterPage({}) {
                     <Step key={`content-${2}`} />
                   </Steps>
                   <div className="steps-content">
-                    <Card className={Styles.RegisterPage__Card}>{content[current]}</Card>
+                    <Form
+                      form={form}
+                      layout="vertical"
+                      onFinish={current < content.length - 1 ? next : handleSubmit}
+                      scrollToFirstError
+                    >
+                      <Card className={Styles.RegisterPage__Card}>{content[current]}</Card>
+                    </Form>
                   </div>
                 </Space>
               </Col>
@@ -130,7 +137,7 @@ function FirstStep(props) {
   };
 
   return (
-    <Form form={props.form} layout="vertical" onFinish={props.onSucess} scrollToFirstError>
+    <Fragment>
       <Row gutter={12}>
         <Col {...layoutCols}>
           <Form.Item name="name" label=" " rules={rules.name}>
@@ -260,7 +267,7 @@ function FirstStep(props) {
           </ButtonModel>
         </Form.Item>
       </Row>
-    </Form>
+    </Fragment>
   );
 }
 
@@ -272,7 +279,7 @@ function SecondStep(props) {
     } catch (errorInfo) {}
   };
   return (
-    <Form form={props.form} layout="vertical" onFinish={props.onSucess} scrollToFirstError>
+    <Fragment>
       {props.user === 0 ? <SecondStepMentor /> : <SecondStepSeed />}
       <Row justify="end" align="middle">
         <Space size={5}>
@@ -294,7 +301,7 @@ function SecondStep(props) {
           </Form.Item>
         </Space>
       </Row>
-    </Form>
+    </Fragment>
   );
 }
 
