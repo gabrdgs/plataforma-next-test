@@ -1,0 +1,19 @@
+.Onboarding{
+
+    @media only screen and (max-width: 1000px) {
+        &__InfographImage{
+            margin-top: 25px;
+        }
+
+        &__Columns{
+           margin-top: 20px;
+        }
+
+        &__NumbersImage{
+            min-width: 50px;
+        }
+        
+    }
+
+
+}
