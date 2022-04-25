@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import { Row, Form, Input, InputNumber, Space } from 'antd';
 
-import { ButtonModel } from '../../../components/ButtonModel';
+import { FormButton } from '../../../components/FormButton';
 import { FormRadioGroup } from '../../../components/FormRadioGroup';
 
 import rules from '../../shared/Rules';
 import { cpfMask } from '../../shared/utils';
+import { ButtonModel } from '../../../components/ButtonModel';
 
 const StepAssessment = (props) => {
   const propsStep = {
@@ -19,28 +20,24 @@ const StepAssessment = (props) => {
   };
   const content = [<FirstStep {...propsStep} />, <GeneralSteps {...propsStep} />];
 
-  return (
-    <Row align="center">
-      <Form
-        form={props.form}
-        layout="vertical"
-        onFinish={props.onSuccess}
-        scrollToFirstError
-      >
-        {props.current === 0 ? content[0] : content[1]}
-      </Form>
-    </Row>
-  );
-};
-export default StepAssessment;
-
-const FirstStep = (props) => {
   const onCheck = async () => {
     try {
       const values = await props.form.validateFields();
     } catch (errorInfo) {}
   };
 
+  return (
+    <Row align="center">
+      <Form form={props.form} layout="vertical" onFinish={props.onSuccess} scrollToFirstError>
+        {props.current === 0 ? content[0] : content[1]}
+        <FormButton current={props.current} length={props.length} color="secondary" onCheck={onCheck}/>
+      </Form>
+    </Row>
+  );
+};
+export default StepAssessment;
+
+const FirstStep = () => {
   return (
     <Fragment>
       <Form.Item
@@ -71,23 +68,11 @@ const FirstStep = (props) => {
       >
         <Input placeholder="Email" />
       </Form.Item>
-      <Row justify="end">
-        <Form.Item>
-          <ButtonModel width="small" color="senary" onClick={onCheck} htmlType="submit">
-            Avançar
-          </ButtonModel>
-        </Form.Item>
-      </Row>
     </Fragment>
   );
 };
 
 const GeneralSteps = (props) => {
-  const onCheck = async () => {
-    try {
-      const values = await props.form.validateFields();
-    } catch (errorInfo) {}
-  };
   return (
     <Fragment>
       <FormRadioGroup
@@ -95,31 +80,6 @@ const GeneralSteps = (props) => {
         rules={rules.select}
         name={`radio-group-${props.current}`}
       />
-      <Row justify="end">
-        <Space size={5}>
-          {props.current > 0 && (
-            <Form.Item>
-              <ButtonModel width="small" color="borderBlue" onClick={props.onBack}>
-                Voltar
-              </ButtonModel>
-            </Form.Item>
-          )}
-          {props.current < props.length - 1 && (
-            <Form.Item>
-              <ButtonModel width="small" color="senary" onClick={onCheck} htmlType="submit">
-                Avançar
-              </ButtonModel>
-            </Form.Item>
-          )}
-          {props.current === props.length - 1 && (
-            <Form.Item>
-              <ButtonModel width="small" color="senary" onClick={onCheck} htmlType="submit">
-                Enviar
-              </ButtonModel>
-            </Form.Item>
-          )}
-        </Space>
-      </Row>
     </Fragment>
   );
 };

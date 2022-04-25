@@ -10,7 +10,7 @@ import Styles from './RegisterPage.module.scss';
 import { FormSelect } from '../../components/FormSelect';
 import { ContainerModel } from '../../components/ContainerModel';
 import { NavBarGeneral } from '../../components/NavBarGeneral';
-import { ButtonModel } from '../../components/ButtonModel';
+import { FormButton } from '../../components/FormButton';
 import { SocialMedia } from '../../components/SocialMedia';
 
 import areasList from './AreasList';
@@ -73,40 +73,41 @@ export default function RegisterPage({}) {
   ];
 
   return (
-    <Fragment>
-      <ContainerModel width="full" color="greyFive">
-        <NavBarGeneral />
-        <Space direction="vertical" size={40} style={{ width: '100%' }}>
-          <ContainerModel width="full" color="greyFive">
-            <Row align="middle" justify="center">
-              <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
-                <Space direction="vertical" size={20} style={{ width: '100%' }}>
-                  <Steps current={current} responsive={false}>
-                    <Step key={`content-${1}`} />
-                    <Step key={`content-${2}`} />
-                  </Steps>
-                  <div className="steps-content">
-                    <Form
-                      form={form}
-                      layout="vertical"
-                      onFinish={current < content.length - 1 ? next : handleSubmit}
-                      scrollToFirstError
-                    >
-                      <Card className={Styles.RegisterPage__Card}>{content[current]}</Card>
-                    </Form>
-                  </div>
-                </Space>
-              </Col>
-            </Row>
-          </ContainerModel>
-          <ContainerModel color="primary">
-            <Row justify="center" style={{ padding: '20px 0' }}>
-              <SocialMedia />
-            </Row>
-          </ContainerModel>
-        </Space>
-      </ContainerModel>
-    </Fragment>
+    <ContainerModel width="full" color="greyFive">
+      <NavBarGeneral />
+      <Space direction="vertical" size={40} style={{ width: '100%' }}>
+        <ContainerModel width="full" color="greyFive">
+          <Row align="middle" justify="center">
+            <Col xs={{ span: 20 }} sm={{ span: 19 }} md={{ span: 12 }} xl={{ span: 10 }}>
+              <Space direction="vertical" size={20} style={{ width: '100%' }}>
+                <Steps current={current} responsive={false}>
+                  <Step key={`content-${1}`} />
+                  <Step key={`content-${2}`} />
+                </Steps>
+                <div className="steps-content">
+                  <Form
+                    form={form}
+                    layout="vertical"
+                    onFinish={current < content.length - 1 ? next : handleSubmit}
+                    scrollToFirstError
+                  >
+                    <Card className={Styles.RegisterPage__Card}>
+                      {content[current]}
+                      <FormButton current={current} length={content.length} color="secondary" />
+                    </Card>
+                  </Form>
+                </div>
+              </Space>
+            </Col>
+          </Row>
+        </ContainerModel>
+        <ContainerModel color="primary">
+          <Row justify="center" style={{ padding: '20px 0' }}>
+            <SocialMedia />
+          </Row>
+        </ContainerModel>
+      </Space>
+    </ContainerModel>
   );
 }
 
@@ -254,19 +255,6 @@ function FirstStep(props) {
       >
         <Input prefix={<LinkedinFilled />} />
       </Form.Item>
-      <Row justify="end" align="middle">
-        <Form.Item>
-          <ButtonModel
-            color="senary"
-            width="small"
-            type="primary"
-            htmlType="submit"
-            onClick={onCheck}
-          >
-            Avançar
-          </ButtonModel>
-        </Form.Item>
-      </Row>
     </Fragment>
   );
 }
@@ -281,26 +269,6 @@ function SecondStep(props) {
   return (
     <Fragment>
       {props.user === 0 ? <SecondStepMentor /> : <SecondStepSeed />}
-      <Row justify="end" align="middle">
-        <Space size={5}>
-          <Form.Item>
-            <ButtonModel color="borderPurple" width="small" type="primary" onClick={props.onBack}>
-              Voltar
-            </ButtonModel>
-          </Form.Item>
-          <Form.Item>
-            <ButtonModel
-              color="senary"
-              width="small"
-              type="primary"
-              htmlType="submit"
-              onClick={onCheck}
-            >
-              Enviar
-            </ButtonModel>
-          </Form.Item>
-        </Space>
-      </Row>
     </Fragment>
   );
 }

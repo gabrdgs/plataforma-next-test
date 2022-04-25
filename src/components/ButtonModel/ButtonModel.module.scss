@@ -59,7 +59,7 @@
   }
 
   &[data-color='default'] {
-    background-color: #ff7139;
+    background-color: #f4511e;
     color:#fff;
   }
 
@@ -69,49 +69,27 @@
   }
 
   &[data-color='primary'] {
-    background-color: #004aad ;
-    color:#fff;
-  }
-
-  &[data-color='primary']:hover {
-    background-color: #006eff ;
-    color:#fff;
-  }
-
-  &[data-color='secondary'] {
-    background-color: #213053;
-  }
-
-  &[data-color='tertiary'] {
-    background-color: #11115d;
-  }
-
-  &[data-color='quartenary'] {
-    background-color: #79ff8b;
-  }
-
-  &[data-color='quinary'] {
     background-color: #3700B3;
     color: white;
   }
 
-  &[data-color='senary'] {
-    background-color: #0BA2B3;
-    color: white;
-  }
-
-  &[data-color='borderBlue'] {
+  &[data-color='primaryBorder'] {
     background-color: #fff;
-    color: #0BA2B3;
-    border-color: #0BA2B3;
+    color: #3700B3;
+    border-color: #3700B3;
     border-style: solid;
     border-width: 1px;
   }
 
-  &[data-color='borderPurple'] {
+  &[data-color='secondary'] {
+    background-color: #0BA2B3;
+    color: white;
+  }
+
+  &[data-color='secondaryBorder'] {
     background-color: #fff;
-    color: #3700B3;
-    border-color: #3700B3;
+    color: #0BA2B3;
+    border-color: #0BA2B3;
     border-style: solid;
     border-width: 1px;
   }
