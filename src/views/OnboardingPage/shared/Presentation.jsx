@@ -210,7 +210,7 @@ export default function Presentation({ onClick, user }) {
                           {...layout.columns.threeColumns}
                           className={Styles.Onboarding__Columns}
                         >
-                          <HeadingModel level={3} color="orange" alignment="center">
+                          <HeadingModel level={4} color="orange" alignment="center">
                             {item.title}
                           </HeadingModel>
                           <Row justify="center">
