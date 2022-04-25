@@ -241,7 +241,7 @@ function FirstStep(props) {
       >
         <Select allowClear>
           <Select.Option value={0}>Processo Seletivo 2022</Select.Option>
-          <Select.Option value={1}>PlantYou AllYear - Direito</Select.Option>
+          <Select.Option value={1}>PlantYou All Year - Carreiras na Área Jurídica</Select.Option>
         </Select>
       </Form.Item>
       <FormSelect name="schooling" rules={rules.select} label="Escolaridade" list={academicList} />
